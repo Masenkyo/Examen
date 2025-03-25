@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Flippers : MonoBehaviour
 {
     [SerializeField]
     int rotateSpeed = 45;
+    int doubleSpeed = 1;
     float rotation;
     
     static List<Transform> flippers = new();
@@ -19,11 +21,15 @@ public class Flippers : MonoBehaviour
     
     #endregion
 
-    void Update() => InputRotations();
+    void FixedUpdate() => InputRotations();
+
+    void Update() => DoubleSpeed();
+
+    void DoubleSpeed() => doubleSpeed = Gamepad.current.buttonWest.isPressed ? 2 : 1;
     
-    void InputRotations() => flippers.ForEach(_ => _.GetComponent<Rigidbody2D>().angularVelocity = Input.GetKey(KeyCode.A) 
-        ? rotateSpeed
-        : Input.GetKey(KeyCode.D) 
-            ? -rotateSpeed
+    void InputRotations() => flippers.ForEach(_ => _.GetComponent<Rigidbody2D>().angularVelocity = Input.GetAxis("Horizontal") < 0 
+        ? rotateSpeed * doubleSpeed * -Input.GetAxis("Horizontal")
+        : Input.GetAxis("Horizontal") > 0
+            ? -rotateSpeed * doubleSpeed * Input.GetAxis("Horizontal")
             : 0);
 }
