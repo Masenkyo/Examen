@@ -1,54 +1,57 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class Ball : MonoBehaviour
 {
     public UnityEvent LastMoments;
-        Rigidbody2D rigidBody;
-    Vector3 startPosition;
-    Vector3 previousVelocity;
+    [HideInInspector]
+    public Rigidbody2D rigidBody;
+    SpriteRenderer spriteRenderer;
+    Vector3 startPosition = new Vector3(-6, 7.41f);
+    Vector3 impactVelocity;
 
     [SerializeField]
-    float damagableVelocity = 30f;
-    
+    float damagableVelocity;
+
     float Durability
     {
         get => _durability;
-        set => _durability = value;
-    } float _durability = 100f;
+        set
+        {
+            _durability = value;
+            if (value <= 0) LastMoments.Invoke();
+        }
+    }
+    float _durability = maxDurability;
+    const float maxDurability = 35f;
 
     void Destr()
     {
         rigidBody.linearVelocity = Vector3.zero;
         transform.position = startPosition;
+        _durability = maxDurability;
     }
 
     void Awake()
     {
         startPosition = transform.position;
         rigidBody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         LastMoments.AddListener(Destr);
     }
 
     void Update()
     {
-        previousVelocity = rigidBody.linearVelocity;
-        // Debug.Log(previousVelocity);
+        impactVelocity = rigidBody.GetPointVelocity(transform.position);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("damagablevelocity " + damagableVelocity + " velocity " + previousVelocity.magnitude);
-        if (previousVelocity.magnitude > damagableVelocity)
+        if (impactVelocity.magnitude > damagableVelocity)
         {
-            Debug.Log("damage");
-            _durability -= previousVelocity.magnitude;
-            GetComponent<SpriteRenderer>().color = new Vector4(_durability / 100, 0, 0, 1);
-            if (_durability <= 0)
-            {
-                Debug.Log("event");
-                LastMoments.Invoke();
-            }
+            Durability -= impactVelocity.magnitude;
+            spriteRenderer.color = new Vector4(_durability / maxDurability, 0, 0, 1);
         }
     }
 }
