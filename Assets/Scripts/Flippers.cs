@@ -25,7 +25,7 @@ public class Flippers : MonoBehaviour
 
     void Update() => DoubleSpeed();
 
-    void DoubleSpeed() => doubleSpeed = Gamepad.current.buttonWest.isPressed ? 2 : 1;
+    void DoubleSpeed() => doubleSpeed = Gamepad.current is { } ? Gamepad.current.buttonWest.isPressed ? 2 : 1 : 1;
     
     void InputRotations() => flippers.ForEach(_ => _.GetComponent<Rigidbody2D>().angularVelocity = Input.GetAxis("Horizontal") < 0 
         ? rotateSpeed * doubleSpeed * -Input.GetAxis("Horizontal")
