@@ -167,6 +167,7 @@ MonoBehaviour:
   - {fileID: 7754605185928251628, guid: 47c64c26bebc2254aa1e7196048afe24, type: 3}
   - {fileID: 8037830788936220768, guid: ac727ef1720591b40a8f5b67d3d18950, type: 3}
   - {fileID: 644575745718376169, guid: 72263c2ca1294344895d627dde2c9e64, type: 3}
+  - {fileID: 7626919967714212679, guid: c51fdc9b77c80da4e81ea56c9e1a3703, type: 3}
   amountOfLevels: 10
 --- !u!1 &1481327206
 GameObject:
