@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 public class Ball : MonoBehaviour
 {
@@ -8,29 +7,40 @@ public class Ball : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
-    Vector3 startPosition = new Vector3(-6, 7.41f);
+    public Vector3 startPosition = new Vector3(-6, 7.41f);
     Vector3 impactVelocity;
 
     [SerializeField]
     float damagableVelocity;
+    [HideInInspector]
+    public bool canSpawn = false;
 
+    [SerializeField]
+    float maxDurability = 35f;
     float Durability
     {
-        get => _durability;
+        get => _durability ??= maxDurability;
         set
         {
             _durability = value;
             if (value <= 0) LastMoments.Invoke();
         }
-    }
-    float _durability = maxDurability;
-    const float maxDurability = 35f;
+    } float? _durability;
 
-    void Destr()
+    void FirstLastMoment()
     {
+        canSpawn = true;
+        transform.localScale = new Vector3(0, 0);
+    }
+
+    public void ResetBall()
+    {
+        canSpawn = false;
+        transform.localScale = new Vector3(1, 1);
         rigidBody.linearVelocity = Vector3.zero;
+        spriteRenderer.color = Color.red;
         transform.position = startPosition;
-        _durability = maxDurability;
+        Durability = maxDurability;
     }
 
     void Awake()
@@ -38,7 +48,7 @@ public class Ball : MonoBehaviour
         startPosition = transform.position;
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        LastMoments.AddListener(Destr);
+        LastMoments.AddListener(FirstLastMoment);
     }
 
     void Update()
@@ -51,7 +61,7 @@ public class Ball : MonoBehaviour
         if (impactVelocity.magnitude > damagableVelocity)
         {
             Durability -= impactVelocity.magnitude;
-            spriteRenderer.color = new Vector4(_durability / maxDurability, 0, 0, 1);
+            spriteRenderer.color = new Vector4(Durability / maxDurability, 0, 0, 1);
         }
     }
 }
