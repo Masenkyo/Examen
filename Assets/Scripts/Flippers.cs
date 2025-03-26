@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Vector3 = System.Numerics.Vector3;
 
 public class Flippers : MonoBehaviour
 {
@@ -21,15 +25,31 @@ public class Flippers : MonoBehaviour
     
     #endregion
 
-    void FixedUpdate() => InputRotations();
-
-    void Update() => DoubleSpeed();
-
-    void DoubleSpeed() => doubleSpeed = Gamepad.current.buttonWest.isPressed ? 2 : 1;
+    void Update()
+    {
+        InputRotations();
+        LaunchFlipper();
+        DoubleSpeed();
+    }
     
-    void InputRotations() => flippers.ForEach(_ => _.GetComponent<Rigidbody2D>().angularVelocity = Input.GetAxis("Horizontal") < 0 
+    void DoubleSpeed() => doubleSpeed = Gamepad.current is { } ? Gamepad.current.buttonWest.isPressed ? 2 : 1 : 1;
+    
+    void InputRotations() => flippers.Where(_ => _.CompareTag("Flipper"))
+        .ToList()
+        .ForEach(_ => _.GetComponent<Rigidbody2D>().angularVelocity = Input.GetAxis("Horizontal") < 0 
         ? rotateSpeed * doubleSpeed * -Input.GetAxis("Horizontal")
         : Input.GetAxis("Horizontal") > 0
             ? -rotateSpeed * doubleSpeed * Input.GetAxis("Horizontal")
             : 0);
+
+    void LaunchFlipper() => flippers
+        .Where(_ => _.CompareTag("LaunchFlipper"))
+        .ToList()
+        .ForEach(_ => _.GetComponent<Rigidbody2D>().rotation = Input.GetAxis("Vertical") * 90);
+    // .SetRotation(Input.GetAxis("Vertical") * 90));
+
+    void hi()
+    {
+        Vector3.Lerp(new Vector3(0), new Vector3(90f), Input.GetAxis("Vertical"));
+    }
 }

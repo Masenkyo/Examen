@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7403428651140470396}
   - component: {fileID: 5729242832451739326}
   - component: {fileID: 5588940647028484340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OvalFlipper
-  m_TagString: Untagged
+  m_TagString: Flipper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
