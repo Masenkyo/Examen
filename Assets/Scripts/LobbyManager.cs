@@ -71,8 +71,8 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] 
     public LobbyPlayerList inGamePlayerList;
     
-    Action<PlayerManager.Player> PlayerAddedAfter = _ => { };
-    Action<PlayerManager.Player> PlayerRemovedBefore = _ => { };
+    public static Action<PlayerManager.Player> PlayerAddedAfter = _ => { };
+    public static Action<PlayerManager.Player> PlayerRemovedBefore = _ => { };
 
     LobbyPlayer CreateLP(PlayerManager.PlayerEntrySet chosen)
     {
