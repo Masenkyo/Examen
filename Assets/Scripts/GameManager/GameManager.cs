@@ -23,26 +23,30 @@ public static class GameManager
 
     static void GameStarted()
     {
-        DistributeFlippers();
+        LevelSysteem.instance.Ready.AddListener(OnReady);
+        void OnReady()
+        {
+            DistributeFlippers();
 
-        var rc = InputSystem.actions.FindActionMap("Main").FindAction("Rotate");
-        rc.Enable();
+            var rc = InputSystem.actions.FindActionMap("Main").FindAction("Rotate");
+            rc.Enable();
         
-        var cancel= new Action(() =>
-        {
-            foreach (var keyValuePair in PlayersFlippers)
-                keyValuePair.Value.ForEach(_ =>
-                {
-                    _.doubleSpeedPressed = keyValuePair.Key.Gamepad.squareButton.isPressed;
-                    _.DesiredHorizontalMovement = keyValuePair.Key.Gamepad.leftStick.value.x;
-                });
-        }).AddToUpdate();
+            var cancel= new Action(() =>
+            {
+                foreach (var keyValuePair in PlayersFlippers)
+                    keyValuePair.Value.ForEach(_ =>
+                    {
+                        _.doubleSpeedPressed = keyValuePair.Key.Gamepad.squareButton.isPressed;
+                        _.DesiredHorizontalMovement = keyValuePair.Key.Gamepad.leftStick.value.x;
+                    });
+            }).AddToUpdate();
         
-        GameStateClass.OnGameStateChanged = once + GameStateClass.OnGameStateChanged;
-        void once(GameStates _)
-        {
-            GameStateClass.OnGameStateChanged -= once;
-            cancel();
+            GameStateClass.OnGameStateChanged = once + GameStateClass.OnGameStateChanged;
+            void once(GameStates _)
+            {
+                GameStateClass.OnGameStateChanged -= once;
+                cancel();
+            }
         }
     }
 

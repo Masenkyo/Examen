@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class Flipper : MonoBehaviour
 {
-    [SerializeField]
-    int rotateSpeed = 45;
+    [SerializeField] int rotateSpeed = 45;
+    [HideInInspector] public bool doubleSpeedPressed;
+    [HideInInspector] public float DesiredHorizontalMovement;
     int doubleSpeed = 1;
     float rotation;
     
@@ -25,10 +27,8 @@ public class Flipper : MonoBehaviour
 
     void Update() => DoubleSpeed();
 
-    public bool doubleSpeedPressed;
     void DoubleSpeed() => doubleSpeed = Gamepad.current is { } ? doubleSpeedPressed ? 2 : 1 : 1;
 
-    public float DesiredHorizontalMovement;
     void InputRotations() => GetComponent<Rigidbody2D>().angularVelocity = DesiredHorizontalMovement < 0 
         ? rotateSpeed * doubleSpeed * -DesiredHorizontalMovement
         : DesiredHorizontalMovement > 0
