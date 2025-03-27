@@ -1,36 +1,51 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 public class Ball : MonoBehaviour
 {
-    public UnityEvent LastMoments;
+    public UnityEvent Enable;
+    public UnityEvent Disable;
     [HideInInspector]
     public Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
-    Vector3 startPosition = new Vector3(-6, 7.41f);
+    public Vector3 startPosition = new Vector3(-6, 7.41f);
     Vector3 impactVelocity;
 
     [SerializeField]
     float damagableVelocity;
+    [HideInInspector]
+    public bool canSpawn = false;
 
+    [SerializeField]
+    float maxDurability = 35f;
     float Durability
     {
-        get => _durability;
+        get => _durability ??= maxDurability;
         set
         {
             _durability = value;
-            if (value <= 0) LastMoments.Invoke();
+            if (value <= 0) Disable.Invoke();
         }
-    }
-    float _durability = maxDurability;
-    const float maxDurability = 35f;
+    } float? _durability;
 
-    void Destr()
+    void DisableBall()
     {
+        spriteRenderer.enabled = false;
+        rigidBody.simulated = false;
+        GetComponent<ParticleSystem>().Play();
+        canSpawn = true;
+    }
+
+    void EnableBall()
+    {
+        canSpawn = false;
+        GetComponent<ParticleSystem>().Stop();
+        spriteRenderer.color = Color.red;
+        rigidBody.simulated = true;
+        spriteRenderer.enabled = true;
         rigidBody.linearVelocity = Vector3.zero;
         transform.position = startPosition;
-        _durability = maxDurability;
+        Durability = maxDurability;
     }
 
     void Awake()
@@ -38,7 +53,8 @@ public class Ball : MonoBehaviour
         startPosition = transform.position;
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        LastMoments.AddListener(Destr);
+        Enable.AddListener(EnableBall);
+        Disable.AddListener(DisableBall);
     }
 
     void Update()
@@ -51,7 +67,7 @@ public class Ball : MonoBehaviour
         if (impactVelocity.magnitude > damagableVelocity)
         {
             Durability -= impactVelocity.magnitude;
-            spriteRenderer.color = new Vector4(_durability / maxDurability, 0, 0, 1);
+            spriteRenderer.color = new Vector4(Durability / maxDurability, 0, 0, 1);
         }
     }
 }
