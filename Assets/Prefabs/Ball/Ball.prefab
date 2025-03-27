@@ -140,7 +140,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -174,8 +174,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   rigidBody: {fileID: 0}
-  startPosition: {x: -6, y: 7.41, z: 0}
-  damagableVelocity: 8
+  startPosition: {x: 0, y: 5, z: 0}
+  damagableVelocity: 10
   canSpawn: 0
   maxDurability: 35
 --- !u!198 &5807534193257836690

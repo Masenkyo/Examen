@@ -16,7 +16,7 @@ public static class GameStateClass
         {
             "MainMenu" => GameStates.InMenu,
             "Lobby" => GameStates.InLobby,
-            "Flippers" => GameStates.InGame,
+            "Game" => GameStates.InGame,
         };
         set
         {
@@ -28,7 +28,7 @@ public static class GameStateClass
             {
                 GameStates.InMenu => "MainMenu",
                 GameStates.InLobby => "Lobby",
-                GameStates.InGame => "Flippers"
+                GameStates.InGame => "Game"
             });
             void wait(Scene arg0, LoadSceneMode loadSceneMode)
             {
