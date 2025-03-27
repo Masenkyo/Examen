@@ -4,17 +4,13 @@ public class LockPoint : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.TryGetComponent<Ball>(out var ball)) return;
-
-        Debug.Log("enter");
-        Follow.reference.trackingObject = gameObject;  
+        if (!collision.TryGetComponent<Ball>(out _)) return;
+        Follow.reference.trackingObject = gameObject;
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.TryGetComponent<Ball>(out var ball)) return;
-
-        Debug.Log("exit");
+        if (!collision.TryGetComponent<Ball>(out _)) return;
         Follow.reference.TrackBall();
     }
 }
