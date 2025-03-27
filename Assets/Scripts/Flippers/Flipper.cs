@@ -12,15 +12,20 @@ public class Flipper : MonoBehaviour
     [HideInInspector] public float DesiredHorizontalMovement;
     int doubleSpeed = 1;
     float rotation;
+    Rigidbody2D rigidbody;
     
     public static List<Flipper> AllFlippers = new();
     
     #region FlipperList
     
-    void Awake() => AllFlippers.Add(this);
+    void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+        AllFlippers.Add(this);
+    }
     
     void OnDestroy() => AllFlippers.Remove(this);
-    
+
     #endregion
 
     void FixedUpdate() => InputRotations();
@@ -29,7 +34,7 @@ public class Flipper : MonoBehaviour
 
     void DoubleSpeed() => doubleSpeed = Gamepad.current is { } ? doubleSpeedPressed ? 2 : 1 : 1;
 
-    void InputRotations() => GetComponent<Rigidbody2D>().angularVelocity = DesiredHorizontalMovement < 0 
+    void InputRotations() => rigidbody.angularVelocity = DesiredHorizontalMovement < 0 
         ? rotateSpeed * doubleSpeed * -DesiredHorizontalMovement
         : DesiredHorizontalMovement > 0
             ? -rotateSpeed * doubleSpeed * DesiredHorizontalMovement
