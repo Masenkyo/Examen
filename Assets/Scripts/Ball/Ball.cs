@@ -3,7 +3,8 @@ using UnityEngine.Events;
 
 public class Ball : MonoBehaviour
 {
-    public UnityEvent LastMoments;
+    public UnityEvent Enable;
+    public UnityEvent Disable;
     [HideInInspector]
     public Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
@@ -23,22 +24,26 @@ public class Ball : MonoBehaviour
         set
         {
             _durability = value;
-            if (value <= 0) LastMoments.Invoke();
+            if (value <= 0) Disable.Invoke();
         }
     } float? _durability;
 
-    void FirstLastMoment()
+    void DisableBall()
     {
+        spriteRenderer.enabled = false;
+        rigidBody.simulated = false;
+        GetComponent<ParticleSystem>().Play();
         canSpawn = true;
-        transform.localScale = new Vector3(0, 0);
     }
 
-    public void ResetBall()
+    void EnableBall()
     {
         canSpawn = false;
-        transform.localScale = new Vector3(1, 1);
-        rigidBody.linearVelocity = Vector3.zero;
+        GetComponent<ParticleSystem>().Stop();
         spriteRenderer.color = Color.red;
+        rigidBody.simulated = true;
+        spriteRenderer.enabled = true;
+        rigidBody.linearVelocity = Vector3.zero;
         transform.position = startPosition;
         Durability = maxDurability;
     }
@@ -48,7 +53,8 @@ public class Ball : MonoBehaviour
         startPosition = transform.position;
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        LastMoments.AddListener(FirstLastMoment);
+        Enable.AddListener(EnableBall);
+        Disable.AddListener(DisableBall);
     }
 
     void Update()

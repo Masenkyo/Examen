@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class Follow : MonoBehaviour
@@ -44,16 +44,20 @@ public class Follow : MonoBehaviour
         }
         if (!trackingObject.TryGetComponent<LockPoint>(out _)) stay = false;
 
-        if(trackingBall && b.canSpawn)
-        {
-            Vector3 originDirection = new Vector3(0, Camera.main.transform.position.y) - new Vector3(0, b.startPosition.y); 
-            Camera.main.transform.position -= originDirection.normalized * (speed * Time.deltaTime);
-            if (originDirection.magnitude < 2) b.ResetBall();
-        }
+        if (trackingBall && b.canSpawn) StartCoroutine(MoveUpWithDelay(b, 1f));
     }
 
     public void TrackBall()
     {
         trackingObject = ball;
     }
+
+    IEnumerator MoveUpWithDelay(Ball b, float delay)
+    {
+        Vector3 originDirection = new Vector3(0, Camera.main.transform.position.y) - new Vector3(0, b.startPosition.y);
+        if (originDirection.magnitude < 2) b.Enable.Invoke();
+        yield return new WaitForSeconds(delay);
+        Camera.main.transform.position -= originDirection.normalized * (speed * Time.deltaTime);
+    }
 }
+
