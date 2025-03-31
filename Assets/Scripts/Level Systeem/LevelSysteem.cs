@@ -7,9 +7,8 @@ public class LevelSysteem : MonoBehaviour
 {
     [SerializeField]
     List<Transform> Levels = new();
-    [SerializeField]
-    int amountOfLevels = 10;
-    float gapBetweenLevels = -8.5f;
+    public int amountOfLevels = 10;
+    public float gapBetweenLevels = -8.5f;
 
     void Start() => InstantiateLevels();
     void InstantiateLevels()
