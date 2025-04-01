@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
                 var img = GameObject.Instantiate(pointerPrefab, transform.GetChild(0)).GetComponent<Image>();
                 img.color = kvp.Key.ChosenPlayerEntrySet.color;
                 FlippersPointers.Add(flipper, img);
+                flipper.GetComponent<SpriteRenderer>().color = kvp.Key.ChosenPlayerEntrySet.color;
             }
         }
     }
