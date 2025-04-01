@@ -218,6 +218,8 @@ public class LobbyManager : MonoBehaviour
 
         LeaveGame.performed += context =>
         {
+            if (GameStateClass.GameState == GameStates.InGame && PlayerManager.Players.Count == 1)
+                GameStateClass.GameState = GameStates.InLobby;
             if (PlayerManager.Players.FirstOrDefault(_ => _.Gamepad == context.control.device) is { } f) 
                 RemovePlayer(f);
         };
