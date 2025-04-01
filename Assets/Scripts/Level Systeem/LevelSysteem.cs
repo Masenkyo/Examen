@@ -6,15 +6,13 @@ using UnityEngine.Events;
 
 public class LevelSysteem : MonoBehaviour
 {
-    public static LevelSysteem instance;
     [SerializeField] List<Transform> Levels = new();
-    [SerializeField] int amountOfLevels = 10;
-    float gapBetweenLevels = -8.5f;
+    public int amountOfLevels = 10;
+    public float gapBetweenLevels = -8.5f;
     public UnityEvent Ready;
 
     void Start() => InstantiateLevels();
     
-    void Awake() => instance = this;
     void InstantiateLevels()
     {
         for (float i = 0; i > amountOfLevels * gapBetweenLevels; i += gapBetweenLevels) 
