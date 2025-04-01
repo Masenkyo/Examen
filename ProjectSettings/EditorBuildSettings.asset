@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/Main Game/MainMenu.unity
     guid: ac5d9b10c31dbf14eb5f4bc7d68347a5
@@ -15,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Game/Lobby.unity
     guid: c1af8ca2e771d6d4c9903c36b5aecabc
   - enabled: 1
-    path: Assets/Scenes/Game/Game.unity
-    guid: 4276b8e47eb77014d8dcc73d3fe09a44
-  - enabled: 1
     path: Assets/Scenes/Development/Flippers.unity
     guid: 3f43e3033f4e7c940a4afed5a22a0ecd
+  - enabled: 1
+    path: Assets/Scenes/Main Game/Game.unity
+    guid: 7a2878aeae58481438001e4dc23cc9ef
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d13ab7e51cb95814ea6147ce868910be, type: 3}
   m_UseUCBPForAssetBundles: 0
