@@ -9,9 +9,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject pointerPrefab;
     [SerializeField] Image resetFill;
+    [SerializeField] GameObject youWin;
     
     public List<PlayerManager.Player> playersHoldingReset = new();
 
+    class empty : MonoBehaviour { }
+    
     void Awake()
     {
         StartCoroutine(resetInput());
@@ -37,26 +40,54 @@ public class GameManager : MonoBehaviour
             }
         }
         
-        
-        LevelSysteem.Ready += instance =>
+        LevelSysteem.Ready = instance =>
         {
-            LobbyManager.PlayerRemovedBefore += _ => StartCoroutine(wait());
-            LobbyManager.PlayerAddedAfter += _ => StartCoroutine(wait());
-            IEnumerator wait()
+            LobbyManager.PlayerRemovedBefore += e;
+            LobbyManager.PlayerAddedAfter += e;
+
+            GameStateClass.OnGameStateChanged += temp;
+            void temp(GameStates gameStates)
             {
-                DistributeFlippers();
-                Time.timeScale = 0;
-                yield return new WaitForSecondsRealtime(3);
-                Time.timeScale = 1;
+                GameStateClass.OnGameStateChanged -= temp;
+                LobbyManager.PlayerRemovedBefore -= e;
+                LobbyManager.PlayerAddedAfter -= e;
+            }
+            
+            void e(PlayerManager.Player p)
+            {
+                var go = new GameObject("");
+                go.AddComponent<empty>().StartCoroutine(wait());
+                Destroy(go, 5);
+                
+                IEnumerator wait()
+                {
+                    DistributeFlippers();
+                    Time.timeScale = 0;
+                    yield return new WaitForSecondsRealtime(3);
+                    Time.timeScale = 1;
+                }
             }
             
             DistributeFlippers();
+            InputSystem.actions.FindActionMap("Main").FindAction("Rotate").Enable();
             
-            var rc = InputSystem.actions.FindActionMap("Main").FindAction("Rotate");
-            rc.Enable();
+            // What happens on win?
+            WinArea.OnWin = () =>
+            {
+                StartCoroutine(wait());
+                IEnumerator wait()
+                {
+                    Time.timeScale = 0;
+                    youWin.SetActive(true);
+                    yield return new WaitForSecondsRealtime(3);
+                    youWin.SetActive(false);
+                    Time.timeScale = 1;
+                    GameStateClass.GameState = GameStates.InLobby;
+                }
+            };
         };
     }
-
+    
     void Update()
     {
         // Resetting ball

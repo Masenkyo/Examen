@@ -66,8 +66,11 @@ public class LobbyManager : MonoBehaviour
     public LobbyPlayerList inLobbyPlayerList;
 
     public GameObject InGameUI => refer.inGameUI;
-    [SerializeField] 
-    public GameObject inGameUI;
+    
+    [SerializeField] public GameObject inGameUI;
+    [SerializeField] public GameObject inLobbyUI;
+    
+    
     [SerializeField] 
     public LobbyPlayerList inGamePlayerList;
     
@@ -127,9 +130,9 @@ public class LobbyManager : MonoBehaviour
     {
         doneSetup = true;
      
-        PlayerAddedAfter += _ => { doRefresh(); };
-        PlayerRemovedBefore += _ => { doRefresh(); };
-        void doRefresh()
+        PlayerAddedAfter += _ => { invitationRefresh(); };
+        PlayerRemovedBefore += _ => { invitationRefresh(); };
+        void invitationRefresh()
         {
             switch (GameStateClass.GameState)
             {
@@ -144,8 +147,7 @@ public class LobbyManager : MonoBehaviour
         
         GameStateClass.OnGameStateChanged += (_ =>
         {
-            if (_ != GameStates.InMenu)
-                doRefresh();
+            invitationRefresh();
 
             if (_ == GameStates.InMenu)
             {
@@ -160,15 +162,22 @@ public class LobbyManager : MonoBehaviour
             else
                 StartGame.Disable();
             
-            // InGame UI
+            // UIs
             InGameUI.SetActive(GameStateClass.GameState == GameStates.InGame);
+            inLobbyUI.SetActive(GameStateClass.GameState == GameStates.InLobby);
             
             // Back to menu? Kill everyone.
             if (GameStateClass.GameState == GameStates.InMenu)
                 PlayerManager.Players.Clear();
             
             // Transfer LPs
+            PlayerManager.Players.ForEach(_ =>
+            {
+                if (_.LP != null)
+                    GameObject.Destroy(_.LP.gameObject);
+            });
             PlayerManager.Players.ForEach(_ => _.LP = CreateLP(_.ChosenPlayerEntrySet));
+            PlayerManager.CurrentKing = PlayerManager.CurrentKing;
         });
     }
 
