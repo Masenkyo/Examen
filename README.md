@@ -1,7 +1,7 @@
-# [`Pipeline`](https://github.com/Masenkyo/Examen/wiki/Pipeline "Pipeline")
+# [*Pipeline*](https://github.com/Masenkyo/Examen/wiki/Pipeline "Pipeline")
 
-## [`Technical Design`](https://github.com/Masenkyo/Examen/wiki/Technical-design "Technical Design")
-## [`Functional Design`](https://github.com/Masenkyo/Examen/wiki/Functional-Design "Functional Design")
+## [*Technical Design*](https://github.com/Masenkyo/Examen/wiki/Technical-design "Technical Design")
+## [*Functional Design*](https://github.com/Masenkyo/Examen/wiki/Functional-Design "Functional Design")
   
 ### Sil zijn scripts:  
   
