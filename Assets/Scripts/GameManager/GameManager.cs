@@ -11,30 +11,24 @@ public class GameManager : MonoBehaviour
     
     void Awake()
     {
-        LobbyManager.PlayerRemovedBefore += _ =>
+        LevelSysteem.Ready += instance =>
         {
+            LobbyManager.PlayerRemovedBefore += _ => StartCoroutine(wait());
+            LobbyManager.PlayerAddedAfter += _ => StartCoroutine(wait());
+            IEnumerator wait()
+            {
+                DistributeFlippers();
+                Time.timeScale = 0;
+                yield return new WaitForSecondsRealtime(3);
+                Time.timeScale = 1;
+            }
+            
             DistributeFlippers();
-            StartCoroutine(wait());
-        };
-        LobbyManager.PlayerAddedAfter += _ =>
-        {
-            DistributeFlippers();
-            StartCoroutine(wait());
-        };
 
-        IEnumerator wait()
-        {
-            Time.timeScale = 0;
-            yield return new WaitForSeconds(3);
-            Time.timeScale = 1;
-        }
-        
-        DistributeFlippers();
-
-        FlippersPointers = PlayersFlippers.SelectMany(_ => _.Value).ToDictionary(_ => _, _ => GameObject.Instantiate(pointerPrefab, pointerPrefab.transform.parent).GetComponent<Image>());
-        
-        var rc = InputSystem.actions.FindActionMap("Main").FindAction("Rotate");
-        rc.Enable();
+            
+            var rc = InputSystem.actions.FindActionMap("Main").FindAction("Rotate");
+            rc.Enable();
+        };
     }
 
     void Update()
@@ -50,28 +44,22 @@ public class GameManager : MonoBehaviour
         float edge = Camera.main.ScreenToWorldPoint(Vector3.zero).y;
         foreach (var flipper in PlayersFlippers.SelectMany(_ => _.Value))
         {
-            if (flipper.transform.position.y < edge)
-            {
-                var pointer = FlippersPointers[flipper];
-                pointer.transform.position = new (flipper.transform.position.x, 10);
-                float am = (edge - flipper.transform.position.y)
-                    switch
-                    {
-                        < -0 => 0,
-                        < 2  => 1f,
-                        < 4  => 0.5f,
-                        < 6  => 0.25f,
-                        < 8  => 0.1275f,
-                        < 16 => 0.06375f,
-                    };
-                pointer.transform.localScale = new(am, am, 1);
-            }
+            var pointer = FlippersPointers[flipper];
+
+            var diff = (edge - flipper.transform.position.y);
+            if (diff < 1)
+                diff = 1;
+            float am = (1 / diff * Mathf.Pow(1, 1 + diff / 3));
+            if (flipper.transform.position.y > edge || am < 0.25f)
+                am = 0;
+            pointer.rectTransform.localScale = new(am, am, 1);
+            pointer.rectTransform.position = new Vector3(Camera.main.WorldToScreenPoint(new (flipper.transform.position.x, 0)).x, 2.5f + (40 * am));
         }
     }
 
     readonly Dictionary<PlayerManager.Player, List<Flipper>> PlayersFlippers = new();
     Dictionary<Flipper, Image> FlippersPointers = new();
-    
+
     void DistributeFlippers()
     {
         PlayersFlippers.Clear();
@@ -87,6 +75,20 @@ public class GameManager : MonoBehaviour
             playerBuffer.RemoveAt(0);
             if (playerBuffer.Count == 0)
                 playerBuffer = PlayerManager.Players.ToList();
+        }
+        
+        // 'incoming flipper' pointers
+        foreach (var kvp in FlippersPointers)
+            Destroy(kvp.Value.gameObject);
+        FlippersPointers.Clear();
+        foreach (var kvp in PlayersFlippers)
+        {
+            foreach (var flipper in kvp.Value)
+            {
+                var img = GameObject.Instantiate(pointerPrefab, transform.GetChild(0)).GetComponent<Image>();
+                img.color = kvp.Key.ChosenPlayerEntrySet.color;
+                FlippersPointers.Add(flipper, img);
+            }
         }
     }
 }
