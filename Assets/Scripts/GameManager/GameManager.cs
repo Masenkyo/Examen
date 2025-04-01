@@ -1,62 +1,68 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
-public static class GameManager
+public class GameManager : MonoBehaviour
 {
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    public static void DoNothing() { }
-    static GameManager()
+    [SerializeField] GameObject pointerPrefab;
+    
+    void Awake()
     {
-        GameStateClass.OnGameStateChanged += _ =>
+        LevelSysteem.Ready += instance =>
         {
-            if (_ == GameStates.InGame)
-                GameStarted();
-            else 
-                GameEnded();
+            LobbyManager.PlayerRemovedBefore += _ => StartCoroutine(wait());
+            LobbyManager.PlayerAddedAfter += _ => StartCoroutine(wait());
+            IEnumerator wait()
+            {
+                DistributeFlippers();
+                Time.timeScale = 0;
+                yield return new WaitForSecondsRealtime(3);
+                Time.timeScale = 1;
+            }
+            
+            DistributeFlippers();
+
+            
+            var rc = InputSystem.actions.FindActionMap("Main").FindAction("Rotate");
+            rc.Enable();
         };
     }
 
-    static Dictionary<PlayerManager.Player, List<Flipper>> PlayersFlippers = new();
-
-    static void GameStarted()
+    void Update()
     {
-        LevelSysteem.instance.Ready.AddListener(OnReady);
-        void OnReady()
+        foreach (var keyValuePair in PlayersFlippers)
+            keyValuePair.Value.ForEach(_ =>
+            {
+                _.doubleSpeedPressed = keyValuePair.Key.Gamepad.squareButton.isPressed;
+                _.DesiredHorizontalMovement = keyValuePair.Key.Gamepad.leftStick.value.x;
+            });
+        
+        // Distance pointers
+        float edge = Camera.main.ScreenToWorldPoint(Vector3.zero).y;
+        foreach (var flipper in PlayersFlippers.SelectMany(_ => _.Value))
         {
-            DistributeFlippers();
+            var pointer = FlippersPointers[flipper];
 
-            var rc = InputSystem.actions.FindActionMap("Main").FindAction("Rotate");
-            rc.Enable();
-        
-            var cancel= new Action(() =>
-            {
-                foreach (var keyValuePair in PlayersFlippers)
-                    keyValuePair.Value.ForEach(_ =>
-                    {
-                        _.doubleSpeedPressed = keyValuePair.Key.Gamepad.squareButton.isPressed;
-                        _.DesiredHorizontalMovement = keyValuePair.Key.Gamepad.leftStick.value.x;
-                    });
-            }).AddToUpdate();
-        
-            GameStateClass.OnGameStateChanged = once + GameStateClass.OnGameStateChanged;
-            void once(GameStates _)
-            {
-                GameStateClass.OnGameStateChanged -= once;
-                cancel();
-            }
+            var diff = (edge - flipper.transform.position.y);
+            if (diff < 1)
+                diff = 1;
+            float am = (1 / diff * Mathf.Pow(1, 1 + diff / 3));
+            if (flipper.transform.position.y > edge || am < 0.25f)
+                am = 0;
+            pointer.rectTransform.localScale = new(am, am, 1);
+            pointer.rectTransform.position = new Vector3(Camera.main.WorldToScreenPoint(new (flipper.transform.position.x, 0)).x, 2.5f + (40 * am));
         }
     }
 
-    static void GameEnded()
-    {
-        PlayersFlippers = new();
-    }
+    readonly Dictionary<PlayerManager.Player, List<Flipper>> PlayersFlippers = new();
+    Dictionary<Flipper, Image> FlippersPointers = new();
 
-    static void DistributeFlippers()
+    void DistributeFlippers()
     {
+        PlayersFlippers.Clear();
         var playerBuffer = PlayerManager.Players.ToList();
         if (playerBuffer.Count == 0)
             return;
@@ -69,6 +75,21 @@ public static class GameManager
             playerBuffer.RemoveAt(0);
             if (playerBuffer.Count == 0)
                 playerBuffer = PlayerManager.Players.ToList();
+        }
+        
+        // 'incoming flipper' pointers
+        foreach (var kvp in FlippersPointers)
+            Destroy(kvp.Value.gameObject);
+        FlippersPointers.Clear();
+        foreach (var kvp in PlayersFlippers)
+        {
+            foreach (var flipper in kvp.Value)
+            {
+                var img = GameObject.Instantiate(pointerPrefab, transform.GetChild(0)).GetComponent<Image>();
+                img.color = kvp.Key.ChosenPlayerEntrySet.color;
+                FlippersPointers.Add(flipper, img);
+                flipper.GetComponent<SpriteRenderer>().color = kvp.Key.ChosenPlayerEntrySet.color;
+            }
         }
     }
 }
