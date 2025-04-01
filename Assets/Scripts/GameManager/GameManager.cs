@@ -8,9 +8,36 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject pointerPrefab;
+    [SerializeField] Image resetFill;
     
+    public List<PlayerManager.Player> playersHoldingReset = new();
+
     void Awake()
     {
+        StartCoroutine(resetInput());
+        IEnumerator resetInput()
+        {
+            while (true)
+            {
+                yield return new WaitForEndOfFrame();
+                foreach (var player in PlayerManager.Players)
+                {
+                    if (!player.Gamepad.buttonNorth.wasPressedThisFrame)
+                        continue;
+                    
+                    playersHoldingReset.Add(player);
+                    StartCoroutine(hold());
+                    IEnumerator hold()
+                    {
+                        while (!player.Gamepad.buttonNorth.wasReleasedThisFrame)
+                            yield return new WaitForEndOfFrame();
+                        playersHoldingReset.Remove(player);
+                    }
+                }
+            }
+        }
+        
+        
         LevelSysteem.Ready += instance =>
         {
             LobbyManager.PlayerRemovedBefore += _ => StartCoroutine(wait());
@@ -24,7 +51,6 @@ public class GameManager : MonoBehaviour
             }
             
             DistributeFlippers();
-
             
             var rc = InputSystem.actions.FindActionMap("Main").FindAction("Rotate");
             rc.Enable();
@@ -33,6 +59,20 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        // Resetting ball
+        if (playersHoldingReset.Count == PlayerManager.Players.Count)
+        {
+            resetFill.fillAmount += 1f / 3 * Time.deltaTime;
+
+            if (resetFill.fillAmount >= 1f)
+            {
+                resetFill.fillAmount = 0;
+                FindAnyObjectByType<Ball>().Enable?.Invoke();
+            }
+        }
+        else
+            resetFill.fillAmount = 0;
+        
         foreach (var keyValuePair in PlayersFlippers)
             keyValuePair.Value.ForEach(_ =>
             {
