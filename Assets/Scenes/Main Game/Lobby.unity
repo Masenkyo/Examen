@@ -152,10 +152,10 @@ RectTransform:
   - {fileID: 1420765184}
   m_Father: {fileID: 1271269925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 25, y: -138.8581}
+  m_SizeDelta: {x: 50, y: 99.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &229004542
 MonoBehaviour:
@@ -211,7 +211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &708961476
 RectTransform:
   m_ObjectHideFlags: 0
@@ -240,66 +240,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708961475}
   m_CullTransparentMesh: 1
---- !u!1 &762536042
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 762536045}
-  - component: {fileID: 762536043}
-  m_Layer: 0
-  m_Name: Lobby UI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!223 &762536043
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762536042}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!224 &762536045
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762536042}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 990188436}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
 --- !u!1 &990188435
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +252,7 @@ GameObject:
   - component: {fileID: 990188438}
   - component: {fileID: 990188437}
   m_Layer: 0
-  m_Name: Panel
+  m_Name: In-Lobby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,14 +265,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990188435}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1016068678}
   - {fileID: 1255134411}
-  m_Father: {fileID: 762536045}
+  m_Father: {fileID: 1828451556}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -788,7 +728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.4591, y: -0.8382}
+  m_AnchoredPosition: {x: -1.4591, y: -0.83820343}
   m_SizeDelta: {x: 49.7363, y: -51.8474}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420765185
@@ -921,6 +861,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 708961476}
+  - {fileID: 990188436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -15.649, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -957,78 +898,8 @@ MonoBehaviour:
     id: P4
   inLobbyPlayerList: {fileID: 1255134413}
   inGameUI: {fileID: 708961475}
+  inLobbyUI: {fileID: 990188435}
   inGamePlayerList: {fileID: 1271269927}
-  OnGameStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  JoinButton:
-    m_Name: Join Button
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 19518ec0-948f-4edf-a3e5-2bf3da8588af
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: f06c4b39-ce7c-4203-a267-b9fc870840cc
-      m_Path: <Gamepad>/dpad/left
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Join Button
-      m_Flags: 0
-    m_Flags: 0
-  LeaveButton:
-    m_Name: Leave Button
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: fd6cf266-d512-4c54-9fdc-7df4cc7f1ae9
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 3b83489d-9f45-4f32-9d78-c52e04361de3
-      m_Path: <Gamepad>/dpad/right
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Leave Button
-      m_Flags: 0
-    m_Flags: 0
-  StartButton:
-    m_Name: Start Button
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 27fab0bc-82b2-4d15-85a7-aef0248c5802
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 4e223e85-eb4e-42b3-985d-ae25062a0a91
-      m_Path: <Gamepad>/start
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Start Button
-      m_Flags: 0
-    m_Flags: 0
-  AbortButton:
-    m_Name: Abort Button
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: b657d691-ff4e-4e2f-93ab-3fd3dea7e9c3
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 0f15a289-45a9-4eff-ae2d-3e52831bc01f
-      m_Path: <Gamepad>/select
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Abort Button
-      m_Flags: 0
-    m_Flags: 0
 --- !u!223 &1828451558
 Canvas:
   m_ObjectHideFlags: 0
@@ -1057,5 +928,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 999036510}
-  - {fileID: 762536045}
   - {fileID: 1828451556}

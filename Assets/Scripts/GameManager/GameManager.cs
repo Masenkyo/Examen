@@ -9,9 +9,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject pointerPrefab;
     [SerializeField] Image resetFill;
+    [SerializeField] GameObject youWin;
     
     public List<PlayerManager.Player> playersHoldingReset = new();
 
+    class empty : MonoBehaviour { }
+    
     void Awake()
     {
         StartCoroutine(resetInput());
@@ -36,27 +39,82 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
-        
-        LevelSysteem.Ready += instance =>
+
+        if (LevelSysteem.instance != null && LevelSysteem.instance.didStart)
+            init();
+        else
+            LevelSysteem.Ready = _ => init();
+
+        void init()
         {
-            LobbyManager.PlayerRemovedBefore += _ => StartCoroutine(wait());
-            LobbyManager.PlayerAddedAfter += _ => StartCoroutine(wait());
-            IEnumerator wait()
+            Time.timeScale = 1;
+            
+            PlayerManager.PlayerRemovedBefore += e;
+            PlayerManager.PlayerAddedAfter += e;
+
+            GameStateClass.OnGameStateChanged += temp;
+            void temp(GameStates gameStates)
             {
-                DistributeFlippers();
-                Time.timeScale = 0;
-                yield return new WaitForSecondsRealtime(3);
-                Time.timeScale = 1;
+                GameStateClass.OnGameStateChanged -= temp;
+                PlayerManager.PlayerRemovedBefore -= e;
+                PlayerManager.PlayerAddedAfter -= e;
+            }
+            
+            void e(PlayerManager.Player p)
+            {
+                var go = new GameObject("");
+                go.AddComponent<empty>().StartCoroutine(wait());
+                Destroy(go, 5);
+                
+                IEnumerator wait()
+                {
+                    DistributeFlippers();
+                    Time.timeScale = 0;
+                    yield return new WaitForSecondsRealtime(3);
+                    Time.timeScale = 1;
+                }
             }
             
             DistributeFlippers();
+            InputSystem.actions.FindActionMap("Main").FindAction("Rotate").Enable();
             
-            var rc = InputSystem.actions.FindActionMap("Main").FindAction("Rotate");
-            rc.Enable();
-        };
-    }
+            
+            // What happens when everyone leaves
+            PlayerManager.PlayerRemovedBefore += OnNoPlayer;
+            GameStateClass.OnGameStateChanged += OnGameEnd;
+            void OnNoPlayer(PlayerManager.Player p)
+            {
+                if (PlayerManager.Players.Count > 1)
+                    return;
+                PlayerManager.PlayerRemovedBefore -= OnNoPlayer;
 
+                // End game
+                GameStateClass.GameState = GameStates.InLobby;
+            }
+            void OnGameEnd(GameStates gameStates)
+            {
+                PlayerManager.PlayerRemovedBefore -= OnNoPlayer;
+                GameStateClass.OnGameStateChanged -= OnGameEnd;
+            }
+
+
+            // What happens on win?
+            WinArea.OnWin = () =>
+            {
+                StartCoroutine(wait());
+                IEnumerator wait()
+                {
+                    Time.timeScale = 0;
+                    youWin.SetActive(true);
+                    yield return new WaitForSecondsRealtime(3);
+                    youWin.SetActive(false);
+                    Time.timeScale = 1;
+                    GameStateClass.GameState = GameStates.InLobby;
+                }
+            };
+        }
+    }
+    
     void Update()
     {
         // Resetting ball
@@ -125,7 +183,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (var flipper in kvp.Value)
             {
-                var img = GameObject.Instantiate(pointerPrefab, transform.GetChild(0)).GetComponent<Image>();
+                var img = Instantiate(pointerPrefab, transform.GetChild(0)).GetComponent<Image>();
                 img.color = kvp.Key.ChosenPlayerEntrySet.color;
                 FlippersPointers.Add(flipper, img);
                 flipper.GetComponent<SpriteRenderer>().color = kvp.Key.ChosenPlayerEntrySet.color;
