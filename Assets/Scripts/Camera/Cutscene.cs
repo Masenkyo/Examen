@@ -25,7 +25,7 @@ public class Cutscene : MonoBehaviour
     // Put the camera at the correct height automatically using the amount of levels and how big the gaps between levels are
     void Awake()
     {
-        LevelSysteem levelSystem = FindObjectsByType<LevelSysteem>(FindObjectsSortMode.None).FirstOrDefault();
+        LevelSystem levelSystem = FindObjectsByType<LevelSystem>(FindObjectsSortMode.None).FirstOrDefault();
         transform.position = new Vector3(transform.position.x, levelSystem.amountOfLevels * levelSystem.gapBetweenLevels, transform.position.z);
     }
 

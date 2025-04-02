@@ -40,10 +40,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (LevelSysteem.instance != null && LevelSysteem.instance.didStart)
+        if (LevelSystem.instance != null && LevelSystem.instance.didStart)
             init();
         else
-            LevelSysteem.Ready = _ => init();
+            LevelSystem.Ready = _ => init();
 
         void init()
         {
