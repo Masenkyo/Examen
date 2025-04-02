@@ -160,15 +160,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 409571168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d13b8e343cf908b48bb6406416c81910, type: 3}
+  m_Script: {fileID: 11500000, guid: cb21305b481cd9146bfaef005785790e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Levels:
+  - {fileID: 7626919967714212679, guid: c51fdc9b77c80da4e81ea56c9e1a3703, type: 3}
   - {fileID: 7754605185928251628, guid: 47c64c26bebc2254aa1e7196048afe24, type: 3}
   - {fileID: 8037830788936220768, guid: ac727ef1720591b40a8f5b67d3d18950, type: 3}
   - {fileID: 644575745718376169, guid: 72263c2ca1294344895d627dde2c9e64, type: 3}
-  - {fileID: 7626919967714212679, guid: c51fdc9b77c80da4e81ea56c9e1a3703, type: 3}
   amountOfLevels: 10
+  gapBetweenLevels: -8.5
 --- !u!1 &1481327206
 GameObject:
   m_ObjectHideFlags: 0
