@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Vector3 startPosition = new Vector3(-6, 7.41f);
     Vector3 impactVelocity;
+    Phases phases;
 
     [SerializeField]
     float damagableVelocity;
@@ -18,7 +19,12 @@ public class Ball : MonoBehaviour
 
     [SerializeField]
     float maxDurability = 35f;
-    float Durability
+    public float getMaxDurability
+    {
+        get => maxDurability;
+    }
+
+    public float Durability
     {
         get => _durability ??= maxDurability;
         set
@@ -32,6 +38,7 @@ public class Ball : MonoBehaviour
     {
         spriteRenderer.enabled = false;
         rigidBody.simulated = false;
+        rigidBody.linearVelocity = new(0, 0);
         GetComponent<ParticleSystem>().Play();
         canSpawn = true;
     }
@@ -45,6 +52,7 @@ public class Ball : MonoBehaviour
         spriteRenderer.enabled = true;
         rigidBody.linearVelocity = Vector3.zero;
         transform.position = startPosition;
+        phases.ResetPhases();
         Durability = maxDurability;
     }
 
@@ -52,13 +60,14 @@ public class Ball : MonoBehaviour
     {
         startPosition = transform.position;
         rigidBody = GetComponent<Rigidbody2D>();
+        phases = GetComponent<Phases>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         Enable.AddListener(EnableBall);
         Disable.AddListener(DisableBall);
     }
 
     void Update()
-    {
+    {   
         impactVelocity = rigidBody.GetPointVelocity(transform.position);
     }
 
@@ -67,7 +76,6 @@ public class Ball : MonoBehaviour
         if (impactVelocity.magnitude > damagableVelocity)
         {
             Durability -= impactVelocity.magnitude;
-            spriteRenderer.color = new Vector4(Durability / maxDurability, 0, 0, 1);
         }
     }
 }

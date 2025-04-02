@@ -5,22 +5,26 @@ Shader "BALLS/Phases"
         _Color ("Color", color) = (1, 1, 1, 1)
         _Phase1 ("Phase1Texture", 2D) = "white" {}
         _Phase2 ("Phase2Texture", 2D) = "white" {}
-        _Phase3 ("Phase3Texture", 2D) = "white" {}
+        _DamageAmount("DamageAmount", Range(0.0, 1.0)) = 1.0
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" }
         LOD 100
+        Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            // make fog work
-            #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
+
+            float4 _Color;
+            sampler2D _Phase1;
+            sampler2D _Phase2;
+            float _DamageAmount;
 
             struct appdata
             {
@@ -31,29 +35,23 @@ Shader "BALLS/Phases"
             struct v2f
             {
                 float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
-
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
-
+            
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                UNITY_TRANSFER_FOG(o,o.vertex);
+                o.uv = v.uv;
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv);
-                // apply fog
-                UNITY_APPLY_FOG(i.fogCoord, col);
-                return col;
+                fixed4 phase1 = tex2D(_Phase1, i.uv);
+                fixed4 phase2 = tex2D(_Phase2, i.uv);
+
+                return lerp(phase2, phase1, _DamageAmount) * _Color;
             }
             ENDCG
         }

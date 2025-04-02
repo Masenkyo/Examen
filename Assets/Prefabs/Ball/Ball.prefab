@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1986068746913099898}
   - component: {fileID: 5807534193257836690}
   - component: {fileID: 2774886146746467829}
+  - component: {fileID: 3151774780663540419}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -4978,3 +4979,21 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3151774780663540419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710651419371599361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648ec1c27e93f464dad7919a7c69e17b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 0a4f56f654f6bb7498067e1686c3fd33, type: 2}
+  - {fileID: 2100000, guid: 8cd99648de3c21e4289173f26e6b063b, type: 2}
+  durability: 0
+  phase1amount: 1
+  phase2amount: 1
