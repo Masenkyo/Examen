@@ -9,8 +9,6 @@ public class Phases : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Ball ball;
 
-    public float phase1amount = 1f;
-    public float phase2amount = 1f;
     private void Start()
     {
         ball = GetComponent<Ball>();    
@@ -21,18 +19,14 @@ public class Phases : MonoBehaviour
     void Update()
     {
         durability = ball.Durability / ball.getMaxDurability;
-
-        Debug.Log(durability);
         if(durability > 0.5f)
         {
-            phase1amount = 0.5f + (0.5f * durability);
-            spriteRenderer.material.SetFloat("_DamageAmount", phase1amount);
+            spriteRenderer.material.SetFloat("_DamageAmount", 0.5f + (0.5f * durability));
         }
         else
         {
             spriteRenderer.material = materials[1];
-            phase2amount = (2 * durability);
-            spriteRenderer.material.SetFloat("_DamageAmount", phase2amount);
+            spriteRenderer.material.SetFloat("_DamageAmount", 2 * durability);
         }
     }
 
