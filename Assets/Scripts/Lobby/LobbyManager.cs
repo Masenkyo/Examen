@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 public static class PlayerManager
 {
     [Serializable]
-    public struct PlayerEntrySet
+    public struct PlayerEntrySet : IEquatable<PlayerEntrySet>
     {
         public Sprite icon;
         public Color color;
@@ -16,6 +16,10 @@ public static class PlayerManager
         
         public static bool operator ==(PlayerEntrySet a, PlayerEntrySet b) => a.color == b.color;
         public static bool operator !=(PlayerEntrySet a, PlayerEntrySet b) => !(a == b);
+        
+        public bool Equals(PlayerEntrySet other) => Equals(icon, other.icon) && color.Equals(other.color) && id == other.id;
+        public override bool Equals(object obj) => obj is PlayerEntrySet other && Equals(other);
+        public override int GetHashCode() => HashCode.Combine(icon, color, id);
     }
     
     public class Player
@@ -48,10 +52,15 @@ public static class PlayerManager
         }
         set
         {
-            CurrentKing.IsKing = false;
-            value.IsKing = true;
+            if (CurrentKing is { } ck && value is { })
+            {
+                ck.IsKing = false;
+                value.IsKing = true;
+            }
         }
     } static Player _currentKing;
+    public static Action<Player> PlayerAddedAfter = _ => { };
+    public static Action<Player> PlayerRemovedBefore = _ => { };
 }
 
 public class LobbyManager : MonoBehaviour
@@ -65,23 +74,17 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] 
     public LobbyPlayerList inLobbyPlayerList;
 
-    public GameObject InGameUI => refer.inGameUI;
-    
     [SerializeField] public GameObject inGameUI;
     [SerializeField] public GameObject inLobbyUI;
     
-    
     [SerializeField] 
     public LobbyPlayerList inGamePlayerList;
-    
-    public static Action<PlayerManager.Player> PlayerAddedAfter = _ => { };
-    public static Action<PlayerManager.Player> PlayerRemovedBefore = _ => { };
 
     LobbyPlayer CreateLP(PlayerManager.PlayerEntrySet chosen)
     {
         GameObject createdLP  = (GameStateClass.GameState == GameStates.InLobby
-                ? GameObject.Instantiate(lobbyPlayerPrefab, inLobbyPlayerList.transform)
-                : GameObject.Instantiate(inGamePlayerPrefab, inGamePlayerList.transform));
+                ? Instantiate(lobbyPlayerPrefab, inLobbyPlayerList.transform)
+                : Instantiate(inGamePlayerPrefab, inGamePlayerList.transform));
         
         if (GameStateClass.GameState == GameStates.InGame)
             inGamePlayerList.invitation.SetAsLastSibling();
@@ -110,15 +113,15 @@ public class LobbyManager : MonoBehaviour
             ChosenPlayerEntrySet = chosen
         };
         PlayerManager.Players.Add(player);
-        
-        PlayerAddedAfter(player);
+
+        PlayerManager.PlayerAddedAfter(player);
     }
 
     void RemovePlayer(PlayerManager.Player player)
     {
-        PlayerRemovedBefore(player);
+        PlayerManager.PlayerRemovedBefore(player);
         
-        Object.Destroy(player.LP.gameObject);
+        Destroy(player.LP.gameObject);
         player.LP = null;
         
         PlayerManager.Players.Remove(player);
@@ -126,12 +129,12 @@ public class LobbyManager : MonoBehaviour
     }
     
     static bool doneSetup;
-    void StaticSetup()
+    static void StaticSetup()
     {
         doneSetup = true;
-     
-        PlayerAddedAfter += _ => { invitationRefresh(); };
-        PlayerRemovedBefore += _ => { invitationRefresh(); };
+
+        PlayerManager.PlayerAddedAfter += _ => { invitationRefresh(); };
+        PlayerManager.PlayerRemovedBefore += _ => { invitationRefresh(); };
         void invitationRefresh()
         {
             switch (GameStateClass.GameState)
@@ -163,8 +166,8 @@ public class LobbyManager : MonoBehaviour
                 StartGame.Disable();
             
             // UIs
-            InGameUI.SetActive(GameStateClass.GameState == GameStates.InGame);
-            inLobbyUI.SetActive(GameStateClass.GameState == GameStates.InLobby);
+            refer.inGameUI.SetActive(GameStateClass.GameState == GameStates.InGame);
+            refer.inLobbyUI.SetActive(GameStateClass.GameState == GameStates.InLobby);
             
             // Back to menu? Kill everyone.
             if (GameStateClass.GameState == GameStates.InMenu)
@@ -174,9 +177,9 @@ public class LobbyManager : MonoBehaviour
             PlayerManager.Players.ForEach(_ =>
             {
                 if (_.LP != null)
-                    GameObject.Destroy(_.LP.gameObject);
+                    Destroy(_.LP.gameObject);
             });
-            PlayerManager.Players.ForEach(_ => _.LP = CreateLP(_.ChosenPlayerEntrySet));
+            PlayerManager.Players.ForEach(_ => _.LP = refer.CreateLP(_.ChosenPlayerEntrySet));
             PlayerManager.CurrentKing = PlayerManager.CurrentKing;
         });
     }
@@ -193,10 +196,10 @@ public class LobbyManager : MonoBehaviour
     static InputAction LeaveGame => _leaveGame ??= InputSystem.actions.FindActionMap("Main").FindAction("Leave Game");
     static InputAction _leaveGame;
     
-    static LobbyManager refer => Object.FindAnyObjectByType<LobbyManager>();
+    static LobbyManager refer => FindAnyObjectByType<LobbyManager>();
     void Awake()
     {
-        if (Object.FindObjectsByType<LobbyManager>(FindObjectsSortMode.None).Length == 2)
+        if (FindObjectsByType<LobbyManager>(FindObjectsSortMode.None).Length == 2)
             Destroy(gameObject);
         
         DontDestroyOnLoad(gameObject);

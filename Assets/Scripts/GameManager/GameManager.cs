@@ -39,18 +39,25 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
-        LevelSysteem.Ready = instance =>
+
+        if (LevelSysteem.instance != null && LevelSysteem.instance.didStart)
+            init();
+        else
+            LevelSysteem.Ready = _ => init();
+
+        void init()
         {
-            LobbyManager.PlayerRemovedBefore += e;
-            LobbyManager.PlayerAddedAfter += e;
+            Time.timeScale = 1;
+            
+            PlayerManager.PlayerRemovedBefore += e;
+            PlayerManager.PlayerAddedAfter += e;
 
             GameStateClass.OnGameStateChanged += temp;
             void temp(GameStates gameStates)
             {
                 GameStateClass.OnGameStateChanged -= temp;
-                LobbyManager.PlayerRemovedBefore -= e;
-                LobbyManager.PlayerAddedAfter -= e;
+                PlayerManager.PlayerRemovedBefore -= e;
+                PlayerManager.PlayerAddedAfter -= e;
             }
             
             void e(PlayerManager.Player p)
@@ -71,6 +78,26 @@ public class GameManager : MonoBehaviour
             DistributeFlippers();
             InputSystem.actions.FindActionMap("Main").FindAction("Rotate").Enable();
             
+            
+            // What happens when everyone leaves
+            PlayerManager.PlayerRemovedBefore += OnNoPlayer;
+            GameStateClass.OnGameStateChanged += OnGameEnd;
+            void OnNoPlayer(PlayerManager.Player p)
+            {
+                if (PlayerManager.Players.Count > 1)
+                    return;
+                PlayerManager.PlayerRemovedBefore -= OnNoPlayer;
+
+                // End game
+                GameStateClass.GameState = GameStates.InLobby;
+            }
+            void OnGameEnd(GameStates gameStates)
+            {
+                PlayerManager.PlayerRemovedBefore -= OnNoPlayer;
+                GameStateClass.OnGameStateChanged -= OnGameEnd;
+            }
+
+
             // What happens on win?
             WinArea.OnWin = () =>
             {
@@ -85,7 +112,7 @@ public class GameManager : MonoBehaviour
                     GameStateClass.GameState = GameStates.InLobby;
                 }
             };
-        };
+        }
     }
     
     void Update()
@@ -156,7 +183,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (var flipper in kvp.Value)
             {
-                var img = GameObject.Instantiate(pointerPrefab, transform.GetChild(0)).GetComponent<Image>();
+                var img = Instantiate(pointerPrefab, transform.GetChild(0)).GetComponent<Image>();
                 img.color = kvp.Key.ChosenPlayerEntrySet.color;
                 FlippersPointers.Add(flipper, img);
                 flipper.GetComponent<SpriteRenderer>().color = kvp.Key.ChosenPlayerEntrySet.color;
