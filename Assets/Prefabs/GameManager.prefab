@@ -302,6 +302,7 @@ MonoBehaviour:
   pointerPrefab: {fileID: 7805850330586751750, guid: 505d556869e3d5f4fbe9eed68a5bd004, type: 3}
   resetFill: {fileID: 5576849166142506715}
   youWin: {fileID: 2229213904983566532}
+  holdTime: 1
 --- !u!1 &7483233020375480599
 GameObject:
   m_ObjectHideFlags: 0

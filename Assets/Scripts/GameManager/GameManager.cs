@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     
     public List<PlayerManager.Player> playersHoldingReset = new();
 
+    [SerializeField] int holdTime = 2;
+    
     class empty : MonoBehaviour { }
     
     void Awake()
@@ -120,7 +122,7 @@ public class GameManager : MonoBehaviour
         // Resetting ball
         if (playersHoldingReset.Count == PlayerManager.Players.Count)
         {
-            resetFill.fillAmount += 1f / 3 * Time.deltaTime;
+            resetFill.fillAmount += 1f / holdTime * Time.deltaTime;
 
             if (resetFill.fillAmount >= 1f)
             {
