@@ -285,9 +285,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2229213904983566532, guid: 03ebe3581e4e6ad4b9523ac0438b5154, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5448080479497185769, guid: 03ebe3581e4e6ad4b9523ac0438b5154, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483233020375480599, guid: 03ebe3581e4e6ad4b9523ac0438b5154, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -333,6 +341,7 @@ MonoBehaviour:
   - {fileID: 8037830788936220768, guid: ac727ef1720591b40a8f5b67d3d18950, type: 3}
   - {fileID: 644575745718376169, guid: 72263c2ca1294344895d627dde2c9e64, type: 3}
   - {fileID: 7626919967714212679, guid: c51fdc9b77c80da4e81ea56c9e1a3703, type: 3}
+  EndLevel: {fileID: 644575745718376169, guid: dd921875febf2bc49a26f89c5f36b752, type: 3}
   amountOfLevels: 10
   gapBetweenLevels: -8.5
 --- !u!4 &1990971636
