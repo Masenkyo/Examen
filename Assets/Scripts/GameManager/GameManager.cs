@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour
     
     public List<PlayerManager.Player> playersHoldingReset = new();
 
+    [SerializeField] float holdDurationForReset = 2;
+    
     class empty : MonoBehaviour { }
     
     void Awake()
@@ -120,7 +123,7 @@ public class GameManager : MonoBehaviour
         // Resetting ball
         if (playersHoldingReset.Count == PlayerManager.Players.Count)
         {
-            resetFill.fillAmount += 1f / 3 * Time.deltaTime;
+            resetFill.fillAmount += 1f / holdDurationForReset * Time.deltaTime;
 
             if (resetFill.fillAmount >= 1f)
             {
