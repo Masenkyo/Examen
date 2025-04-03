@@ -6,9 +6,10 @@ public class LevelSystem : MonoBehaviour
 {
     // Level settings and list
     [SerializeField] List<Transform> Levels = new();
+    [SerializeField] List<Transform> EndLevels = new();
     public int amountOfLevels = 10;
     public float gapBetweenLevels = -8.5f;
-    public static Action<LevelSystem> Ready = _ => { };
+    public static Action<LevelSystem> Ready = _ => { }; 
 
     // A reference to this script
     public static LevelSystem instance;
@@ -23,7 +24,8 @@ public class LevelSystem : MonoBehaviour
     {
         for (float i = 0; i > amountOfLevels * gapBetweenLevels; i += gapBetweenLevels) 
             Instantiate(Levels[UnityEngine.Random.Range(0, Levels.Count)], new Vector3(0, i, 0), Quaternion.identity);
-
-        Ready(this);
+        Instantiate(EndLevels[UnityEngine.Random.Range(0, EndLevels.Count)], new Vector3(0, amountOfLevels * gapBetweenLevels, 0), Quaternion.identity);
+        
+        Ready(this); 
     }
 }
