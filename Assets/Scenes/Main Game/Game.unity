@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: ball
       value: 
       objectReference: {fileID: 1353199479}
+    - target: {fileID: 6609272063436705093, guid: 2d89d68d52098274fab71b1ed85db1b2, type: 3}
+      propertyPath: ballObject
+      value: 
+      objectReference: {fileID: 1353199479}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
