@@ -6,7 +6,7 @@ public class Follow : MonoBehaviour
     public static Follow reference;
 
     [SerializeField]
-    GameObject ball;
+    GameObject ballObject;
     [HideInInspector]
     public GameObject trackingObject;
     [HideInInspector]
@@ -33,9 +33,10 @@ public class Follow : MonoBehaviour
 
         Vector3 trackDirection = new Vector3(0, Camera.main.transform.position.y) - new Vector3(0, trackingObject.transform.position.y);
         trackDirection.z = 0;
-        distanceY = (new Vector3(0, ball.transform.position.y) - new Vector3(0, Camera.main.transform.position.y)).magnitude;
+        distanceY = (new Vector3(0, ballObject.transform.position.y) - new Vector3(0, Camera.main.transform.position.y)).magnitude;
         float distanceCamLockY = (new Vector3(0, trackingObject.transform.position.y) - new Vector3(0, Camera.main.transform.position.y)).magnitude;
-        speed = (speed > 0.1f && distanceY < 2f) ? ball.GetComponent<Ball>().rigidBody.linearVelocity.magnitude * 0.9f : catchupSpeed;
+        speed = (speed > 0.1f && distanceY < 2f) ? ballObject.GetComponent<Ball>().rigidBody.linearVelocity.magnitude * 0.9f : 
+            catchupSpeed = distanceY > (LevelSystem.instance.gapBetweenLevels * LevelSystem.instance.amountOfLevels) ? 200 : 40;
 
         if (distanceY > 0.5f && !stay)
         {
@@ -49,7 +50,7 @@ public class Follow : MonoBehaviour
 
     public void TrackBall()
     {
-        trackingObject = ball;
+        trackingObject = ballObject;
     }
 
     IEnumerator MoveUpWithDelay(Ball b, float delay)
