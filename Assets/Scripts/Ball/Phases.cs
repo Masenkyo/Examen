@@ -28,6 +28,7 @@ public class Phases : MonoBehaviour
             spriteRenderer.material = materials[1];
             spriteRenderer.material.SetFloat("_DamageAmount", 2 * durability);
         }
+        Debug.Log(durability);
     }
 
     public void ResetPhases()
