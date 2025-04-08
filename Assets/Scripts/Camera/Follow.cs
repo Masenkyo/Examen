@@ -4,14 +4,13 @@ using UnityEngine;
 public class Follow : MonoBehaviour
 {
     public static Follow reference;
-
-    [SerializeField]
-    GameObject ballObject;
+    
+    public GameObject ballObject;
     [HideInInspector]
     public GameObject trackingObject;
     [HideInInspector]
     public bool stay = false;
-    bool trackingBall = false;
+    public bool trackingBall = false;
 
     float speed;
     float originalSpeed;
@@ -41,10 +40,10 @@ public class Follow : MonoBehaviour
         if (distanceY > 0.5f && !stay)
         {
             if(b == null || !b.canSpawn) Camera.main.transform.position -= trackDirection.normalized * (speed * Time.deltaTime);
-            if (distanceCamLockY < 0.1 && trackingObject.TryGetComponent<LockPoint>(out _)) stay = true;
+            if (distanceCamLockY < 0.25f && trackingObject.TryGetComponent<LockPoint>(out _)) stay = true;
         }
         if (!trackingObject.TryGetComponent<LockPoint>(out _)) stay = false;
-
+        
         if (trackingBall && b.canSpawn) StartCoroutine(MoveUpWithDelay(b, 1f));
     }
 
