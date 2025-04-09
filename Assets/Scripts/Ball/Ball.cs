@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -43,17 +44,30 @@ public class Ball : MonoBehaviour
         canSpawn = true;
     }
 
+    bool ready;
+    float time;
+    [SerializeField] float moveTime;
+    
     void EnableBall()
     {
         canSpawn = false;
         GetComponent<ParticleSystem>().Stop();
         spriteRenderer.color = Color.red;
-        rigidBody.simulated = true;
         spriteRenderer.enabled = true;
         rigidBody.linearVelocity = Vector3.zero;
-        transform.position = startPosition;
+        ready = true;
         phases.ResetPhases();
         Durability = maxDurability;
+        StartCoroutine(WaitForDrop());
+    }
+    
+    IEnumerator WaitForDrop(float waitTime = 3f)
+    {
+        moveTime = waitTime / 1.2f;
+        yield return new WaitForSeconds(waitTime);
+        
+        rigidBody.simulated = true;
+        ready = false;
     }
 
     void Awake()
@@ -69,6 +83,12 @@ public class Ball : MonoBehaviour
     void Update()
     {   
         impactVelocity = rigidBody.GetPointVelocity(transform.position);
+        if (ready)
+        {
+            time += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPosition + new Vector3(2, 0, 0), startPosition, time / moveTime);
+        }
+        else time = 0;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

@@ -128,7 +128,11 @@ public class GameManager : MonoBehaviour
             if (resetFill.fillAmount >= 1f)
             {
                 resetFill.fillAmount = 0;
-                FindAnyObjectByType<Ball>().Enable?.Invoke();
+                if (FindAnyObjectByType<Ball>() is { } ball)
+                {
+                    ball.Disable?.Invoke();
+                    ball.Enable?.Invoke();
+                }
             }
         }
         else
