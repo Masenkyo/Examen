@@ -83,9 +83,7 @@ public class Ball : MonoBehaviour
     }
 
     void Update()
-    {   
-
-
+    {
         impactVelocity = rigidBody.GetPointVelocity(transform.position);
         if (ready)
         {

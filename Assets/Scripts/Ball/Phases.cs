@@ -19,7 +19,7 @@ public class Phases : MonoBehaviour
     void Update()
     {
         durability = ball.Durability / ball.getMaxDurability;
-
+        Debug.Log(durability);
         if(durability > 0.5f)
         {
 
