@@ -6,6 +6,9 @@ public class Ball : MonoBehaviour
 {
     public UnityEvent Enable;
     public UnityEvent Disable;
+
+    float teleportWidth;
+    
     [HideInInspector]
     public Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
@@ -74,6 +77,7 @@ public class Ball : MonoBehaviour
 
     void Awake()
     {
+        teleportWidth = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x  + 1;
         startPosition = transform.position;
         rigidBody = GetComponent<Rigidbody2D>();
         phases = GetComponent<Phases>();
@@ -91,6 +95,8 @@ public class Ball : MonoBehaviour
             transform.position = Vector3.Lerp(startPosition + new Vector3(2, 0, 0), startPosition, time / moveTime);
         }
         else time = 0;
+        
+        TeleportSideScreen(teleportWidth);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -100,4 +106,14 @@ public class Ball : MonoBehaviour
             Durability -= impactVelocity.magnitude;
         }
     }
+
+    Vector3 teleportLocation;
+    
+    void TeleportSideScreen(float x = 2f)
+    {
+        var vector3 = transform.position;
+        vector3.x = transform.position.x > x ? -x : transform.position.x < -x ? x : transform.position.x;
+        transform.position = vector3;
+    }
+    
 }
