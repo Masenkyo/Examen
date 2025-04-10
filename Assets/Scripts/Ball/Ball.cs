@@ -40,6 +40,7 @@ public class Ball : MonoBehaviour
         spriteRenderer.enabled = false;
         rigidBody.simulated = false;
         rigidBody.linearVelocity = new(0, 0);
+        rigidBody.angularVelocity = 0;
         GetComponent<ParticleSystem>().Play();
         canSpawn = true;
     }
@@ -55,6 +56,7 @@ public class Ball : MonoBehaviour
         spriteRenderer.color = Color.red;
         spriteRenderer.enabled = true;
         rigidBody.linearVelocity = Vector3.zero;
+        rigidBody.angularVelocity = 0;
         ready = true;
         phases.ResetPhases();
         Durability = maxDurability;
