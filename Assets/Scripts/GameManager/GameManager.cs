@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -117,9 +118,21 @@ public class GameManager : MonoBehaviour
             };
         }
     }
+
+    void ActiveFlippers()
+    {
+        float lowLimit = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height / 3)).y;
+        float highLimit = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y;
+
+        Flipper.AllFlippers.ForEach(_ => _.enabled = _.transform.position.y >= lowLimit && _.transform.position.y <= highLimit);
+        Flipper.AllFlippers.ForEach(_ => _.rigidbody.simulated = _.transform.position.y >= lowLimit && _.transform.position.y <= highLimit);
+    }
     
     void Update()
     {
+        // Flipper activation
+        ActiveFlippers();
+        
         // Resetting ball
         if (playersHoldingReset.Count == PlayerManager.Players.Count)
         {
