@@ -111,9 +111,9 @@ public class Ball : MonoBehaviour
     
     void TeleportSideScreen(float x = 2f)
     {
-        var vector3 = transform.position;
-        vector3.x = transform.position.x > x ? -x : transform.position.x < -x ? x : transform.position.x;
-        transform.position = vector3;
+        var pos = transform.position;
+        pos.x = transform.position.x > x ? -x : transform.position.x < -x ? x : transform.position.x;
+        transform.position = pos;
     }
     
 }
