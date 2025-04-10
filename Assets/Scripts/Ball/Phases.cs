@@ -19,12 +19,20 @@ public class Phases : MonoBehaviour
     void Update()
     {
         durability = ball.Durability / ball.getMaxDurability;
+
         if(durability > 0.5f)
         {
-            spriteRenderer.material.SetFloat("_DamageAmount", 0.5f + (0.5f * durability));
+
+            float difference = 1 - durability;
+            float relativeDifference = difference / 0.5f;
+
+            spriteRenderer.material.SetFloat("_DamageAmount", relativeDifference);
         }
         else
         {
+            float difference = 0.5f - durability;
+            float relativeDifference = difference / 0.5f;
+
             spriteRenderer.material = materials[1];
             spriteRenderer.material.SetFloat("_DamageAmount", 2 * durability);
         }
