@@ -11,7 +11,7 @@ public class Phases : MonoBehaviour
 
     private void Start()
     {
-        ball = GetComponent<Ball>();    
+        ball = GetComponent<Ball>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.material = materials[0];
     }

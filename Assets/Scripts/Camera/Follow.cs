@@ -30,7 +30,7 @@ public class Follow : MonoBehaviour
     {
         trackingBall = trackingObject.TryGetComponent<Ball>(out var b);
 
-        Vector3 trackDirection = new Vector3(0, Camera.main.transform.position.y) - new Vector3(0, trackingObject.transform.position.y);
+        var trackDirection = new Vector3(0, Camera.main.transform.position.y) - new Vector3(0, trackingObject.transform.position.y);
         trackDirection.z = 0;
         distanceY = (new Vector3(0, ballObject.transform.position.y) - new Vector3(0, Camera.main.transform.position.y)).magnitude;
         float distanceCamLockY = (new Vector3(0, trackingObject.transform.position.y) - new Vector3(0, Camera.main.transform.position.y)).magnitude;
@@ -54,7 +54,7 @@ public class Follow : MonoBehaviour
 
     IEnumerator MoveUpWithDelay(Ball b, float delay)
     {
-        Vector3 originDirection = new Vector3(0, Camera.main.transform.position.y) - new Vector3(0, b.startPosition.y);
+        var originDirection = new Vector3(0, Camera.main.transform.position.y) - new Vector3(0, b.startPosition.y);
         if (originDirection.magnitude < 2) b.Enable.Invoke();
         yield return new WaitForSeconds(delay);
         Camera.main.transform.position -= originDirection.normalized * (speed * Time.deltaTime);
