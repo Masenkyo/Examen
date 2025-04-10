@@ -3,20 +3,6 @@ using UnityEngine.UI;
 
 public class ProgressBar : MonoBehaviour
 {
-    class Range
-    {
-        public float min;
-        public float max;
-        public float range;
-
-        Range(float min, float max)
-        {
-            this.min = min;
-            this.max = max;
-            range = max - min;
-        }
-    }
-
     Image progressBar;
     [SerializeField]
     Image indicator;
