@@ -18,6 +18,14 @@ public class ProgressBar : MonoBehaviour
     float indicatorSize;
     public float indicatorScale = 0.3f;
 
+    void GetEnd()
+    {
+        float end = LevelSystem.instance.amountOfLevels * LevelSystem.instance.gapBetweenLevels;
+        GameObject temp = new GameObject();
+        temp.transform.position = new Vector2(0, end);
+        levelEnd = temp.transform;
+    }
+
     void Awake()
     {
         progressBar = GetComponent<Image>();
@@ -26,9 +34,9 @@ public class ProgressBar : MonoBehaviour
         end = progressBar.rectTransform.position.y - (progressBar.rectTransform.rect.height / 2);
         indicator.transform.localScale = new Vector2(indicatorSize, indicatorSize);
         indicator.rectTransform.position = new Vector2(indicator.rectTransform.position.x - progressBar.rectTransform.rect.width / 2, end);
-
-
     }
+    
+    void Start() => GetEnd();
 
     float Clamp(float value, float min, float max)
     {
