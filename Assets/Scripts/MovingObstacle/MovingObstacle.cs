@@ -6,19 +6,21 @@ public class MovingObstacle : MonoBehaviour
 {
     [SerializeField]
     List<Transform> path = new List<Transform>();
-    Transform targetPoint;
+    [SerializeField]
     float speed = 1;
-
-    void Start()
-    {
-        targetPoint = path[0];    
-    }
+    int pathIndex = 0;
 
     void Update()
     {
+        Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0));
+        var targetDirection = (path[pathIndex].position - transform.position).normalized;
+        float distance = (path[pathIndex].position - transform.position).magnitude;
+        transform.position += targetDirection * (speed * Time.deltaTime);
 
-        Vector3 target = (transform.position - targetPoint.position).normalized;
-        //float distance = (transform.position)
-        transform.position += target * (speed * Time.deltaTime);
+        if(distance < 0.1f)
+        {
+            pathIndex++;
+            if (pathIndex > path.Count-1) pathIndex = 0;
+        }
     }
 }
