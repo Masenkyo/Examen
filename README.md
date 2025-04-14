@@ -6,25 +6,25 @@
 ### Sil zijn scripts:  
   
 Flippers [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Flippers/Flipper.cs "Flippers")  [Functional](), [Technical]()  
-### image
+image
 Cutscene [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Camera/Cutscene.cs "Cutscene")  [Functional](), [Technical]()  
-### image
+image
 LevelSystem [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Level%20Systeem/LevelSystem.cs "LevelSystem")  [Functional](), [Technical]()  
-### image
+image
 Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical]()  
-### image
+image
 
 ### Boi zijn scripts:
   
 Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical]()  
-### image
+image
 Camera Follow [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](), [Technical]()  
-### image
+image
 Damage Phases [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](), [Technical]()  
-### image
+image
 Damage Shader [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.shader "Damage Shader"), [Functional](), [Technical]()  
-### image
+image
 Progress Bar [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](), [Technical]()  
-### image
+image
 Moving Obstacle [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](), [Technical]()  
 ### image
