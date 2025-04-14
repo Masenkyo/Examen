@@ -11,9 +11,15 @@
 
 ### Boi zijn scripts:
   
-[Ball](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs)  
-[Camera Follow](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs)  
-[Damage Phases](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs)  
-[Damage Shader](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.shader)  
-[Progress Bar](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs)  
-[Moving Obstacle](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/MovingObstacle/MovingObstacle.cs)  
+Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical]()  
+### image
+Camera Follow [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](), [Technical]()  
+### image
+Damage Phases [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](), [Technical]()  
+### image
+Damage Shader [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.shader "Damage Shader"), [Functional](), [Technical]()  
+### image
+Progress Bar [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](), [Technical]()  
+### image
+Moving Obstacle [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](), [Technical]()  
+### image
