@@ -10,8 +10,7 @@ public class ProgressBar : MonoBehaviour
     Transform levelBegin;
     [SerializeField]
     Transform ball;
-    [SerializeField]
-    Transform levelEnd;
+    Vector3 levelEnd;
     float begin;
     float end;
     public float position;
@@ -21,9 +20,7 @@ public class ProgressBar : MonoBehaviour
     void GetEnd()
     {
         float end = LevelSystem.instance.amountOfLevels * LevelSystem.instance.gapBetweenLevels;
-        var temp = new Transform();
-        temp.position = new Vector2(0, end);
-        levelEnd = temp.position;
+        levelEnd = new Vector3(0, end);
     }
 
     void Awake()
@@ -63,7 +60,7 @@ public class ProgressBar : MonoBehaviour
 
     void Update()
     {
-        float convertedRange = ConvertRange(ball.position.y, levelBegin.position.y, levelEnd.position.y, begin, end);
+        float convertedRange = ConvertRange(ball.position.y, levelBegin.position.y, levelEnd.y, begin, end);
         position = Clamp(convertedRange, begin + 0.1f, end - 0.1f);
         indicator.rectTransform.position = new Vector2(indicator.rectTransform.position.x, position);
     }
