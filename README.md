@@ -5,11 +5,11 @@
   
 ### Sil zijn scripts:  
   
-Flippers [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Flippers/Flipper.cs "Flippers")  [Functional](), [Technical]()  
+Flippers [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Flippers/Flipper.cs "Flippers")  [Functional](), [Technical]()  
 image  
-Cutscene [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Camera/Cutscene.cs "Cutscene")  [Functional](), [Technical]()  
+Cutscene [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Cutscene.cs "Cutscene")  [Functional](), [Technical]()  
 image  
-LevelSystem [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Level%20Systeem/LevelSystem.cs "LevelSystem")  [Functional](), [Technical]()  
+LevelSystem [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Level%20Systeem/LevelSystem.cs "LevelSystem")  [Functional](), [Technical]()  
 image  
 Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical]()  
 image  
