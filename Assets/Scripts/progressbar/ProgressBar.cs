@@ -21,9 +21,9 @@ public class ProgressBar : MonoBehaviour
     void GetEnd()
     {
         float end = LevelSystem.instance.amountOfLevels * LevelSystem.instance.gapBetweenLevels;
-        GameObject temp = new GameObject();
-        temp.transform.position = new Vector2(0, end);
-        levelEnd = temp.transform;
+        var temp = new Transform();
+        temp.position = new Vector2(0, end);
+        levelEnd = temp.position;
     }
 
     void Awake()
