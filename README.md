@@ -9,7 +9,7 @@
 [Cutscene](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Camera/Cutscene.cs"Cutscene")  
 [LevelSystem](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Level%20Systeem/LevelSysteem.cs "LevelSystem")  
 
-### Boi zijn scripts:  # UPDATE WIP
+### Boi zijn scripts:
   
 [Ball](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs)  
 [Camera Follow](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs)  
