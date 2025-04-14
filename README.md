@@ -11,6 +11,9 @@
 
 ### Boi zijn scripts:  # UPDATE WIP
   
-[Ball]()  
-[Camera Follow]()  
-[Damage Shader]()  
+[Ball](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs)  
+[Camera Follow](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs)  
+[Damage Phases](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs)  
+[Damage Shader](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.shader)  
+[Progress Bar]()  
+[Moving Obstacle]()  
