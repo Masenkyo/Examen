@@ -5,9 +5,14 @@
   
 ### Sil zijn scripts:  
   
-[Flippers](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Flippers/Flipper.cs "Flippers")  
-[Cutscene](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Camera/Cutscene.cs"Cutscene")  
-[LevelSystem](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Level%20Systeem/LevelSysteem.cs "LevelSystem")  
+Flippers [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Flippers/Flipper.cs "Flippers")  [Functional](), [Technical]()  
+### image
+Cutscene [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Camera/Cutscene.cs "Cutscene")  [Functional](), [Technical]()  
+### image
+LevelSystem [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Level%20Systeem/LevelSysteem.cs "LevelSystem")  [Functional](), [Technical]()  
+### image
+Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical]()  
+### image
 
 ### Boi zijn scripts:
   
