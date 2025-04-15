@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TomaatBal_Fase3_0: 6977869898968520944
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

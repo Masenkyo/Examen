@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PepermintBal_0: 8660791904369271952
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

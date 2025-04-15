@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PerzikBal_0: -4930744444612527441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

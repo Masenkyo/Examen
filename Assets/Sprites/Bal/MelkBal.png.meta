@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MelkBal_0: -8958881698851940535
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
