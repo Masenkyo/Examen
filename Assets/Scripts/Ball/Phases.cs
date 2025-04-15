@@ -9,7 +9,7 @@ public class Phases : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Ball ball;
 
-    private void Start()
+    void Awake()
     {
         ball = GetComponent<Ball>();
         spriteRenderer = GetComponent<SpriteRenderer>();
