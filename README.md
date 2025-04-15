@@ -18,7 +18,7 @@ image
   
 Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#ball)  
 image  
-Camera Follow [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](), [Technical]()  
+Camera Follow [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#camera-follow)  
 image  
 Damage Phases [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](), [Technical]()  
 image  
