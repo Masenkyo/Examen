@@ -13,7 +13,8 @@ public class Flipper : MonoBehaviour
     [HideInInspector] public float DesiredHorizontalMovement;
     int doubleSpeed = 1;
     float rotation;
-    public Rigidbody2D rigidbody;
+    
+    [HideInInspector] public Rigidbody2D rigidbody;
     
     // The list of all the flippers
     public static List<Flipper> AllFlippers = new();
