@@ -26,5 +26,5 @@ Damage Shader [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scrip
 image  
 Progress Bar [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#progress-bar)  
 image  
-Moving Obstacle [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](), [Technical]()  
+Moving Obstacle [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#moving-obstacle)  
 ### image
