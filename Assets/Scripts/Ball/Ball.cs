@@ -12,14 +12,14 @@ public class Ball : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
-    public Vector3 startPosition = new Vector3(-6, 7.41f);
+    public Vector3 startPosition = new(-6, 7.41f);
     Vector3 impactVelocity;
     Phases phases;
 
     [SerializeField]
     float damagableVelocity;
     [HideInInspector]
-    public bool canSpawn = false;
+    public bool canSpawn;
 
     [SerializeField]
     float maxDurability = 35f;
@@ -48,7 +48,7 @@ public class Ball : MonoBehaviour
         canSpawn = true;
     }
 
-    bool ready;
+    bool ready = true;
     float time;
     [SerializeField] float moveTime;
     
@@ -60,15 +60,25 @@ public class Ball : MonoBehaviour
         spriteRenderer.enabled = true;
         rigidBody.linearVelocity = Vector3.zero;
         rigidBody.angularVelocity = 0;
-        ready = true;
         phases.ResetPhases();
         Durability = maxDurability;
         StartCoroutine(WaitForDrop());
     }
+
+    float beginTime = 5f;
+    bool firstTime = true;
     
     IEnumerator WaitForDrop(float waitTime = 3f)
     {
+        ready = true;
         moveTime = waitTime / 1.2f;
+
+        if (firstTime)
+        {
+            yield return new WaitForSeconds(beginTime);
+            firstTime = false;
+        }
+        
         yield return new WaitForSeconds(waitTime);
         
         rigidBody.simulated = true;
@@ -84,6 +94,8 @@ public class Ball : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         Enable.AddListener(EnableBall);
         Disable.AddListener(DisableBall);
+        DisableBall();
+        EnableBall();
     }
 
     void Update()
