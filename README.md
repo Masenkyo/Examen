@@ -24,7 +24,7 @@ Damage Phases [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scrip
 image  
 Damage Shader [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.shader "Damage Shader"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#damage-shader)  
 image  
-Progress Bar [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](), [Technical]()  
+Progress Bar [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#progress-bar)  
 image  
 Moving Obstacle [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](), [Technical]()  
 ### image
