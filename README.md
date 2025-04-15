@@ -16,7 +16,7 @@ image
 
 ### Boi zijn scripts:
   
-Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical]()  
+Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#ball)  
 image  
 Camera Follow [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](), [Technical]()  
 image  
