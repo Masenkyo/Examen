@@ -20,9 +20,9 @@ Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/B
 image  
 Camera Follow [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#camera-follow)  
 image  
-Damage Phases [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](), [Technical]()  
+Damage Phases [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#damage-phases)  
 image  
-Damage Shader [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.shader "Damage Shader"), [Functional](), [Technical]()  
+Damage Shader [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.shader "Damage Shader"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#damage-shader)  
 image  
 Progress Bar [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](), [Technical]()  
 image  
