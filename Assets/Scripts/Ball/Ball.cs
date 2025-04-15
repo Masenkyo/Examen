@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class Ball : MonoBehaviour
 {
+    public static Ball reference;
     public UnityEvent Enable;
     public UnityEvent Disable;
 
@@ -77,6 +78,7 @@ public class Ball : MonoBehaviour
 
     void Awake()
     {
+        reference = this;
         teleportWidth = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x  + 1;
         startPosition = transform.position;
         rigidBody = GetComponent<Rigidbody2D>();
@@ -115,5 +117,4 @@ public class Ball : MonoBehaviour
         pos.x = transform.position.x > x ? -x : transform.position.x < -x ? x : transform.position.x;
         transform.position = pos;
     }
-    
 }
