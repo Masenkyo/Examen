@@ -16,7 +16,7 @@ public class Settings : MonoBehaviour
 
     Gamepad enabledSettings = null;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         
     }
@@ -24,19 +24,23 @@ public class Settings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enabledSettings != null && enabledSettings.IsPressed() && paused) paused = false;
 
-        if (!paused) return;
+        continuteButton.gameObject.SetActive(paused);
+        settingsButton.gameObject.SetActive(paused);
+        quitButton.gameObject.SetActive(paused);
+        
+        if (enabledSettings != null && enabledSettings.IsPressed() && paused) paused = false;
 
         foreach (var g in Gamepad.all)
         {
+            if (paused) break;
             if(g.startButton.IsPressed())
             {
+                Debug.Log("dajsdklasd");
                 enabledSettings = g;
                 paused = true;
 
             }
         }
-
     }
 }
