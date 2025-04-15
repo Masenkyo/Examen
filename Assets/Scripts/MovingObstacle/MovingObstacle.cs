@@ -12,7 +12,6 @@ public class MovingObstacle : MonoBehaviour
 
     void Update()
     {
-        Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0));
         var targetDirection = (path[pathIndex].position - transform.position).normalized;
         float distance = (path[pathIndex].position - transform.position).magnitude;
         transform.position += targetDirection * (speed * Time.deltaTime);
