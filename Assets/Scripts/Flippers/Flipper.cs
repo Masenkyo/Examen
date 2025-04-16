@@ -1,15 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class Flipper : MonoBehaviour
 {
     // Broken Flipper variables
     public bool brokenFlipper;
+    [SerializeField] float clickGoal = 10;
+    [SerializeField] int chanceOfBreaking = 20;
+    [SerializeField] float repairDifficulty = 3;
+    [SerializeField] GameObject sliderBar;
+    GameObject currentSliderbar;
     float time = 0;
     bool doOnce;
     
@@ -47,10 +54,10 @@ public class Flipper : MonoBehaviour
         ActiveFlippers();
         
         if (rigidbody.simulated && Follow.reference.enabled && !doOnce)
-            BrokenFlipper(max: 3); 
+            BrokenFlipper(max: chanceOfBreaking); 
             
         if (brokenFlipper)
-            FixBrokenFlipper();
+            FixBrokenFlipper(clickGoal);
     } 
 
     // Activating this through pressing the correct button will make the flippers rotate twice as fast
@@ -73,38 +80,47 @@ public class Flipper : MonoBehaviour
     
         brokenFlipper = true;
         doOnce = true;
+        
+        currentSliderbar = Instantiate(sliderBar, transform.position + new Vector3(0,1,0), new Quaternion(0,0,0,0), transform.parent);
     }
     
     void ActiveFlippers()
     {
+        float lowLimit = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height / 3)).y;
         float highLimit = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y + 1;
-        float lowLimit = -((highLimit -1) / 3);
         
         rigidbody.simulated = transform.position.y >= lowLimit && transform.position.y <= highLimit;
         
-        if (transform.position.y > highLimit || transform.position.y < lowLimit)
+        if (brokenFlipper && transform.position.y > highLimit || transform.position.y < lowLimit)
         {
             brokenFlipper = false;
             doOnce = false;
+            Destroy(currentSliderbar);
+            currentSliderbar = null;
         }
         
         if (!rigidbody.simulated || brokenFlipper)
             transform.rotation = Quaternion.Euler(0, 0, !name.Contains("Oval") ? 0 : 90);
     }
     
-    void FixBrokenFlipper()
+    void FixBrokenFlipper(float clickingGoal)
     {
         if (time > 0)
-            time -= Time.deltaTime; // * PlayerManager.Players.Count;
+            time -= Time.deltaTime * repairDifficulty * PlayerManager.Players.Count;
         
-        if (Gamepad.current.buttonSouth.wasPressedThisFrame)
+        if (Gamepad.all.Any(_ => _.buttonSouth.wasPressedThisFrame))
             time += 1;
-    
-        if (time > 4)
+        
+        if (currentSliderbar.GetComponentsInChildren<Image>().First(_ => _.sprite) is var image)
+            image.fillAmount = time / clickingGoal;
+        
+        if (time > clickingGoal)
         {
             brokenFlipper = false;
             time = 0;
             doOnce = false;
+            Destroy(currentSliderbar);
+            currentSliderbar = null;
         }
     }
 }
