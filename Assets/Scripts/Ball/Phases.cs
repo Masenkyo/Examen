@@ -19,7 +19,6 @@ public class Phases : MonoBehaviour
     void Update()
     {
         durability = ball.Durability / ball.getMaxDurability;
-        Debug.Log(durability);
         if(durability > 0.5f)
         {
 
@@ -36,7 +35,6 @@ public class Phases : MonoBehaviour
             spriteRenderer.material = materials[1];
             spriteRenderer.material.SetFloat("_DamageAmount", 2 * durability);
         }
-        Debug.Log(durability);
     }
 
     public void ResetPhases()
