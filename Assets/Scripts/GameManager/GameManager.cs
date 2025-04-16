@@ -118,25 +118,9 @@ public class GameManager : MonoBehaviour
             };
         }
     }
-
-    void ActiveFlippers()
-    {
-        float lowLimit = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height / 3)).y;
-        float highLimit = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y + 1;
-
-        Flipper.AllFlippers.ForEach(_ => _.enabled = _.transform.position.y >= lowLimit && _.transform.position.y <= highLimit);
-        Flipper.AllFlippers.ForEach(_ => _.rigidbody.simulated = _.transform.position.y >= lowLimit && _.transform.position.y <= highLimit);
-        foreach (var flipper in Flipper.AllFlippers.Where(_ => _.enabled == false))
-        {
-            flipper.transform.rotation = Quaternion.Euler(0, 0, !flipper.name.Contains("Oval") ? 0 : 90);
-        }
-    }
     
     void Update()
     {
-        // Flipper activation
-        ActiveFlippers();
-        
         // Resetting ball
         if (playersHoldingReset.Count == PlayerManager.Players.Count)
         {

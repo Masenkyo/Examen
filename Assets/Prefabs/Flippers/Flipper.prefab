@@ -148,7 +148,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc74192a53f94488d63fa4850f0029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokenFlipper: 0
+  clickGoal: 10
+  chanceOfBreaking: 20
+  repairDifficulty: 3
+  sliderBar: {fileID: 3906684569977692178, guid: d31063d764ad1484c972105dbf2c0437, type: 3}
   rotateSpeed: 45
+  doubleSpeedPressed: 0
+  DesiredHorizontalMovement: 0
+  rigidbody: {fileID: 0}
 --- !u!50 &3970429269584340825
 Rigidbody2D:
   serializedVersion: 5
