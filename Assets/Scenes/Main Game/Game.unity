@@ -536,6 +536,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 863060782011133262, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 944245445172064308, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413740692419850352, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2672214410414370730, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -924,6 +936,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5319400365923597468, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
+      propertyPath: settingsMenu
+      value: 
+      objectReference: {fileID: 436848309}
     - target: {fileID: 5319400365923597468, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
       propertyPath: gameplayAudio
       value: 
