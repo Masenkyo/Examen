@@ -1,5 +1,6 @@
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -28,12 +29,14 @@ public class Settings : MonoBehaviour
     {
         originalVolume = gameplayAudio.volume;
         volumeSlider = settingsMenu.GetComponentInChildren<Slider>();
+        volumeSlider.value = gameplayAudio.volume;
         returnFromSettings = settingsMenu.GetComponentInChildren<Button>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        gameplayAudio.volume = volumeSlider.value;
         foreach (var g in Gamepad.all)
         {
             if (g.startButton.isPressed)
@@ -64,6 +67,15 @@ public class Settings : MonoBehaviour
         {
             returnFromSettings.gameObject.SetActive(false);
         }
+        else
+        {
+            volumeSlider.gameObject.SetActive(false);
+        }
+    }
+
+    public void SelectContinue()
+    {
+        EventSystem.current.SetSelectedGameObject(continuteButton.gameObject);
     }
 
     public void Quit()
