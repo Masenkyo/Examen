@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2359891959755562164
+--- !u!1 &6232323641853142316
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5272914724678401022}
-  - component: {fileID: 7433411036440806873}
-  m_Layer: 6
-  m_Name: Flipper
+  - component: {fileID: 3271083804266849547}
+  - component: {fileID: 3231273003443068062}
+  m_Layer: 0
+  m_Name: CurveFlatFlipper_Fill_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5272914724678401022
+--- !u!4 &3271083804266849547
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2359891959755562164}
+  m_GameObject: {fileID: 6232323641853142316}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.96666664, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7773032270737228373}
+  m_Father: {fileID: 5560765890939873787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7433411036440806873
+--- !u!212 &3231273003443068062
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2359891959755562164}
+  m_GameObject: {fileID: 6232323641853142316}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,18 +76,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 909330183072068698, guid: 3a2e475692bc948419e1a12cef304f70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.926, y: 0.148}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &7663916216179175337
+--- !u!1 &6998517657888295522
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,41 +95,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7773032270737228373}
-  - component: {fileID: 794090119827263599}
-  - component: {fileID: 2765367608008508355}
-  - component: {fileID: 4501708130570389753}
-  - component: {fileID: 3970429269584340825}
-  m_Layer: 6
-  m_Name: Flipper
+  - component: {fileID: 5560765890939873787}
+  - component: {fileID: 343076460855699673}
+  - component: {fileID: 2857317293394958468}
+  - component: {fileID: -9162698733349439218}
+  - component: {fileID: 8049386151440993198}
+  m_Layer: 0
+  m_Name: CurveFlatFlipper_Fill_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7773032270737228373
+--- !u!4 &5560765890939873787
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7663916216179175337}
+  m_GameObject: {fileID: 6998517657888295522}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 0.5, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5272914724678401022}
+  - {fileID: 3271083804266849547}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &794090119827263599
+--- !u!212 &343076460855699673
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7663916216179175337}
+  m_GameObject: {fileID: 6998517657888295522}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -167,31 +167,31 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -5636883867303368227, guid: 838578fc9971c324b8f98b74b1aa1f7e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.926, y: 0.148}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2765367608008508355
-BoxCollider2D:
+--- !u!60 &2857317293394958468
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7663916216179175337}
+  m_GameObject: {fileID: 6998517657888295522}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -216,43 +216,55 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 0.228}
+    newSize: {x: 0.926, y: 0.148}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &4501708130570389753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7663916216179175337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34fc74192a53f94488d63fa4850f0029, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brokenFlipper: 0
-  clickGoal: 10
-  chanceOfBreaking: 20
-  repairDifficulty: 3
-  sliderBar: {fileID: 3906684569977692178, guid: d31063d764ad1484c972105dbf2c0437, type: 3}
-  rotateSpeed: 45
-  doubleSpeedPressed: 0
-  DesiredHorizontalMovement: 0
-  rigidbody: {fileID: 0}
---- !u!50 &3970429269584340825
+  m_Points:
+    m_Paths:
+    - - {x: 0.49800003, y: -0.09}
+      - {x: 0.5, y: -0.08400001}
+      - {x: 0.5, y: -0.038000003}
+      - {x: 0.49600002, y: -0.028}
+      - {x: 0.48400003, y: -0.014}
+      - {x: 0.46800002, y: -0.004}
+      - {x: 0.42400002, y: 0.018000001}
+      - {x: 0.36400002, y: 0.046000004}
+      - {x: 0.29000002, y: 0.074}
+      - {x: 0.24200001, y: 0.086}
+      - {x: 0.16800001, y: 0.102000006}
+      - {x: 0.14400001, y: 0.108}
+      - {x: 0.074, y: 0.11400001}
+      - {x: -0.062000003, y: 0.11400001}
+      - {x: -0.08800001, y: 0.112}
+      - {x: -0.15, y: 0.104}
+      - {x: -0.172, y: 0.1}
+      - {x: -0.23600002, y: 0.086}
+      - {x: -0.27400002, y: 0.076000005}
+      - {x: -0.33400002, y: 0.056}
+      - {x: -0.36, y: 0.046000004}
+      - {x: -0.4, y: 0.028}
+      - {x: -0.47000003, y: -0.006}
+      - {x: -0.48000002, y: -0.012}
+      - {x: -0.49600002, y: -0.028}
+      - {x: -0.5, y: -0.036000002}
+      - {x: -0.5, y: -0.080000006}
+      - {x: -0.492, y: -0.096}
+      - {x: -0.47800002, y: -0.108}
+      - {x: -0.46400002, y: -0.11400001}
+      - {x: 0.46, y: -0.11400001}
+      - {x: 0.47400004, y: -0.11000001}
+  m_UseDelaunayMesh: 0
+--- !u!50 &-9162698733349439218
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7663916216179175337}
+  m_GameObject: {fileID: 6998517657888295522}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -272,3 +284,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 3
+--- !u!114 &8049386151440993198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998517657888295522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34fc74192a53f94488d63fa4850f0029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brokenFlipper: 0
+  clickGoal: 10
+  chanceOfBreaking: 20
+  repairDifficulty: 3
+  sliderBar: {fileID: 3906684569977692178, guid: d31063d764ad1484c972105dbf2c0437, type: 3}
+  rotateSpeed: 45
+  doubleSpeedPressed: 0
+  DesiredHorizontalMovement: 0
+  rigidbody: {fileID: 0}
