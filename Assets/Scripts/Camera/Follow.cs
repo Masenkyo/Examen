@@ -56,10 +56,6 @@ public class Follow : MonoBehaviour
         yield return new WaitForSeconds(delay);
         b.Disable?.Invoke();
         b.Enable?.Invoke();
-        //var originDirection = new Vector3(0, Camera.main.transform.position.y) - new Vector3(0, b.startPosition.y);
-        //if (originDirection.magnitude < 2) b.Enable.Invoke();
-        //yield return new WaitForSeconds(delay);
-        //Camera.main.transform.position -= originDirection.normalized * (speed * Time.deltaTime);
     }
 }
 
