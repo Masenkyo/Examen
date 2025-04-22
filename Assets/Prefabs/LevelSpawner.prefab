@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 7754605185928251628, guid: 47c64c26bebc2254aa1e7196048afe24, type: 3}
   - {fileID: 8037830788936220768, guid: ac727ef1720591b40a8f5b67d3d18950, type: 3}
   - {fileID: 644575745718376169, guid: 72263c2ca1294344895d627dde2c9e64, type: 3}
+  - {fileID: 2488971449598948368, guid: 09f02face7731b64dafb8d6978633dbe, type: 3}
   EndLevels:
   - {fileID: 644575745718376169, guid: dd921875febf2bc49a26f89c5f36b752, type: 3}
   amountOfLevels: 10
