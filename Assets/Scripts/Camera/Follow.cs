@@ -42,8 +42,12 @@ public class Follow : MonoBehaviour
             if (distanceCamLockY < 0.25f && trackingObject.TryGetComponent<LockPoint>(out _)) stay = true;
         }
         if (!trackingObject.TryGetComponent<LockPoint>(out _)) stay = false;
-        
-       if (trackingBall && b.canSpawn) StartCoroutine(MoveUpWithDelay(b, 1f));
+
+        if (trackingBall && b.canSpawn)
+        {
+            b.canSpawn = false;
+            StartCoroutine(MoveUpWithDelay(b, 1f));
+        }
     }
 
     public void TrackBall()
