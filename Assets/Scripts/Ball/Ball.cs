@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -96,6 +97,10 @@ public class Ball : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         Enable.AddListener(EnableBall);
         Disable.AddListener(DisableBall);
+    }
+
+    void Start()
+    {
         DisableBall();
         EnableBall();
     }
