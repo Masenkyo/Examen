@@ -116,6 +116,9 @@ public class Ball : MonoBehaviour
         else time = 0;
         
         TeleportSideScreen(teleportWidth);
+
+        if (transform.position.y < -5 + LevelSystem.instance.amountOfLevels * LevelSystem.instance.gapBetweenLevels)
+            Durability = 0;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
