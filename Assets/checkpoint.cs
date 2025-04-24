@@ -30,7 +30,7 @@ public class checkpoint : MonoBehaviour
         if(collision.gameObject.TryGetComponent<Ball>(out var ball))
         {
             checkPoint = true;
-            ball.startPosition = transform.position + new Vector3(0, 1);
+            ball.startPosition = transform.position + new Vector3(transform.position.x < 0 ? 3.2f : -3.2f, 1);
         }
     }
 }

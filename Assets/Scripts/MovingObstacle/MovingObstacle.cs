@@ -14,13 +14,13 @@ public class MovingObstacle : MonoBehaviour
     float rotation = 0;
 
     [SerializeField]
-    List<Sprite> knifes = new List<Sprite>();
+    List<Sprite> knives = new List<Sprite>();
 
     void Awake()
     {
         if (path.Count < 1) path.Add(transform);
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = knifes[Random.Range(0, knifes.Count)];
+        spriteRenderer.sprite = knives[Random.Range(0, knives.Count)];
         Vector2 spriteSize = spriteRenderer.bounds.size;
         GetComponent<BoxCollider2D>().size = spriteSize;
     }
@@ -40,7 +40,7 @@ public class MovingObstacle : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.TryGetComponent<Ball>(out var ball))
         {

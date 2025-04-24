@@ -106,7 +106,7 @@ public class Ball : MonoBehaviour
         if (ready)
         {
             time += Time.deltaTime;
-            transform.position = Vector3.Lerp(startPosition + new Vector3(2, 0, 0), startPosition, time / moveTime);
+            transform.position = Vector3.Lerp(startPosition + new Vector3(startPosition.x < 0 ? -2 : 2, 0, 0), startPosition, time / moveTime);
         }
         else time = 0;
         
