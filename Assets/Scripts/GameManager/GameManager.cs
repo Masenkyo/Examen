@@ -72,19 +72,19 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
             
-            PlayerManager.PlayerRemovedAfter += ee;
-            PlayerManager.PlayerAddedAfter += e;
+            PlayerManager.PlayerRemovedAfter += WaitAndDistribute;
+            PlayerManager.PlayerAddedAfter += WaitAndDistributeButWithUnusedParameter;
 
             GameStateClass.OnGameStateChanged += temp;
             void temp(GameStates gameStates)
             {
                 GameStateClass.OnGameStateChanged -= temp;
-                PlayerManager.PlayerRemovedAfter -= ee;
-                PlayerManager.PlayerAddedAfter -= e;
+                PlayerManager.PlayerRemovedAfter -= WaitAndDistribute;
+                PlayerManager.PlayerAddedAfter -= WaitAndDistributeButWithUnusedParameter;
             }
             
-            void e(PlayerManager.Player p) => ee();
-            void ee()
+            void WaitAndDistributeButWithUnusedParameter(PlayerManager.Player p) => WaitAndDistribute();
+            void WaitAndDistribute()
             {
                 var go = new GameObject("");
                 go.AddComponent<empty>().StartCoroutine(wait());
