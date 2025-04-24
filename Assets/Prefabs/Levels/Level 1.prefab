@@ -182,22 +182,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1532959388623036614, guid: 94b17e00933c8e0448940d759c4e7822, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1532959388623036614, guid: 94b17e00933c8e0448940d759c4e7822, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1532959388623036614, guid: 94b17e00933c8e0448940d759c4e7822, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1532959388623036614, guid: 94b17e00933c8e0448940d759c4e7822, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1532959388623036614, guid: 94b17e00933c8e0448940d759c4e7822, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -280,6 +264,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7258043014202006722, guid: e9b677120e227914fb66c1270b11be43, type: 3}
+      propertyPath: knives.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258043014202006722, guid: e9b677120e227914fb66c1270b11be43, type: 3}
       propertyPath: 'path.Array.data[0]'
       value: 
       objectReference: {fileID: 5949534911681159302}
@@ -297,6 +285,18 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 3edcae1eb0c33374ea0ca8b971a02a15, type: 3}
     - target: {fileID: 7258043014202006722, guid: e9b677120e227914fb66c1270b11be43, type: 3}
       propertyPath: 'knifes.Array.data[2]'
+      value: 
+      objectReference: {fileID: 21300000, guid: ab94a60ae4930ff4c9b3c805a9f86481, type: 3}
+    - target: {fileID: 7258043014202006722, guid: e9b677120e227914fb66c1270b11be43, type: 3}
+      propertyPath: 'knives.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: e930bf2a116aa3f4b9c25b096e1a2b19, type: 3}
+    - target: {fileID: 7258043014202006722, guid: e9b677120e227914fb66c1270b11be43, type: 3}
+      propertyPath: 'knives.Array.data[1]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 3edcae1eb0c33374ea0ca8b971a02a15, type: 3}
+    - target: {fileID: 7258043014202006722, guid: e9b677120e227914fb66c1270b11be43, type: 3}
+      propertyPath: 'knives.Array.data[2]'
       value: 
       objectReference: {fileID: 21300000, guid: ab94a60ae4930ff4c9b3c805a9f86481, type: 3}
     m_RemovedComponents: []

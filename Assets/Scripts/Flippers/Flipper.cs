@@ -96,7 +96,7 @@ public class Flipper : MonoBehaviour
         }
         
         if (!rigidbody.simulated || brokenFlipper)
-            transform.rotation = Quaternion.Euler(0, 0, !name.Contains("Oval") ? 0 : 90);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
     }
     
     void FixBrokenFlipper(float clickingGoal)
