@@ -26,4 +26,26 @@ public static class Utils
         tracker.OnUpdate += action;
         return new Action(() => tracker.OnUpdate -= action);
     }
+
+    public static Action OnUp(this KeyCode code, Action doWhat)
+    {
+        tracker.OnUpdate += temp;
+        void temp()
+        {
+            if (Input.GetKeyUp(code))
+                doWhat();
+        }
+        return new Action(() => tracker.OnUpdate -= temp);
+    }
+    
+    public static Action OnDown(this KeyCode code, Action doWhat)
+    {
+        tracker.OnUpdate += temp;
+        void temp()
+        {
+            if (Input.GetKeyDown(code))
+                doWhat();
+        }
+        return new Action(() => tracker.OnUpdate -= temp);
+    }
 }
