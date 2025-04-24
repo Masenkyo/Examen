@@ -9,7 +9,7 @@ Shader "BALLS/Phases"
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" }
+        Tags { "QUEUE"="Transparent" "IGNOREPROJECTOR"="true" "RenderType"="Transparent" "CanUseSpriteAtlas"="true" "PreviewType"="Plane" }
         LOD 100
         Blend SrcAlpha OneMinusSrcAlpha
 

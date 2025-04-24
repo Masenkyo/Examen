@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5807534193257836690}
   - component: {fileID: 2774886146746467829}
   - component: {fileID: 3151774780663540419}
+  - component: {fileID: -4941123374845357876}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -179,6 +180,7 @@ MonoBehaviour:
   damagableVelocity: 10
   canSpawn: 0
   maxDurability: 35
+  moveTime: 0
 --- !u!198 &5807534193257836690
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4995,5 +4997,32 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 0a4f56f654f6bb7498067e1686c3fd33, type: 2}
   - {fileID: 2100000, guid: 8cd99648de3c21e4289173f26e6b063b, type: 2}
   durability: 0
-  phase1amount: 1
-  phase2amount: 1
+--- !u!114 &-4941123374845357876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710651419371599361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6c6979cdb5ca14db106e6c0c039551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSprites:
+  - phases:
+    - {fileID: 2800000, guid: d9d81a9774ab5ff48905a59dd3292fb4, type: 3}
+    - {fileID: 2800000, guid: 821383e4650907f4bb3b6286ad92e4c2, type: 3}
+    - {fileID: 2800000, guid: 77e7bc0c8b1d52347ad2b7e6d6f7b410, type: 3}
+  - phases:
+    - {fileID: 2800000, guid: b200565a1f99eca4a9feec455c313d9f, type: 3}
+    - {fileID: 2800000, guid: 503f1ac6f1e106b4b8dae367492c4bd5, type: 3}
+    - {fileID: 2800000, guid: 1f3b9ffb1ddb8754cb940da8a11adbbb, type: 3}
+  - phases:
+    - {fileID: 2800000, guid: 55af305bed0cae74b87cc90552be3e0c, type: 3}
+    - {fileID: 2800000, guid: a8aac5df1b68f8c4293eb2211af8a779, type: 3}
+    - {fileID: 2800000, guid: 95f35f82c6a5da5448681573c7027d9f, type: 3}
+  - phases:
+    - {fileID: 2800000, guid: 9f382fb97ad017648800f4051edaf4a0, type: 3}
+    - {fileID: 2800000, guid: 9439cc7298baece47952d17ed9d8f0e3, type: 3}
+    - {fileID: 2800000, guid: 4d90a0d67ed3ef549b6463cbe010daac, type: 3}
