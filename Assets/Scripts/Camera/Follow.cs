@@ -4,14 +4,13 @@ using UnityEngine;
 public class Follow : MonoBehaviour
 {
     public static Follow reference;
-
-    [SerializeField]
-    GameObject ballObject;
+    
+    public GameObject ballObject;
     [HideInInspector]
     public GameObject trackingObject;
     [HideInInspector]
     public bool stay = false;
-    bool trackingBall = false;
+    public bool trackingBall = false;
 
     float speed;
     float originalSpeed;
@@ -31,21 +30,24 @@ public class Follow : MonoBehaviour
     {
         trackingBall = trackingObject.TryGetComponent<Ball>(out var b);
 
-        Vector3 trackDirection = new Vector3(0, Camera.main.transform.position.y) - new Vector3(0, trackingObject.transform.position.y);
+        var trackDirection = new Vector3(0, Camera.main.transform.position.y) - new Vector3(0, trackingObject.transform.position.y);
         trackDirection.z = 0;
         distanceY = (new Vector3(0, ballObject.transform.position.y) - new Vector3(0, Camera.main.transform.position.y)).magnitude;
         float distanceCamLockY = (new Vector3(0, trackingObject.transform.position.y) - new Vector3(0, Camera.main.transform.position.y)).magnitude;
-        speed = (speed > 0.1f && distanceY < 2f) ? ballObject.GetComponent<Ball>().rigidBody.linearVelocity.magnitude * 0.9f : 
-            catchupSpeed = distanceY > (LevelSystem.instance.gapBetweenLevels * LevelSystem.instance.amountOfLevels) ? 200 : 40;
+        speed = (speed > 0.3f && distanceY < 2f) ? ballObject.GetComponent<Ball>().rigidBody.linearVelocity.magnitude * 0.9f : 40;
 
         if (distanceY > 0.5f && !stay)
         {
             if(b == null || !b.canSpawn) Camera.main.transform.position -= trackDirection.normalized * (speed * Time.deltaTime);
-            if (distanceCamLockY < 0.1 && trackingObject.TryGetComponent<LockPoint>(out _)) stay = true;
+            if (distanceCamLockY < 0.25f && trackingObject.TryGetComponent<LockPoint>(out _)) stay = true;
         }
         if (!trackingObject.TryGetComponent<LockPoint>(out _)) stay = false;
 
-        if (trackingBall && b.canSpawn) StartCoroutine(MoveUpWithDelay(b, 1f));
+        if (trackingBall && b.canSpawn)
+        {
+            b.canSpawn = false;
+            StartCoroutine(MoveUpWithDelay(b, 1f));
+        }
     }
 
     public void TrackBall()
@@ -55,10 +57,9 @@ public class Follow : MonoBehaviour
 
     IEnumerator MoveUpWithDelay(Ball b, float delay)
     {
-        Vector3 originDirection = new Vector3(0, Camera.main.transform.position.y) - new Vector3(0, b.startPosition.y);
-        if (originDirection.magnitude < 2) b.Enable.Invoke();
         yield return new WaitForSeconds(delay);
-        Camera.main.transform.position -= originDirection.normalized * (speed * Time.deltaTime);
+        b.Disable?.Invoke();
+        b.Enable?.Invoke();
     }
 }
 

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Cutscene : MonoBehaviour
 {
     // Event for if you want to spawn the ball before the follow script gets activated to prevent errors
-    [SerializeField] UnityEvent spawnBall;
+    public UnityEvent spawnBall;
     
     // The Cutscene itself | Public variable for if you want to use it in a different script
     public Action startCutscene => transform.position.y < 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -20,6 +21,23 @@ public class GameManager : MonoBehaviour
     
     void Awake()
     {
+        LobbyManager.map[(LobbyManager.inputs.Reset, 0)].OnDown(() =>
+        {
+            playersHoldingReset.Add(PlayerManager.Players[0]);
+        });
+        LobbyManager.map[(LobbyManager.inputs.Reset, 0)].OnUp(() =>
+        {
+            playersHoldingReset.Remove(PlayerManager.Players[0]);
+        });
+        LobbyManager.map[(LobbyManager.inputs.Reset, 1)].OnDown(() =>
+        {
+            playersHoldingReset.Add(PlayerManager.Players[1]);
+        });
+        LobbyManager.map[(LobbyManager.inputs.Reset, 1)].OnUp(() =>
+        {
+            playersHoldingReset.Remove(PlayerManager.Players[1]);
+        });
+        
         StartCoroutine(resetInput());
         IEnumerator resetInput()
         {
@@ -28,6 +46,8 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForEndOfFrame();
                 foreach (var player in PlayerManager.Players)
                 {
+                    if (player.Gamepad == null)
+                        continue;
                     if (!player.Gamepad.buttonNorth.wasPressedThisFrame)
                         continue;
                     
@@ -52,18 +72,19 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
             
-            PlayerManager.PlayerRemovedBefore += e;
-            PlayerManager.PlayerAddedAfter += e;
+            PlayerManager.PlayerRemovedAfter += WaitAndDistribute;
+            PlayerManager.PlayerAddedAfter += WaitAndDistributeButWithUnusedParameter;
 
             GameStateClass.OnGameStateChanged += temp;
             void temp(GameStates gameStates)
             {
                 GameStateClass.OnGameStateChanged -= temp;
-                PlayerManager.PlayerRemovedBefore -= e;
-                PlayerManager.PlayerAddedAfter -= e;
+                PlayerManager.PlayerRemovedAfter -= WaitAndDistribute;
+                PlayerManager.PlayerAddedAfter -= WaitAndDistributeButWithUnusedParameter;
             }
             
-            void e(PlayerManager.Player p)
+            void WaitAndDistributeButWithUnusedParameter(PlayerManager.Player p) => WaitAndDistribute();
+            void WaitAndDistribute()
             {
                 var go = new GameObject("");
                 go.AddComponent<empty>().StartCoroutine(wait());
@@ -128,18 +149,38 @@ public class GameManager : MonoBehaviour
             if (resetFill.fillAmount >= 1f)
             {
                 resetFill.fillAmount = 0;
-                FindAnyObjectByType<Ball>().Enable?.Invoke();
+                if (FindAnyObjectByType<Ball>() is { } ball)
+                {
+                    ball.Disable?.Invoke();
+                    ball.Enable?.Invoke();
+                }
             }
         }
         else
             resetFill.fillAmount = 0;
         
         foreach (var keyValuePair in PlayersFlippers)
-            keyValuePair.Value.ForEach(_ =>
-            {
-                _.doubleSpeedPressed = keyValuePair.Key.Gamepad.squareButton.isPressed;
-                _.DesiredHorizontalMovement = keyValuePair.Key.Gamepad.leftStick.value.x;
-            });
+        {
+            if (keyValuePair.Key.Gamepad is { } gp)
+                keyValuePair.Value.ForEach(_ =>
+                {
+                    _.doubleSpeedPressed = gp.squareButton.isPressed;
+                    _.DesiredHorizontalMovement = gp.leftStick.value.x;
+                });
+            else
+                keyValuePair.Value.ForEach(_ =>
+                {
+                    _.doubleSpeedPressed = Input.GetKey(LobbyManager.map[(LobbyManager.inputs.Speed, (int)keyValuePair.Key.KeyboardID)]);
+
+                    float d = 0;
+                    if (Input.GetKey(LobbyManager.map[(LobbyManager.inputs.Left, (int)keyValuePair.Key.KeyboardID)]))
+                        d = -1;
+                    if (Input.GetKey(LobbyManager.map[(LobbyManager.inputs.Right, (int)keyValuePair.Key.KeyboardID)]))
+                        d = 1;
+                    
+                    _.DesiredHorizontalMovement = d;
+                });
+        }
         
         // Distance pointers
         float edge = Camera.main.ScreenToWorldPoint(Vector3.zero).y;
