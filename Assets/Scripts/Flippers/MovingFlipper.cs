@@ -39,7 +39,7 @@ public class MovingFlipper : Flipper
 
         // going to 1
 
-        if (InputJoystickMovement == Vector3.zero)//
+        if (InputJoystickMovement == Vector3.zero || brokenFlipper)//
             return;
         
         if (Vector3.Distance(InputJoystickMovement, DirTo1) < Vector3.Distance(InputJoystickMovement, DirTo2))
