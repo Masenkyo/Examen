@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 public class RandomSprite : MonoBehaviour
@@ -9,7 +10,7 @@ public class RandomSprite : MonoBehaviour
     {
         public Texture[] phases;
     }
-    
+
     [SerializeField]
     Item[] itemSprites;
     Phases phasesManager;
@@ -20,8 +21,10 @@ public class RandomSprite : MonoBehaviour
         phasesManager.materials[0].SetTexture("_Phase1", chosenItem.phases[1]);
         phasesManager.materials[1].SetTexture("_Phase1", chosenItem.phases[1]);
         phasesManager.materials[1].SetTexture("_Phase2", chosenItem.phases[2]);
+        phasesManager.shard.SetTexture("_MainTex", chosenItem.phases[3]);
+        Ball.reference.GetComponent<ParticleSystemRenderer>().material = phasesManager.shard;
     }
-    
+
     void Start()
     {
         Ball.reference.Enable.AddListener(RandomItem);
