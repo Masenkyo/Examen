@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -16,11 +17,11 @@ public class Flipper : MonoBehaviour
     float time = 0;
     bool doOnce;
     
-    // Rotation variables
+    // Movement variables
     [SerializeField] int rotateSpeed = 45;
     [HideInInspector] public bool doubleSpeedPressed;
     [HideInInspector] public float DesiredHorizontalMovement;
-    int doubleSpeed = 1;
+    protected int doubleSpeed = 1;
     float rotation;
     
     [HideInInspector] public Rigidbody2D rigidbody;
@@ -43,8 +44,8 @@ public class Flipper : MonoBehaviour
     #endregion
 
     void FixedUpdate() => InputRotations();
-
-    void Update()
+    
+    protected virtual void Update()
     {
         DoubleSpeed();
         ActiveFlippers();
