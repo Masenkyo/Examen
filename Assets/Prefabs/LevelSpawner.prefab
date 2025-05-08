@@ -53,4 +53,4 @@ MonoBehaviour:
   EndLevels:
   - {fileID: 644575745718376169, guid: dd921875febf2bc49a26f89c5f36b752, type: 3}
   amountOfLevels: 10
-  gapBetweenLevels: -8.5
+  gapBetweenLevels: -15
