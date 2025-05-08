@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour
         public ControlAccessTypes[] accessTypes;
     }
     
-    readonly Dictionary<PlayerManager.Player, List<ControlFragment>> PlayersFlippers = new();
+    Dictionary<PlayerManager.Player, List<ControlFragment>> PlayersFlippers = new();
     Dictionary<Flipper, Image> FlippersPointers = new();
 
     void DistributeFlippers()
@@ -241,11 +241,9 @@ public class GameManager : MonoBehaviour
         var playerBuffer = PlayerManager.Players.ToList();
         if (playerBuffer.Count == 0)
             return;
+        PlayersFlippers = playerBuffer.ToDictionary(_ => _, _ => new List<ControlFragment>());
         foreach (var flipper in Flipper.AllFlippers)
         {
-            if (!PlayersFlippers.ContainsKey(playerBuffer.First()))
-                PlayersFlippers.Add(playerBuffer.First(), new());
-                
             PlayersFlippers[playerBuffer.First()].Add(new ControlFragment(){flipper = flipper, accessTypes = new[]{ControlAccessTypes.Rotation}});
             refill();
 

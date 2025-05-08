@@ -20,8 +20,6 @@ public class MovingFlipper : Flipper
     
     override protected void Update()
     {
-        if (Gamepad.current is { } c)
-            InputJoystickMovement = c.leftStick.value;
         base.Update();
         MoveFlipper();
     }
@@ -31,14 +29,6 @@ public class MovingFlipper : Flipper
     
     void MoveFlipper()
     {
-        // rigidbody.position = DesiredHorizontalMovement < 0 && !brokenFlipper
-        //     ? movementSpeed * doubleSpeed * -DesiredHorizontalMovement
-        //     : DesiredHorizontalMovement > 0 && !brokenFlipper
-        //         ? -movementSpeed * doubleSpeed * DesiredHorizontalMovement
-        //         : 0;
-
-        //transform.position = Vector3.Lerp(point1.position, point2.position, distance);
-
         var DirTo1 = (point1.position - (Vector3)rigidbody.position).normalized; 
         var DirTo2 = (point2.position - (Vector3)rigidbody.position).normalized;
 
@@ -50,7 +40,12 @@ public class MovingFlipper : Flipper
         
         if (AltInputKeyboard is { } b)
         {
-            rigidbody.position += (Vector2)(((b ? point1 : point2).position - (Vector3)rigidbody.position).normalized * (Time.deltaTime * movementSpeed * doubleSpeed * 2));
+            if (Time.deltaTime * movementSpeed * 2 is { } step &&
+                step > Vector3.Distance(rigidbody.position, (b ? point1 : point2).position))
+                rigidbody.position +=
+                    (Vector2)(((b ? point1 : point2).position - (Vector3)rigidbody.position).normalized * step);
+            else
+                rigidbody.position = (b ? point1 : point2).position;
             return;
         }
         
@@ -59,13 +54,19 @@ public class MovingFlipper : Flipper
         
         if (Vector3.Distance(InputJoystickMovement, DirTo1) < Vector3.Distance(InputJoystickMovement, DirTo2))
         {
-            rigidbody.position +=
-                (Vector2)((point1.position - (Vector3)rigidbody.position).normalized * (Time.deltaTime * movementSpeed * doubleSpeed * (1 - Vector3.Distance(InputJoystickMovement, DirTo1) + 1)));
+            if (Time.deltaTime * movementSpeed * (1 - Vector3.Distance(InputJoystickMovement, DirTo1) + 1) is { } step 
+                && Vector3.Distance(rigidbody.position, point1.position) > step)
+                rigidbody.position += (Vector2)((point1.position - (Vector3)rigidbody.position).normalized * step);
+            else
+                rigidbody.position = point1.position;
         }
         else // going to 2
         {
-            rigidbody.position += 
-                (Vector2)((point2.position - (Vector3)rigidbody.position).normalized * (Time.deltaTime * movementSpeed * doubleSpeed * (1 - Vector3.Distance(InputJoystickMovement, DirTo2) + 1)));
+            if (Time.deltaTime * movementSpeed * (1 - Vector3.Distance(InputJoystickMovement, DirTo2) + 1) is { } step 
+            && Vector3.Distance(rigidbody.position, point2.position) > step)
+                rigidbody.position += (Vector2)((point2.position - (Vector3)rigidbody.position).normalized * step);
+            else 
+                rigidbody.position = point2.position;
         }
       
     }

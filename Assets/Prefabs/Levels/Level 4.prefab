@@ -377,13 +377,14 @@ MonoBehaviour:
   chanceOfBreaking: 20
   repairDifficulty: 3
   sliderBar: {fileID: 3906684569977692178, guid: d31063d764ad1484c972105dbf2c0437, type: 3}
-  rotateSpeed: 45
+  rotateSpeed: 90
   doubleSpeedPressed: 0
   DesiredHorizontalMovement: 0
   rigidbody: {fileID: 0}
   point1: {fileID: 8054080556831885981}
   point2: {fileID: 1995785352696871535}
-  movementSpeed: 2
+  movementSpeed: 5
+  lr: {fileID: 0}
   InputJoystickMovement: {x: 0, y: 0, z: 0}
 --- !u!120 &3680529253429046937
 LineRenderer:
