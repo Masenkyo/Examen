@@ -32,8 +32,9 @@ public class Flipper : MonoBehaviour
     #region FlipperList
     
     // Adding the flippers to the list and giving the rigidbody variable a rigidbody of the flipper
-    void Awake()
+    protected virtual void Awake()
     {
+        Debug.Log(gameObject.name);
         rigidbody = GetComponent<Rigidbody2D>();
         AllFlippers.Add(this);
     }

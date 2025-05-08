@@ -6,12 +6,16 @@ public class MovingFlipper : Flipper
     [SerializeField] Transform point1, point2;
     [SerializeField] int movementSpeed;
     float distance;
+    public LineRenderer lr;
     
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
+        
         var a = GetComponent<LineRenderer>();
 		a.SetPosition(0, point1.position);
 		a.SetPosition(1, point2.position);
+        lr = a;
     }
     
     override protected void Update()
@@ -22,7 +26,8 @@ public class MovingFlipper : Flipper
         MoveFlipper();
     }
 
-    public Vector3 InputJoystickMovement; 
+    public Vector3 InputJoystickMovement;
+    public bool? AltInputKeyboard;
     
     void MoveFlipper()
     {
@@ -39,7 +44,17 @@ public class MovingFlipper : Flipper
 
         // going to 1
 
-        if (InputJoystickMovement == Vector3.zero || brokenFlipper)//
+
+        if (brokenFlipper)
+            return;
+        
+        if (AltInputKeyboard is { } b)
+        {
+            rigidbody.position += (Vector2)(((b ? point1 : point2).position - (Vector3)rigidbody.position).normalized * (Time.deltaTime * movementSpeed * doubleSpeed * 2));
+            return;
+        }
+        
+        if (InputJoystickMovement == Vector3.zero)
             return;
         
         if (Vector3.Distance(InputJoystickMovement, DirTo1) < Vector3.Distance(InputJoystickMovement, DirTo2))
