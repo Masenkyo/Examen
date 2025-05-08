@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -16,23 +17,23 @@ public class Flipper : MonoBehaviour
     float time = 0;
     bool doOnce;
     
-    // Rotation variables
-    [SerializeField] int rotateSpeed = 45;
+    // Movement variables
+    [SerializeField] int rotateSpeed = 90;
     [HideInInspector] public bool doubleSpeedPressed;
     [HideInInspector] public float DesiredHorizontalMovement;
-    int doubleSpeed = 1;
     float rotation;
     
     [HideInInspector] public Rigidbody2D rigidbody;
     
     // The list of all the flippers
-    public static List<Flipper> AllFlippers = new();
+    public static HashSet<Flipper> AllFlippers = new();
     
     #region FlipperList
     
     // Adding the flippers to the list and giving the rigidbody variable a rigidbody of the flipper
-    void Awake()
+    protected virtual void Awake()
     {
+        Debug.Log(gameObject.name);
         rigidbody = GetComponent<Rigidbody2D>();
         AllFlippers.Add(this);
     }
@@ -43,10 +44,9 @@ public class Flipper : MonoBehaviour
     #endregion
 
     void FixedUpdate() => InputRotations();
-
-    void Update()
+    
+    protected virtual void Update()
     {
-        DoubleSpeed();
         ActiveFlippers();
         
         if (rigidbody.simulated && Follow.reference.enabled && !doOnce)
@@ -56,14 +56,11 @@ public class Flipper : MonoBehaviour
             FixBrokenFlipper(clickGoal);
     } 
 
-    // Activating this through pressing the correct button will make the flippers rotate twice as fast
-    void DoubleSpeed() => doubleSpeed = Gamepad.current is { } ? doubleSpeedPressed ? 2 : 1 : 1;
-
     // The rotation system
     void InputRotations() => rigidbody.angularVelocity = DesiredHorizontalMovement < 0 && !brokenFlipper
-        ? rotateSpeed * doubleSpeed * -DesiredHorizontalMovement
+        ? rotateSpeed * -DesiredHorizontalMovement
         : DesiredHorizontalMovement > 0 && !brokenFlipper
-            ? -rotateSpeed * doubleSpeed * DesiredHorizontalMovement
+            ? -rotateSpeed * DesiredHorizontalMovement
             : 0;
     
     void BrokenFlipper(int min = 0, int max = 20)
