@@ -638,6 +638,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7133742356087712849, guid: e0b1d0bf9b8e77d449a5f0851fce7ef7, type: 3}
+      propertyPath: amountOfLevels
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133742356087712849, guid: e0b1d0bf9b8e77d449a5f0851fce7ef7, type: 3}
+      propertyPath: Levels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7748256703569269336, guid: e0b1d0bf9b8e77d449a5f0851fce7ef7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1152346
