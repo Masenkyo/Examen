@@ -6,7 +6,7 @@ public class MovingFlipper : Flipper
     [SerializeField] Transform point1, point2;
     [SerializeField] int movementSpeed;
     float distance;
-    public LineRenderer lr;
+    [HideInInspector] public LineRenderer lr;
     
     protected override void Awake()
     {

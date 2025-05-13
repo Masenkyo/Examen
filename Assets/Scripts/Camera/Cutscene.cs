@@ -19,7 +19,7 @@ public class Cutscene : MonoBehaviour
         };
     
     // CameraMovespeed variables
-    [SerializeField] int speedMultiplier = 2;
+    [SerializeField] int speedMultiplier = 3;
     float height = 7.5f;
     
     // Put the camera at the correct height automatically using the amount of levels and how big the gaps between levels are
