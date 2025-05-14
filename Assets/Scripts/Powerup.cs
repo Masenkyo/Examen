@@ -15,17 +15,19 @@ public class Powerup : MonoBehaviour
     List<Action> debuff = new List<Action>();
     List<Action> used;
     Image grayscale;
-    public float waitTime;
+    public Action OnCancel;
 
     void Start()
     {
+        OnCancel += () => StopAllCoroutines();
+
         grayscale = Settings.reference.postprocessing;
 
         buff.Add(Heal);
-        debuff.Add(Kill);
-        debuff.Add(Damage);
         buff.Add(FullHeal);
         buff.Add(Float);
+        debuff.Add(Damage);
+        debuff.Add(Kill);
         debuff.Add(RandomDurability);
         debuff.Add(ColorBlind);
         debuff.Add(Heavy);
@@ -41,7 +43,7 @@ public class Powerup : MonoBehaviour
 
         int random = Random.Range(0, 2);
         Color usedColor;
-        if(random < 1)
+        if (random < 1)
         {
             usedColor = Color.green;
             used = buff;
@@ -56,14 +58,12 @@ public class Powerup : MonoBehaviour
 
     void Heal()
     {
-        Debug.Log("heal");
         const int healingAmount = 10;
         ball.Durability += healingAmount;
     }
 
     void RandomDurability()
     {
-        Debug.Log("random");
         float randomDurability = Random.Range(0.01f, ball.getMaxDurability);
         ball.Durability = randomDurability;
     }
@@ -86,9 +86,17 @@ public class Powerup : MonoBehaviour
 
     IEnumerator gravityChange(float scale)
     {
+        void Once()
+        {
+            ball.rigidBody.gravityScale /= scale;
+            OnCancel -= Once;
+        }
+
+        OnCancel += Once;
+
         ball.rigidBody.gravityScale *= scale;
         yield return new WaitForSeconds(10f);
-        ball.rigidBody.gravityScale /= scale;
+        Once();
     }
 
     void Float()
@@ -105,15 +113,23 @@ public class Powerup : MonoBehaviour
     {
         IEnumerator slowcontrols()
         {
-            foreach(var flipper in Flipper.AllFlippers)
+            void Once()
+            {
+                foreach (var flipper in Flipper.AllFlippers)
+                {
+                    flipper.rotateSpeed = 45;
+                }
+                OnCancel -= Once;
+            }
+
+            OnCancel += Once;
+
+            foreach (var flipper in Flipper.AllFlippers)
             {
                 flipper.rotateSpeed = 20;
             }
             yield return new WaitForSeconds(3);
-            foreach(var flipper in Flipper.AllFlippers)
-            {
-                flipper.rotateSpeed = 45;
-            }
+            Once();
         }
 
         StartCoroutine(slowcontrols());
@@ -123,9 +139,17 @@ public class Powerup : MonoBehaviour
     {
         IEnumerator colorblind()
         {
+            void Once()
+            {
+                grayscale.gameObject.SetActive(false);
+                OnCancel -= Once;
+            }
+
+            OnCancel += Once;
+
             grayscale.gameObject.SetActive(true);
             yield return new WaitForSeconds(10);
-            grayscale.gameObject.SetActive(false);
+            Once();
         }
         StartCoroutine(colorblind());
     }
@@ -150,17 +174,16 @@ public class Powerup : MonoBehaviour
 
     void Enable()
     {
-        
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<CircleCollider2D>().enabled = true;
-        
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.gameObject.TryGetComponent<Ball>(out Ball b)) return;
         ball = b;
-        InvokeOnce(used[Random.Range(0, used.Count -1)]);
+        //InvokeOnce(used[Random.Range(0, used.Count -1)]);
+        InvokeOnce(ColorBlind);
         Disable();
     }
 }
