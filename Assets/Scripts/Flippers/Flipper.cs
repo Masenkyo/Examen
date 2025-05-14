@@ -17,7 +17,7 @@ public class Flipper : MonoBehaviour
     bool doOnce;
     
     // Rotation variables
-    [SerializeField] int rotateSpeed = 45;
+    public int rotateSpeed = 45;
     [HideInInspector] public bool doubleSpeedPressed;
     [HideInInspector] public float DesiredHorizontalMovement;
     int doubleSpeed = 1;

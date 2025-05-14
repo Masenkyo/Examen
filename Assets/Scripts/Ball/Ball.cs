@@ -42,6 +42,11 @@ public class Ball : MonoBehaviour
 
     void DisableBall()
     {
+        foreach(var p in Powerup.allPowerups)
+        {
+            p.waitTime = 0;
+        }
+
         spriteRenderer.enabled = false;
         rigidBody.simulated = false;
         rigidBody.linearVelocity = new(0, 0);
@@ -56,6 +61,12 @@ public class Ball : MonoBehaviour
     
     void EnableBall()
     {
+        foreach(var p in Powerup.allPowerups)
+        {
+            p.SetPowerup();
+            p.waitTime = 10;
+        }
+
         canSpawn = false;
         GetComponent<ParticleSystem>().Stop();
         spriteRenderer.color = Color.red;

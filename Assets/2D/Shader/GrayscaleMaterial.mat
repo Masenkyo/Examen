@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: phase2
-  m_Shader: {fileID: 4800000, guid: 75200fc7b02c3e246a41b0118a2e4024, type: 3}
+  m_Name: GrayscaleMaterial
+  m_Shader: {fileID: 4800000, guid: d45d5798bd5483b458ce3bfd1b622bc4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -43,8 +43,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _GrabTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4dbc241893aec884fb09bd8baa65c2d6, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -59,23 +63,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Phase1:
-        m_Texture: {fileID: 2800000, guid: 503f1ac6f1e106b4b8dae367492c4bd5, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Phase2:
-        m_Texture: {fileID: 2800000, guid: 1f3b9ffb1ddb8754cb940da8a11adbbb, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Phase3:
-        m_Texture: {fileID: 2800000, guid: 4dbc241893aec884fb09bd8baa65c2d6, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DamageAmount: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
@@ -88,6 +79,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Transparency: 0.576
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
