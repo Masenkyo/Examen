@@ -220,8 +220,8 @@ public class GameManager : MonoBehaviour
             float am = (1 / diff * Mathf.Pow(1, 1 + diff / 3));
             if (flipper.transform.position.y > edge || am < 0.25f)
                 am = 0;
-            pointer.rectTransform.localScale = new(am, am, 1);
-            pointer.rectTransform.position = new Vector3(Camera.main.WorldToScreenPoint(new (flipper.transform.position.x, 0)).x, 2.5f + (40 * am));
+            pointer.transform.localScale = new(am, am, 1);
+            pointer.transform.position = new Vector3(Camera.main.WorldToScreenPoint(new (flipper.transform.position.x, 0)).x, 2.5f + (40 * am));
         }
     }
 
@@ -233,7 +233,7 @@ public class GameManager : MonoBehaviour
     }
     
     Dictionary<PlayerManager.Player, List<ControlFragment>> PlayersFlippers = new();
-    Dictionary<Flipper, Image> FlippersPointers = new();
+    Dictionary<Flipper, GameObject> FlippersPointers = new();
 
     void DistributeFlippers()
     {
@@ -263,25 +263,35 @@ public class GameManager : MonoBehaviour
         
         // 'incoming flipper' pointers//
         foreach (var kvp in FlippersPointers)
-            Destroy(kvp.Value.gameObject);
+            Destroy(kvp.Value);
         FlippersPointers.Clear();
-        foreach (var kvp in PlayersFlippers)
-        {
-            foreach (var flipper in kvp.Value)
-            {
-                var img = Instantiate(pointerPrefab, transform.GetChild(0)).GetComponent<Image>();
-                img.color = kvp.Key.ChosenPlayerEntrySet.color;
-                
-                if (!FlippersPointers.ContainsKey(flipper.flipper)) 
-                    FlippersPointers.Add(flipper.flipper, img);
-                
-                if (flipper.accessTypes.Any(_ => _ == ControlAccessTypes.Rotation))
-                    flipper.flipper.GetComponent<SpriteRenderer>().color = kvp.Key.ChosenPlayerEntrySet.color;
 
-                if (flipper.accessTypes.Any(_ => _ == ControlAccessTypes.Movement))
+        foreach (var flipper in Flipper.AllFlippers)
+        {
+            var pointer = Instantiate(pointerPrefab, transform.GetChild(0));
+            if (flipper is not MovingFlipper)
+                Destroy(pointer.transform.Find("Movement").gameObject);
+            pointer.transform.localScale = new Vector3(0, 0, 1);
+            FlippersPointers.Add(flipper, pointer);
+
+            foreach (var kvp in PlayersFlippers)
+            {
+                foreach (var frag in kvp.Value)
                 {
-                    (flipper.flipper as MovingFlipper).lr.startColor = kvp.Key.ChosenPlayerEntrySet.color;
-                    (flipper.flipper as MovingFlipper).lr.endColor = kvp.Key.ChosenPlayerEntrySet.color;
+                    if (frag.flipper == flipper)
+                    {
+                        if (frag.accessTypes.Any(_ => _ == ControlAccessTypes.Rotation))
+                        {
+                            pointer.transform.Find("Rotation").GetComponent<Image>().color = kvp.Key.ChosenPlayerEntrySet.color;
+                            frag.flipper.GetComponent<SpriteRenderer>().color = kvp.Key.ChosenPlayerEntrySet.color;
+                        }
+                        if (frag.accessTypes.Any(_ => _ == ControlAccessTypes.Movement))
+                        {
+                            pointer.transform.Find("Movement").GetComponent<Image>().color = kvp.Key.ChosenPlayerEntrySet.color;
+                            (frag.flipper as MovingFlipper).lr.startColor = kvp.Key.ChosenPlayerEntrySet.color;
+                            (frag.flipper as MovingFlipper).lr.endColor = kvp.Key.ChosenPlayerEntrySet.color;
+                        }
+                    }
                 }
             }
         }
