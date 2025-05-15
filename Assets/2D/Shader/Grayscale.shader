@@ -2,7 +2,7 @@ Shader "PostProcessing/Grayscale"
 {
     Properties
     {
-        // _GrabTexture ("Texture", 2D) = "white" {}
+
     }
     SubShader
     {
