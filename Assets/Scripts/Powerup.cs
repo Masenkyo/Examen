@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -27,9 +28,9 @@ public class Powerup : MonoBehaviour
     public static List<Powerup> allPowerups = new List<Powerup>();
     UnityEvent collide = new UnityEvent();
     Ball ball = null;
-    List<Action> buff = new List<Action>();
-    List<Action> debuff = new List<Action>();
-    List<Action> used;
+    Action buff;
+    Action debuff;
+    Action used;
     Image grayscale;
     public Action OnCancel;
 
@@ -43,15 +44,15 @@ public class Powerup : MonoBehaviour
 
         grayscale = Settings.reference.postprocessing;
 
-        buff.Add(Heal);
-        buff.Add(FullHeal);
-        buff.Add(Float);
-        debuff.Add(Damage);
-        debuff.Add(Kill);
-        debuff.Add(RandomDurability);
-        debuff.Add(ColorBlind);
-        debuff.Add(Heavy);
-        debuff.Add(SlowControls);
+        buff += Heal;
+        buff += FullHeal;
+        buff += Float;
+        debuff += Damage;
+        debuff += Kill;
+        debuff += RandomDurability;
+        debuff += ColorBlind;
+        debuff += Heavy;
+        debuff += SlowControls;
 
         powerupsDict.Add(Effects.Heal, Heal);
         powerupsDict.Add(Effects.RandomDurability, RandomDurability);
@@ -86,11 +87,11 @@ public class Powerup : MonoBehaviour
                 used = debuff;
             }
         }
-        else if (currentEffect == Effects.Buff || buff.Contains(powerupsDict[currentEffect]))
+        else if (currentEffect == Effects.Buff || buff.GetInvocationList().ToList().Contains(powerupsDict[currentEffect]))
         {
             usedColor = Color.green;
         }
-        else if (currentEffect == Effects.Debuff || debuff.Contains(powerupsDict[currentEffect]))
+        else if (currentEffect == Effects.Debuff || debuff.GetInvocationList().ToList().Contains(powerupsDict[currentEffect]))
         {
             usedColor = Color.red;
         }
@@ -195,11 +196,11 @@ public class Powerup : MonoBehaviour
         StartCoroutine(colorblind());
     }
 
-    void InvokeOnce(Action a)
+    void InvokeOnce(Delegate a)
     {
         void Once()
         {
-            a.Invoke();
+            a.DynamicInvoke();
             collide.RemoveListener(Once);
         }
 
@@ -227,13 +228,13 @@ public class Powerup : MonoBehaviour
         switch (currentEffect)
         {
             case Effects.Random:
-                InvokeOnce(used[Random.Range(0, used.Count - 1)]);
+                InvokeOnce(used.GetInvocationList()[Random.Range(0, used.GetInvocationList().Length - 1)]);
                 break;
             case Effects.Buff:
-                InvokeOnce(buff[Random.Range(0, buff.Count - 1)]);
+                InvokeOnce(buff.GetInvocationList()[Random.Range(0, buff.GetInvocationList().Length - 1)]);
                 break;
             case Effects.Debuff:
-                InvokeOnce(debuff[Random.Range(0, debuff.Count - 1)]);
+                InvokeOnce(debuff.GetInvocationList()[Random.Range(0, debuff.GetInvocationList().Length - 1)]);
                 break;
             default:
                 powerupsDict[currentEffect].Invoke();
