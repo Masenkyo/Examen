@@ -18,7 +18,7 @@ public class Flipper : MonoBehaviour
     bool doOnce;
     
     // Movement variables
-    [SerializeField] int rotateSpeed = 90;
+    public int rotateSpeed = 90;
     [HideInInspector] public bool doubleSpeedPressed;
     [HideInInspector] public float DesiredHorizontalMovement;
     float rotation;
@@ -43,7 +43,7 @@ public class Flipper : MonoBehaviour
 
     #endregion
 
-    void FixedUpdate() => InputRotations();
+    protected virtual void FixedUpdate() => InputRotations();
     
     protected virtual void Update()
     {
