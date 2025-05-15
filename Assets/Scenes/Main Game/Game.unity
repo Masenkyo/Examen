@@ -382,6 +382,10 @@ PrefabInstance:
       value: Ball
       objectReference: {fileID: 0}
     - target: {fileID: 5807534193257836690, guid: 1515dd98e613bf44186f223f978b3fae, type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5807534193257836690, guid: 1515dd98e613bf44186f223f978b3fae, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
