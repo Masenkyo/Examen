@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: ab94a60ae4930ff4c9b3c805a9f86481
+guid: 49d9f9bdc8c56364da129c4937776a73
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4811175634562996179
-    second: Mes3_0
+      213: 268522628557631212
+    second: 2spelers_UI_0
+  - first:
+      213: -1301528072946652906
+    second: 2spelers_UI_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -72,7 +75,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mes3_0
+      name: 2spelers_UI_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 6654
-        height: 4126
+        y: 5
+        width: 240
+        height: 490
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d28abd540454b3db0800000000000000
-      internalID: -4811175634562996179
+      spriteID: ceee45178ebf9b300800000000000000
+      internalID: 268522628557631212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2spelers_UI_1
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 5
+        width: 238
+        height: 490
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 619e0da0d1b00fde0800000000000000
+      internalID: -1301528072946652906
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mes3_0: -4811175634562996179
+      2spelers_UI_0: 268522628557631212
+      2spelers_UI_1: -1301528072946652906
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

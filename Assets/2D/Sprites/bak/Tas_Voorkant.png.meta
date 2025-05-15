@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ab94a60ae4930ff4c9b3c805a9f86481
+guid: 88b7c5bc96f3bc045a5db2b28f20930c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4811175634562996179
-    second: Mes3_0
+      213: 4718310734580969709
+    second: Tas_Voorkant_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mes3_0
+      name: Tas_Voorkant_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 6654
-        height: 4126
+        width: 286
+        height: 359
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d28abd540454b3db0800000000000000
-      internalID: -4811175634562996179
+      spriteID: de07c9a4d9eca7140800000000000000
+      internalID: 4718310734580969709
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mes3_0: -4811175634562996179
+      Tas_Voorkant_0: 4718310734580969709
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

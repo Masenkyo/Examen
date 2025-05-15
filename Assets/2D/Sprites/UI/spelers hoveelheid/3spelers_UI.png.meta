@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: ab94a60ae4930ff4c9b3c805a9f86481
+guid: 5627d6e7c27a2de4fbe046b7a41b3b21
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4811175634562996179
-    second: Mes3_0
+      213: -1813136282243290572
+    second: 3spelers_UI_0
+  - first:
+      213: 4945625369822815376
+    second: 3spelers_UI_1
+  - first:
+      213: -1520642313934185825
+    second: 3spelers_UI_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -72,7 +78,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mes3_0
+      name: 3spelers_UI_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 6654
-        height: 4126
+        y: 151
+        width: 239
+        height: 344
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d28abd540454b3db0800000000000000
-      internalID: -4811175634562996179
+      spriteID: 43a248f582276d6e0800000000000000
+      internalID: -1813136282243290572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3spelers_UI_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 397
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 094e270221462a440800000000000000
+      internalID: 4945625369822815376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3spelers_UI_2
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 150
+        width: 239
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9a56874fd795eae0800000000000000
+      internalID: -1520642313934185825
       vertices: []
       indices: 
       edges: []
@@ -125,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mes3_0: -4811175634562996179
+      3spelers_UI_0: -1813136282243290572
+      3spelers_UI_1: 4945625369822815376
+      3spelers_UI_2: -1520642313934185825
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
