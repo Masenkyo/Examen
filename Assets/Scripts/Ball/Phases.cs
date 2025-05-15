@@ -4,6 +4,7 @@ using UnityEngine;
 public class Phases : MonoBehaviour
 {
     public Material[] materials = new Material[2];
+    public Material shard;
     [Range(0, 1)]
     public float durability;
     SpriteRenderer spriteRenderer;
