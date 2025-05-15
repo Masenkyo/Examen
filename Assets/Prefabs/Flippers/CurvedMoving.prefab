@@ -290,9 +290,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4972628941878202346}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
@@ -332,6 +332,8 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   point1: {fileID: 0}
   point2: {fileID: 0}
+  point3: {fileID: 0}
+  point4: {fileID: 0}
   movementSpeed: 2
   lr: {fileID: 0}
   InputJoystickMovement: {x: 0, y: 0, z: 0}
@@ -382,6 +384,8 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3

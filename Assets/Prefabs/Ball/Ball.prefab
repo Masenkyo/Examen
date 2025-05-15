@@ -104,7 +104,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: d29c86d30663f5c46ab7ffdd6290d292, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -146,7 +146,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: d29c86d30663f5c46ab7ffdd6290d292, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -176,11 +176,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   rigidBody: {fileID: 0}
-  startPosition: {x: 0, y: 5, z: 0}
+  startPosition: {x: 0, y: 7, z: 0}
   damagableVelocity: 10
   canSpawn: 0
   maxDurability: 35
-  moveTime: 0
+  moveTime: 3
 --- !u!198 &5807534193257836690
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4996,6 +4996,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: 0a4f56f654f6bb7498067e1686c3fd33, type: 2}
   - {fileID: 2100000, guid: 8cd99648de3c21e4289173f26e6b063b, type: 2}
+  shard: {fileID: 2100000, guid: 17426b28f34970247a1ea8b02e977359, type: 2}
   durability: 0
 --- !u!114 &-4941123374845357876
 MonoBehaviour:
@@ -5026,3 +5027,27 @@ MonoBehaviour:
     - {fileID: 2800000, guid: 9f382fb97ad017648800f4051edaf4a0, type: 3}
     - {fileID: 2800000, guid: 9439cc7298baece47952d17ed9d8f0e3, type: 3}
     - {fileID: 2800000, guid: 4d90a0d67ed3ef549b6463cbe010daac, type: 3}
+  - phases:
+    - {fileID: 2800000, guid: 07844ab17f10fb84ea023ad948df93cc, type: 3}
+    - {fileID: 2800000, guid: 78e6a2a9c676cff4784cd9eebed59597, type: 3}
+    - {fileID: 2800000, guid: c1f44017102df5b498b82c57de2c6a59, type: 3}
+  - phases:
+    - {fileID: 2800000, guid: 0d613140f77626747a27700a63492faf, type: 3}
+    - {fileID: 2800000, guid: 9b0ac5ead93ce6642a4ed6155c8ac9f5, type: 3}
+    - {fileID: 2800000, guid: c131e5d60471a494a9d7d2e6fd2c5740, type: 3}
+  - phases:
+    - {fileID: 2800000, guid: d3e90c24f2c07eb4ab2b7ad44b76c0d4, type: 3}
+    - {fileID: 2800000, guid: 58b134bd0c5b2fd4d9c084821fe9b8cf, type: 3}
+    - {fileID: 2800000, guid: 0eee50b73fefa894ca69e660d08feedf, type: 3}
+  - phases:
+    - {fileID: 2800000, guid: 46326325418edaf4db6ea3b647e43fe5, type: 3}
+    - {fileID: 2800000, guid: 04a39399e4283e949ba621d87cff7cce, type: 3}
+    - {fileID: 2800000, guid: 2ebe081465d3c5245ae3a8ee6656c6ef, type: 3}
+  - phases:
+    - {fileID: 2800000, guid: d5eac5ccdd3f8934483a6be7efa52ff9, type: 3}
+    - {fileID: 2800000, guid: b701a2b65dcf88749bf2fda4a4b9bce5, type: 3}
+    - {fileID: 2800000, guid: 8e26803d914b80a45995df784f428e4c, type: 3}
+  - phases:
+    - {fileID: 2800000, guid: d5eac5ccdd3f8934483a6be7efa52ff9, type: 3}
+    - {fileID: 2800000, guid: b701a2b65dcf88749bf2fda4a4b9bce5, type: 3}
+    - {fileID: 2800000, guid: 8e26803d914b80a45995df784f428e4c, type: 3}

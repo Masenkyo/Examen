@@ -87,7 +87,7 @@ public class Powerup : MonoBehaviour
                 used = debuff;
             }
         }
-        else if (currentEffect == Effects.Buff || buff.GetInvocationList().ToList().Contains(powerupsDict[currentEffect]))
+        else if (currentEffect != Effects.Debuff && (currentEffect == Effects.Buff || buff.GetInvocationList().ToList().Contains(powerupsDict[currentEffect])))
         {
             usedColor = Color.green;
         }
@@ -137,7 +137,7 @@ public class Powerup : MonoBehaviour
         OnCancel += Once;
 
         ball.rigidBody.gravityScale *= scale;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(3f);
         Once();
     }
 
