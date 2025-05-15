@@ -6,6 +6,22 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+enum Effects
+{
+    Random,
+    Buff,
+    Debuff,
+    Heal,
+    FullHeal,
+    Float,
+    Damage,
+    Kill,
+    RandomDurability,
+    ColorBlind,
+    Heavy,
+    SlowControls
+}
+
 public class Powerup : MonoBehaviour
 {
     public static List<Powerup> allPowerups = new List<Powerup>();
@@ -16,6 +32,10 @@ public class Powerup : MonoBehaviour
     List<Action> used;
     Image grayscale;
     public Action OnCancel;
+
+    [SerializeField]
+    Effects currentEffect;
+    Dictionary<Effects, Action> powerupsDict = new Dictionary<Effects, Action>();
 
     void Start()
     {
@@ -33,6 +53,16 @@ public class Powerup : MonoBehaviour
         debuff.Add(Heavy);
         debuff.Add(SlowControls);
 
+        powerupsDict.Add(Effects.Heal, Heal);
+        powerupsDict.Add(Effects.RandomDurability, RandomDurability);
+        powerupsDict.Add(Effects.FullHeal, FullHeal);
+        powerupsDict.Add(Effects.Damage, Damage);
+        powerupsDict.Add(Effects.Kill, Kill);
+        powerupsDict.Add(Effects.Float, Float);
+        powerupsDict.Add(Effects.Heavy, Heavy);
+        powerupsDict.Add(Effects.SlowControls, SlowControls);
+        powerupsDict.Add(Effects.ColorBlind, ColorBlind);
+
         SetPowerup();
         allPowerups.Add(this);
     }
@@ -41,17 +71,28 @@ public class Powerup : MonoBehaviour
     {
         Enable();
 
-        int random = Random.Range(0, 2);
-        Color usedColor;
-        if (random < 1)
+        Color usedColor = Color.black;
+        if (currentEffect == Effects.Random)
+        {
+            int random = Random.Range(0, 2);
+            if (random < 1)
+            {
+                usedColor = Color.green;
+                used = buff;
+            }
+            else
+            {
+                usedColor = Color.red;
+                used = debuff;
+            }
+        }
+        else if (currentEffect == Effects.Buff || buff.Contains(powerupsDict[currentEffect]))
         {
             usedColor = Color.green;
-            used = buff;
         }
-        else
+        else if (currentEffect == Effects.Debuff || debuff.Contains(powerupsDict[currentEffect]))
         {
             usedColor = Color.red;
-            used = debuff;
         }
         GetComponent<SpriteRenderer>().color = usedColor;
     }
@@ -182,7 +223,22 @@ public class Powerup : MonoBehaviour
     {
         if (!collision.gameObject.TryGetComponent<Ball>(out Ball b)) return;
         ball = b;
-        InvokeOnce(used[Random.Range(0, used.Count -1)]);
+
+        switch (currentEffect)
+        {
+            case Effects.Random:
+                InvokeOnce(used[Random.Range(0, used.Count - 1)]);
+                break;
+            case Effects.Buff:
+                InvokeOnce(buff[Random.Range(0, buff.Count - 1)]);
+                break;
+            case Effects.Debuff:
+                InvokeOnce(debuff[Random.Range(0, debuff.Count - 1)]);
+                break;
+            default:
+                powerupsDict[currentEffect].Invoke();
+                break;
+        }
         Disable();
     }
 }
