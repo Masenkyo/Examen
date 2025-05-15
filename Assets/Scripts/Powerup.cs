@@ -183,7 +183,6 @@ public class Powerup : MonoBehaviour
         if (!collision.gameObject.TryGetComponent<Ball>(out Ball b)) return;
         ball = b;
         InvokeOnce(used[Random.Range(0, used.Count -1)]);
-        //InvokeOnce(ColorBlind);
         Disable();
     }
 }
