@@ -79,7 +79,7 @@ public class Flipper : MonoBehaviour
     
     void ActiveFlippers()
     {
-        float lowLimit = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height / 3)).y;
+        float lowLimit = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height)).y;
         float highLimit = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y + 1;
         
         rigidbody.simulated = transform.position.y >= lowLimit && transform.position.y <= highLimit;

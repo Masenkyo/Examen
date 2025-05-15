@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Levels:
-  - {fileID: 7626919967714212679, guid: c51fdc9b77c80da4e81ea56c9e1a3703, type: 3}
-  - {fileID: 7754605185928251628, guid: 47c64c26bebc2254aa1e7196048afe24, type: 3}
-  - {fileID: 8037830788936220768, guid: ac727ef1720591b40a8f5b67d3d18950, type: 3}
-  - {fileID: 644575745718376169, guid: 72263c2ca1294344895d627dde2c9e64, type: 3}
-  - {fileID: 2488971449598948368, guid: 09f02face7731b64dafb8d6978633dbe, type: 3}
+  - {fileID: 2580635962771726347, guid: 674df285565956246922f090b47325ef, type: 3}
+  - {fileID: 2580635962771726347, guid: b6cfb54c233ebea4a82b06b7db32be3f, type: 3}
+  - {fileID: 2580635962771726347, guid: 5b5e49e18a39c2e44a9816c9211f61fa, type: 3}
+  - {fileID: 2580635962771726347, guid: 1037f43657e995c4ca6ff7c15cfef97a, type: 3}
+  - {fileID: 2580635962771726347, guid: aab0843e5ad0cbb46afe4ccc5adc350f, type: 3}
   EndLevels:
   - {fileID: 644575745718376169, guid: dd921875febf2bc49a26f89c5f36b752, type: 3}
-  amountOfLevels: 10
-  gapBetweenLevels: -8.5
+  amountOfLevels: 5
+  gapBetweenLevels: -15

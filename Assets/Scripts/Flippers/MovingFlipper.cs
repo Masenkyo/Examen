@@ -6,7 +6,7 @@ public class MovingFlipper : Flipper
     [SerializeField] Transform point1, point2, point3, point4;
     [SerializeField] int movementSpeed;
     float distance;
-    public LineRenderer lr;
+    [HideInInspector] public LineRenderer lr;
     
     protected override void Awake()
     {
@@ -18,7 +18,7 @@ public class MovingFlipper : Flipper
 		a.SetPosition(2, point3 != null ? point3.position : point1.position);
 		a.SetPosition(3, point4 != null ? point4.position : point2.position);
         lr = a;
-        rigidbody.position = point1.position;
+        // rigidbody.position = point1.position;
 
         if (a.GetPosition(1) == a.GetPosition(2))
         {
@@ -54,7 +54,7 @@ public class MovingFlipper : Flipper
         Vector3? bottom = point3 != null ? point3.position : null;
         Vector3? mid = point4 != null ? point4.position : null;//
        
-        bool leftright = Vector3.Distance((left - (Vector3)rigidbody.position).normalized, (left - right).normalized) < 0.05f;
+        bool leftright = Vector3.Distance((left - (Vector3)rigidbody.position).normalized, (left - right).normalized) < 0.1f;
 
         bool middown = false;
         if (bottom != null && mid != null)
@@ -62,7 +62,7 @@ public class MovingFlipper : Flipper
         
         if (mid != null && bottom != null && (Vector3.Distance(rigidbody.position, (Vector3)mid) < 0.1f || Vector3.Distance(rigidbody.position, (Vector3)bottom) < 0.1f))
             middown = true;
-        if (Vector3.Distance(rigidbody.position, left) < 0.1f || Vector3.Distance(rigidbody.position, right) < 0.1f)
+        if (Vector3.Distance(rigidbody.position, left) < 0.1f || Vector3.Distance(rigidbody.position, right) < 0.05f)
             leftright = true;
         
         List<Vector3> options = new();

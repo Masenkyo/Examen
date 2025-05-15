@@ -215,6 +215,7 @@ public class GameManager : MonoBehaviour
             var pointer = FlippersPointers[flipper];
 
             var diff = (edge - flipper.transform.position.y);
+            diff /= 2;
             if (diff < 1)
                 diff = 1;
             float am = (1 / diff * Mathf.Pow(1, 1 + diff / 3));
