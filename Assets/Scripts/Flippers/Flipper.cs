@@ -43,7 +43,7 @@ public class Flipper : MonoBehaviour
 
     #endregion
 
-    void FixedUpdate() => InputRotations();
+    protected virtual void FixedUpdate() => InputRotations();
     
     protected virtual void Update()
     {
