@@ -1,6 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+public struct BarSprites
+{
+    public Sprite indicator;
+    public Sprite bar;
+}
+
 public class ProgressBar : MonoBehaviour
 {
     Image progressBar;
@@ -32,7 +38,7 @@ public class ProgressBar : MonoBehaviour
         indicator.transform.localScale = new Vector2(indicatorSize, indicatorSize);
         indicator.rectTransform.position = new Vector2(indicator.rectTransform.position.x - progressBar.rectTransform.rect.width / 2, end);
     }
-    
+
     void Start() => GetEnd();
 
     float Clamp(float value, float min, float max)
