@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -13,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image resetFill;
     [SerializeField] GameObject youWin;
     
-    public List<PlayerManager.Player> playersHoldingReset = new();
+    public readonly List<PlayerManager.Player> playersHoldingReset = new();
 
     [SerializeField] float holdDurationForReset = 2;
     
@@ -164,27 +162,55 @@ public class GameManager : MonoBehaviour
             if (keyValuePair.Key.Gamepad is { } gp)
                 keyValuePair.Value.ForEach(_ =>
                 {
-                    _.doubleSpeedPressed = gp.squareButton.isPressed;
-                    _.DesiredHorizontalMovement = gp.leftStick.value.x;
+                    if (_.accessTypes.Any(_ => _ is ControlAccessTypes.Rotation))
+                    {
+                        _.flipper.doubleSpeedPressed = gp.squareButton.isPressed;
+                        _.flipper.DesiredHorizontalMovement = gp.leftStick.value.x;
+                    }
+
+                    if (_.accessTypes.Any(_ => _ is ControlAccessTypes.Movement))
+                    {
+                        (_.flipper as MovingFlipper).InputJoystickMovement = gp.leftStick.value;
+                    }
                 });
             else
                 keyValuePair.Value.ForEach(_ =>
                 {
-                    _.doubleSpeedPressed = Input.GetKey(LobbyManager.map[(LobbyManager.inputs.Speed, (int)keyValuePair.Key.KeyboardID)]);
+                    if (_.accessTypes.Any(_ => _ is ControlAccessTypes.Rotation))
+                    {
+                        _.flipper.doubleSpeedPressed =
+                            Input.GetKey(
+                                LobbyManager.map[(LobbyManager.inputs.Speed, (int)keyValuePair.Key.KeyboardID)]);
 
-                    float d = 0;
-                    if (Input.GetKey(LobbyManager.map[(LobbyManager.inputs.Left, (int)keyValuePair.Key.KeyboardID)]))
-                        d = -1;
-                    if (Input.GetKey(LobbyManager.map[(LobbyManager.inputs.Right, (int)keyValuePair.Key.KeyboardID)]))
-                        d = 1;
+                        float d = 0;
+                        if (Input.GetKey(
+                                LobbyManager.map[(LobbyManager.inputs.Left, (int)keyValuePair.Key.KeyboardID)]))
+                            d = -1;
+                        if (Input.GetKey(
+                                LobbyManager.map[(LobbyManager.inputs.Right, (int)keyValuePair.Key.KeyboardID)]))
+                            d = 1;
+
+                        _.flipper.DesiredHorizontalMovement = d;
+                    }
                     
-                    _.DesiredHorizontalMovement = d;
+                    if (_.accessTypes.Any(_ => _ is ControlAccessTypes.Movement))
+                    {//
+                        float d = 0;
+                        if (Input.GetKey(
+                                LobbyManager.map[(LobbyManager.inputs.Left, (int)keyValuePair.Key.KeyboardID)]))
+                            d = -1;
+                        if (Input.GetKey(
+                                LobbyManager.map[(LobbyManager.inputs.Right, (int)keyValuePair.Key.KeyboardID)]))
+                            d = 1;
+                        
+                        (_.flipper as MovingFlipper).AltInputKeyboard = d switch{1 => true, -1 => false, _ => null};
+                    }
                 });
         }
         
         // Distance pointers
         float edge = Camera.main.ScreenToWorldPoint(Vector3.zero).y;
-        foreach (var flipper in PlayersFlippers.SelectMany(_ => _.Value))
+        foreach (var flipper in PlayersFlippers.SelectMany(_ => _.Value).Select(_ => _.flipper))
         {
             var pointer = FlippersPointers[flipper];
 
@@ -194,13 +220,20 @@ public class GameManager : MonoBehaviour
             float am = (1 / diff * Mathf.Pow(1, 1 + diff / 3));
             if (flipper.transform.position.y > edge || am < 0.25f)
                 am = 0;
-            pointer.rectTransform.localScale = new(am, am, 1);
-            pointer.rectTransform.position = new Vector3(Camera.main.WorldToScreenPoint(new (flipper.transform.position.x, 0)).x, 2.5f + (40 * am));
+            pointer.transform.localScale = new(am, am, 1);
+            pointer.transform.position = new Vector3(Camera.main.WorldToScreenPoint(new (flipper.transform.position.x, 0)).x, 2.5f + (40 * am));
         }
     }
 
-    readonly Dictionary<PlayerManager.Player, List<Flipper>> PlayersFlippers = new();
-    Dictionary<Flipper, Image> FlippersPointers = new();
+    enum ControlAccessTypes { Movement, Rotation }
+    struct ControlFragment
+    {
+        public Flipper flipper;
+        public ControlAccessTypes[] accessTypes;
+    }
+    
+    Dictionary<PlayerManager.Player, List<ControlFragment>> PlayersFlippers = new();
+    Dictionary<Flipper, GameObject> FlippersPointers = new();
 
     void DistributeFlippers()
     {
@@ -208,29 +241,58 @@ public class GameManager : MonoBehaviour
         var playerBuffer = PlayerManager.Players.ToList();
         if (playerBuffer.Count == 0)
             return;
+        PlayersFlippers = playerBuffer.ToDictionary(_ => _, _ => new List<ControlFragment>());
         foreach (var flipper in Flipper.AllFlippers)
         {
-            if (!PlayersFlippers.ContainsKey(playerBuffer.First()))
-                PlayersFlippers.Add(playerBuffer.First(), new());
-                
-            PlayersFlippers[playerBuffer.First()].Add(flipper);
-            playerBuffer.RemoveAt(0);
-            if (playerBuffer.Count == 0)
-                playerBuffer = PlayerManager.Players.ToList();
+            PlayersFlippers[playerBuffer.First()].Add(new ControlFragment(){flipper = flipper, accessTypes = new[]{ControlAccessTypes.Rotation}});
+            refill();
+
+            if (flipper is MovingFlipper)
+            {
+                PlayersFlippers[playerBuffer.First()].Add(new ControlFragment(){flipper = flipper, accessTypes = new[]{ControlAccessTypes.Movement}});
+                refill();
+            }
+
+            void refill()
+            {
+                playerBuffer.RemoveAt(0);
+                if (playerBuffer.Count == 0)
+                    playerBuffer = PlayerManager.Players.ToList();
+            }
         }
         
-        // 'incoming flipper' pointers
+        // 'incoming flipper' pointers//
         foreach (var kvp in FlippersPointers)
-            Destroy(kvp.Value.gameObject);
+            Destroy(kvp.Value);
         FlippersPointers.Clear();
-        foreach (var kvp in PlayersFlippers)
+
+        foreach (var flipper in Flipper.AllFlippers)
         {
-            foreach (var flipper in kvp.Value)
+            var pointer = Instantiate(pointerPrefab, transform.GetChild(0));
+            if (flipper is not MovingFlipper)
+                Destroy(pointer.transform.Find("Movement").gameObject);
+            pointer.transform.localScale = new Vector3(0, 0, 1);
+            FlippersPointers.Add(flipper, pointer);
+
+            foreach (var kvp in PlayersFlippers)
             {
-                var img = Instantiate(pointerPrefab, transform.GetChild(0)).GetComponent<Image>();
-                img.color = kvp.Key.ChosenPlayerEntrySet.color;
-                FlippersPointers.Add(flipper, img);
-                flipper.GetComponent<SpriteRenderer>().color = kvp.Key.ChosenPlayerEntrySet.color;
+                foreach (var frag in kvp.Value)
+                {
+                    if (frag.flipper == flipper)
+                    {
+                        if (frag.accessTypes.Any(_ => _ == ControlAccessTypes.Rotation))
+                        {
+                            pointer.transform.Find("Rotation").GetComponent<Image>().color = kvp.Key.ChosenPlayerEntrySet.color;
+                            frag.flipper.GetComponent<SpriteRenderer>().color = kvp.Key.ChosenPlayerEntrySet.color;
+                        }
+                        if (frag.accessTypes.Any(_ => _ == ControlAccessTypes.Movement))
+                        {
+                            pointer.transform.Find("Movement").GetComponent<Image>().color = kvp.Key.ChosenPlayerEntrySet.color;
+                            (frag.flipper as MovingFlipper).lr.startColor = kvp.Key.ChosenPlayerEntrySet.color;
+                            (frag.flipper as MovingFlipper).lr.endColor = kvp.Key.ChosenPlayerEntrySet.color;
+                        }
+                    }
+                }
             }
         }
     }
