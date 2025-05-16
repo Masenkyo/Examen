@@ -20,9 +20,9 @@ Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/B
   
 Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#ball "Technical Design")  
   
-Camera Follow [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](), [Technical]([https://github.com/Masenkyo/Examen/wiki/Technical-design#camera-follow](https://github.com/Masenkyo/Examen/wiki/Technical-design#camera) "Technical Design")  
+Camera Follow [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#camera "Technical Design")  
   
-Damage Phases [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](), [Technical]([https://github.com/Masenkyo/Examen/wiki/Technical-design#damage-phases](https://github.com/Masenkyo/Examen/wiki/Technical-design#phases) "Technical Design")  
+Damage Phases [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#phases "Technical Design")  
   
 Damage Shader [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.shader "Damage Shader"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#damage-shader "Technical Design")  
   
