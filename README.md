@@ -7,8 +7,8 @@
   
 Flippers [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Flippers/Flipper.cs "Flippers")  [Functional](), [Technical]()  
 image  
-Moving Flipper [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Flippers/MovingFlipper.cs "Moving Flipper") [Functional](), [Technical]() 
-image
+Moving Flipper [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Flippers/MovingFlipper.cs "Moving Flipper") [Functional](), [Technical]()  
+image  
 Cutscene [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Cutscene.cs "Cutscene")  [Functional](), [Technical]()  
 image  
 LevelSystem [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Level%20Systeem/LevelSystem.cs "LevelSystem")  [Functional](), [Technical]()  
