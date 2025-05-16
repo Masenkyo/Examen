@@ -38,6 +38,11 @@ public class Powerup : MonoBehaviour
     Effects currentEffect;
     Dictionary<Effects, Action> powerupsDict = new Dictionary<Effects, Action>();
 
+    void OnDestroy()
+    {
+        allPowerups.Remove(this);
+    }
+
     void Start()
     {
         OnCancel += () => StopAllCoroutines();

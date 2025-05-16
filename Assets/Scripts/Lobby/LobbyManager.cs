@@ -140,7 +140,7 @@ public class LobbyManager : MonoBehaviour
         doneSetup = true;
 
         PlayerManager.PlayerAddedAfter += _ => { invitationRefresh(); };
-        PlayerManager.PlayerRemovedBefore += _ => { invitationRefresh(); };
+        PlayerManager.PlayerRemovedAfter += () => { invitationRefresh(); };
         void invitationRefresh()
         {
             switch (GameStateClass.GameState)
@@ -173,11 +173,8 @@ public class LobbyManager : MonoBehaviour
             
             // UIs
             refer.inGameUI.SetActive(GameStateClass.GameState == GameStates.InGame);
+
             refer.inLobbyUI.SetActive(GameStateClass.GameState == GameStates.InLobby);
-            
-            // Back to menu? Kill everyone.
-            if (GameStateClass.GameState == GameStates.InMenu)
-                PlayerManager.Players.Clear();
             
             // Transfer LPs
             PlayerManager.Players.ForEach(_ =>
@@ -222,7 +219,10 @@ public class LobbyManager : MonoBehaviour
     void Awake()
     {
         if (FindObjectsByType<LobbyManager>(FindObjectsSortMode.None).Length == 2)
+        {
             Destroy(gameObject);
+            return;
+        }
         
         DontDestroyOnLoad(gameObject);
         
