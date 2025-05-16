@@ -5,13 +5,13 @@
   
 ### Sil zijn scripts:  
   
-Flippers [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Flippers/Flipper.cs "Flippers")  [Functional](), [Technical]()  
+Flippers [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Flippers/Flipper.cs "Flippers")  [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#flippers "Technical Design")  
   
-Moving Flipper [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Flippers/MovingFlipper.cs "Moving Flipper") [Functional](), [Technical]()  
+Moving Flipper [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Flippers/MovingFlipper.cs "Moving Flipper") [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#moving-flipper "Technical Design")  
   
-Cutscene [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Cutscene.cs "Cutscene")  [Functional](), [Technical]()  
+Cutscene [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Cutscene.cs "Cutscene")  [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#cutscene "Technical Design")  
   
-LevelSystem [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Level%20Systeem/LevelSystem.cs "LevelSystem")  [Functional](), [Technical]()  
+LevelSystem [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Level%20Systeem/LevelSystem.cs "LevelSystem")  [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#levelsystem "Technical Design")  
   
 Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical]()  
   
