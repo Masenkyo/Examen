@@ -13,22 +13,22 @@ Cutscene [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ca
   
 LevelSystem [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Level%20Systeem/LevelSystem.cs "LevelSystem")  [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#levelsystem "Technical Design")  
   
-Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical]()  
+Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#ball "Technical Design")  
   
 
 ### Boi zijn scripts:
   
-Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#ball)  
+Ball [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#ball "Technical Design")  
   
-Camera Follow [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#camera-follow)  
+Camera Follow [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#camera-follow "Technical Design")  
   
-Damage Phases [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#damage-phases)  
+Damage Phases [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#damage-phases "Technical Design")  
   
-Damage Shader [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.shader "Damage Shader"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#damage-shader)  
+Damage Shader [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.shader "Damage Shader"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#damage-shader "Technical Design")  
   
-Progress Bar [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#progress-bar)  
+Progress Bar [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#progress-bar "Technical Design")  
   
-Moving Obstacle [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#moving-obstacle)  
+Moving Obstacle [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#moving-obstacle "Technical Design")  
 
 
 ## Flippers/Moving Flippers
