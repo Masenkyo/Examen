@@ -8,6 +8,7 @@ public class MovingFlipper : Flipper
     float distance;
     [HideInInspector] public LineRenderer lr;
     
+    // The awake for the Moving Flipper variation~~~
     protected override void Awake()
     {
         base.Awake();
@@ -29,16 +30,19 @@ public class MovingFlipper : Flipper
             a.SetPositions(aslist.ToArray());
         }
     }
-
+    
+    // Fixed update
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
         MoveFlipper();
     }
-
+    
+    // Input Variables
     public Vector3 InputJoystickMovement;
     public bool? AltInputKeyboard;
     
+    // The movement of the flipper, it can move between points through this function
     void MoveFlipper()
     {
 	    if (brokenFlipper)

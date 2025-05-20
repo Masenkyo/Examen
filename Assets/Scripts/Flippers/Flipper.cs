@@ -63,6 +63,7 @@ public class Flipper : MonoBehaviour
             ? -rotateSpeed * DesiredHorizontalMovement
             : 0;
     
+    // Creates the chance that a flipper wil break
     void BrokenFlipper(int min = 0, int max = 20)
     {
         if (UnityEngine.Random.Range(min, max) != 0)
@@ -77,6 +78,7 @@ public class Flipper : MonoBehaviour
         currentSliderbar = Instantiate(sliderBar, transform.position + new Vector3(0,1,0), new Quaternion(0,0,0,0), transform.parent);
     }
     
+    // Activate flippers that are in radius
     void ActiveFlippers()
     {
         float lowLimit = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height)).y;
@@ -96,6 +98,7 @@ public class Flipper : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
     }
     
+    // Fix the flippers that have been broken
     void FixBrokenFlipper(float clickingGoal)
     {
         if (time > 0)
