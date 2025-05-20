@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6397130806137422330}
   - component: {fileID: 1385856269955644029}
+  - component: {fileID: 1169210092779830845}
   m_Layer: 0
   m_Name: lockpoint
   m_TagString: Untagged
@@ -66,7 +67,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.047374725, y: 0.02496481}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,5 +77,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 21.143845, y: 9.937362}
+  m_Size: {x: 18, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &1169210092779830845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3329171273741146181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23418a931cffe1848b86a31a8413a6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
