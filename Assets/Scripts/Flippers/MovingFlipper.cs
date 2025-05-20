@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -19,7 +20,6 @@ public class MovingFlipper : Flipper
 		a.SetPosition(2, point3 != null ? point3.position : point1.position);
 		a.SetPosition(3, point4 != null ? point4.position : point2.position);
         lr = a;
-        // rigidbody.position = point1.position;
 
         if (a.GetPosition(1) == a.GetPosition(2))
         {
@@ -29,6 +29,18 @@ public class MovingFlipper : Flipper
             aslist.RemoveAt(1);
             a.SetPositions(aslist.ToArray());
         }
+        
+        // StartCoroutine(w());
+        // IEnumerator w()
+        // {
+        //     while (true)
+        //     {
+        //         InputJoystickMovement = Vector3.right;
+        //         yield return new WaitForSeconds(3);
+        //         InputJoystickMovement = Vector3.left;
+        //         yield return new WaitForSeconds(3);
+        //     }
+        // }
     }
     
     // Fixed update
@@ -40,8 +52,7 @@ public class MovingFlipper : Flipper
     
     // Input Variables
     public Vector3 InputJoystickMovement;
-    public bool? AltInputKeyboard;
-    
+
     // The movement of the flipper, it can move between points through this function
     void MoveFlipper()
     {
@@ -50,9 +61,6 @@ public class MovingFlipper : Flipper
         if (InputJoystickMovement == Vector3.zero)
             return;
         
-        var DirTo1 = (point1.position - (Vector3)rigidbody.position).normalized; 
-        var DirTo2 = (point2.position - (Vector3)rigidbody.position).normalized;
-
         var left = point1.position;
         var right = point2.position;
         Vector3? bottom = point3 != null ? point3.position : null;
@@ -78,26 +86,35 @@ public class MovingFlipper : Flipper
         if (options.Count == 0)
             return;
         
-        // if (AltInputKeyboard is { } b)//
-        // {
-        //    if (Time.deltaTime * movementSpeed * 2 is { } step &&
-        //        step > Vector3.Distance(rigidbody.position, (b ? chosenPoint1 : chosenPoint2)))
-        //        rigidbody.position += ((b ? chosenPoint1 : chosenPoint2) - rigidbody.position).normalized * step;
-        //    else
-        //        rigidbody.position = b ? chosenPoint1 : chosenPoint2;
-        //    return;
-        // }
-//
         var closest = options.OrderBy(_ => Vector3.Distance(InputJoystickMovement, (_ - (Vector3)rigidbody.position).normalized )).First();
-
 
         if (Time.deltaTime * movementSpeed * InputJoystickMovement.magnitude is { } step
             && Vector3.Distance(rigidbody.position, closest) > step)
         {
+            // Move anything on top of us?
+            if (!gameObject.name.ToLower().Contains("curved"))
+            {
+                ContactPoint2D[] contacts = new ContactPoint2D[10];
+                collider.GetContacts(contacts);
+                var list = contacts.Where(_ => _.rigidbody is not null).ToList();
+                foreach (var contact in list)
+                    if (rigidbody.OverlapPoint(contact.point + Vector2.down / 5))
+                    {
+                        var match = (Vector2)(closest - (Vector3)rigidbody.position).normalized * step / Time.deltaTime;
+
+                        contact.rigidbody.angularVelocity /= 1 + 1f * Time.deltaTime;
+
+                        if (Mathf.Abs(contact.rigidbody.linearVelocityX) < Mathf.Abs(match.x))
+                            contact.rigidbody.linearVelocityX = match.x;
+                        if (Mathf.Abs(contact.rigidbody.linearVelocityY) < Mathf.Abs(match.y))
+                            contact.rigidbody.linearVelocityY = match.y;
+                    } 
+            }
+
+            // Move self
             rigidbody.position += (Vector2)(closest - (Vector3)rigidbody.position).normalized * step;
         }
         else
            rigidbody.position = closest;
-      
     }
 }

@@ -24,6 +24,7 @@ public class Flipper : MonoBehaviour
     float rotation;
     
     [HideInInspector] public Rigidbody2D rigidbody;
+    protected Collider2D collider;
     
     // The list of all the flippers
     public static HashSet<Flipper> AllFlippers = new();
@@ -33,8 +34,8 @@ public class Flipper : MonoBehaviour
     // Adding the flippers to the list and giving the rigidbody variable a rigidbody of the flipper
     protected virtual void Awake()
     {
-        Debug.Log(gameObject.name);
         rigidbody = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
         AllFlippers.Add(this);
     }
     

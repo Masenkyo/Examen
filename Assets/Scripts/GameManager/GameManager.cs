@@ -167,11 +167,6 @@ public class GameManager : MonoBehaviour
                         _.flipper.doubleSpeedPressed = gp.squareButton.isPressed;
                         _.flipper.DesiredHorizontalMovement = gp.leftStick.value.x;
                     }
-
-                    if (_.accessTypes.Any(_ => _ is ControlAccessTypes.Movement))
-                    {
-                        (_.flipper as MovingFlipper).InputJoystickMovement = gp.leftStick.value;
-                    }
                 });
             else
                 keyValuePair.Value.ForEach(_ =>
@@ -202,8 +197,6 @@ public class GameManager : MonoBehaviour
                         if (Input.GetKey(
                                 LobbyManager.map[(LobbyManager.inputs.Right, (int)keyValuePair.Key.KeyboardID)]))
                             d = 1;
-                        
-                        (_.flipper as MovingFlipper).AltInputKeyboard = d switch{1 => true, -1 => false, _ => null};
                     }
                 });
         }
