@@ -31,17 +31,17 @@ public class MovingFlipper : Flipper
             a.SetPositions(aslist.ToArray());
         }
         
-        StartCoroutine(w());
-        IEnumerator w()
-        {
-            while (true)
-            {
-                InputJoystickMovement = Vector3.right;
-                yield return new WaitForSeconds(3);
-                InputJoystickMovement = Vector3.left;
-                yield return new WaitForSeconds(3);
-            }
-        }
+        // StartCoroutine(w());
+        // IEnumerator w()
+        // {
+        //     while (true)
+        //     {
+        //         InputJoystickMovement = Vector3.right;
+        //         yield return new WaitForSeconds(3);
+        //         InputJoystickMovement = Vector3.left;
+        //         yield return new WaitForSeconds(3);
+        //     }
+        // }
     }
     
     // Fixed update
