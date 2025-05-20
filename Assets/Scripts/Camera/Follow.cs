@@ -42,7 +42,8 @@ public class Follow : MonoBehaviour
             if (distanceCamLockY < 0.25f && trackingObject.TryGetComponent<LockPoint>(out _)) stay = true;
         }
         if (!trackingObject.TryGetComponent<LockPoint>(out _)) stay = false;
-
+        if (stay && trackingObject.transform.position.y > ballObject.transform.position.y)
+            stay = false;
         if (trackingBall && b.canSpawn)
         {
             b.canSpawn = false;
