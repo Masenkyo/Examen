@@ -16,7 +16,6 @@ enum Effects
     FullHeal,
     Float,
     Damage,
-    Kill,
     RandomDurability,
     ColorBlind,
     Heavy,
@@ -48,7 +47,6 @@ public class Powerup : MonoBehaviour
         buff += FullHeal;
         buff += Float;
         debuff += Damage;
-        debuff += Kill;
         debuff += RandomDurability;
         debuff += ColorBlind;
         debuff += Heavy;
@@ -58,7 +56,6 @@ public class Powerup : MonoBehaviour
         powerupsDict.Add(Effects.RandomDurability, RandomDurability);
         powerupsDict.Add(Effects.FullHeal, FullHeal);
         powerupsDict.Add(Effects.Damage, Damage);
-        powerupsDict.Add(Effects.Kill, Kill);
         powerupsDict.Add(Effects.Float, Float);
         powerupsDict.Add(Effects.Heavy, Heavy);
         powerupsDict.Add(Effects.SlowControls, SlowControls);
@@ -119,11 +116,6 @@ public class Powerup : MonoBehaviour
     {
         const int damageAmount = 10;
         ball.Durability -= damageAmount;
-    }
-
-    void Kill()
-    {
-        ball.Durability -= ball.Durability;
     }
 
     IEnumerator gravityChange(float scale)
