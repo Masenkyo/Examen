@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -29,6 +30,18 @@ public class MovingFlipper : Flipper
             aslist.RemoveAt(1);
             a.SetPositions(aslist.ToArray());
         }
+        
+        StartCoroutine(w());
+        IEnumerator w()
+        {
+            while (true)
+            {
+                InputJoystickMovement = Vector3.right;
+                yield return new WaitForSeconds(3);
+                InputJoystickMovement = Vector3.left;
+                yield return new WaitForSeconds(3);
+            }
+        }
     }
     
     // Fixed update
@@ -41,6 +54,8 @@ public class MovingFlipper : Flipper
     // Input Variables
     public Vector3 InputJoystickMovement;
     public bool? AltInputKeyboard;
+
+    Vector2 lastMovement;
     
     // The movement of the flipper, it can move between points through this function
     void MoveFlipper()
@@ -48,7 +63,22 @@ public class MovingFlipper : Flipper
 	    if (brokenFlipper)
 		    return;
         if (InputJoystickMovement == Vector3.zero)
+        {
+            // if (rigidbody.linearVelocity != Vector2.zero)
+            // {
+            //     // Move anything on top of us?
+            //     ContactPoint2D[] contacts = new ContactPoint2D[10];
+            //     collider.GetContacts(contacts);
+            //     var list = contacts.Where(_ => _.rigidbody is not null).ToList();
+            //     foreach (var contact in list)
+            //         if (rigidbody.OverlapPoint(contact.point + Vector2.down / 5))
+            //             contact.rigidbody.linearVelocity -= rigidbody.linearVelocity;
+            // }
+            
+            rigidbody.linearVelocity = Vector2.zero;
+            lastMovement = Vector3.zero;
             return;
+        }
         
         var DirTo1 = (point1.position - (Vector3)rigidbody.position).normalized; 
         var DirTo2 = (point2.position - (Vector3)rigidbody.position).normalized;
@@ -80,20 +110,43 @@ public class MovingFlipper : Flipper
         
         // if (AltInputKeyboard is { } b)//
         // {
-        //    if (Time.deltaTime * movementSpeed * 2 is { } step &&
-        //        step > Vector3.Distance(rigidbody.position, (b ? chosenPoint1 : chosenPoint2)))
-        //        rigidbody.position += ((b ? chosenPoint1 : chosenPoint2) - rigidbody.position).normalized * step;
+        //    if (Time.deltaTime * movementSpeed * 2 is { } stepp &&
+        //        stepp > Vector3.Distance(rigidbody.position, (b ? options[0] : options[1])))
+        //        rigidbody.linearVelocity = (Vector2)((b ? options[0] : options[1]) - (Vector3)rigidbody.position).normalized * stepp;
+        //        // rigidbody.position += (Vector2)((b ? options[0] : options[1]) - (Vector3)rigidbody.position).normalized * stepp;
         //    else
-        //        rigidbody.position = b ? chosenPoint1 : chosenPoint2;
+        //        rigidbody.position = b ? options[0] : options[1];
         //    return;
         // }
-//
+        //
         var closest = options.OrderBy(_ => Vector3.Distance(InputJoystickMovement, (_ - (Vector3)rigidbody.position).normalized )).First();
 
 
         if (Time.deltaTime * movementSpeed * InputJoystickMovement.magnitude is { } step
             && Vector3.Distance(rigidbody.position, closest) > step)
         {
+            // Move anything on top of us?
+            // Move anything on top of us?
+            ContactPoint2D[] contacts = new ContactPoint2D[10];
+            collider.GetContacts(contacts);
+            var list = contacts.Where(_ => _.rigidbody is not null).ToList();
+            foreach (var contact in list)
+                if (rigidbody.OverlapPoint(contact.point + Vector2.down / 5))
+                {
+                    var match = (Vector2)(closest - (Vector3)rigidbody.position).normalized * step / Time.deltaTime;
+                    // contact.rigidbody. = match;
+                    // contact.rigidbody.position += (Vector2)(closest - (Vector3)rigidbody.position).normalized * step;
+
+                    contact.rigidbody.angularVelocity /= 1 + 1f * Time.deltaTime;
+                    
+                    if (Mathf.Abs(contact.rigidbody.linearVelocityX) < Mathf.Abs(match.x))
+                        contact.rigidbody.linearVelocityX = match.x;
+                    if (Mathf.Abs(contact.rigidbody.linearVelocityY) < Mathf.Abs(match.y))
+                        contact.rigidbody.linearVelocityY = match.y;
+                }//
+            
+            // Move self
+            lastMovement = (Vector2)(closest - (Vector3)rigidbody.position).normalized * step;
             rigidbody.position += (Vector2)(closest - (Vector3)rigidbody.position).normalized * step;
         }
         else

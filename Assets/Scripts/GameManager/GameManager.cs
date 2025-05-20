@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
 
                     if (_.accessTypes.Any(_ => _ is ControlAccessTypes.Movement))
                     {
-                        (_.flipper as MovingFlipper).InputJoystickMovement = gp.leftStick.value;
+                       // todo (_.flipper as MovingFlipper).InputJoystickMovement = gp.leftStick.value;
                     }
                 });
             else
