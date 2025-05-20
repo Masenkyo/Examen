@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public enum ItemName
@@ -26,14 +29,21 @@ public class RandomSprite : MonoBehaviour
     }
 
     [SerializeField]
-    Item[] itemSprites;
+    List<Item> itemSprites;
     Phases phasesManager;
 
     public static ItemName currentItem;
 
     void RandomItem()
     {
-        Item chosenItem = itemSprites[Random.Range(0, itemSprites.Length)];
+        if (itemSprites.Count == 0)
+        {
+            SceneManager.LoadScene("Lose");
+            return;
+        }
+        var i = Random.Range(0, itemSprites.Count);
+        Item chosenItem = itemSprites[i];
+        itemSprites.RemoveAt(i);
         phasesManager.materials[0].SetTexture("_Phase2", chosenItem.phases[0]);
         phasesManager.materials[0].SetTexture("_Phase1", chosenItem.phases[1]);
         phasesManager.materials[1].SetTexture("_Phase1", chosenItem.phases[1]);
