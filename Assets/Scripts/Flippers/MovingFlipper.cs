@@ -20,7 +20,6 @@ public class MovingFlipper : Flipper
 		a.SetPosition(2, point3 != null ? point3.position : point1.position);
 		a.SetPosition(3, point4 != null ? point4.position : point2.position);
         lr = a;
-        // rigidbody.position = point1.position;
 
         if (a.GetPosition(1) == a.GetPosition(2))
         {
@@ -53,36 +52,15 @@ public class MovingFlipper : Flipper
     
     // Input Variables
     public Vector3 InputJoystickMovement;
-    public bool? AltInputKeyboard;
 
-    Vector2 lastMovement;
-    
     // The movement of the flipper, it can move between points through this function
     void MoveFlipper()
     {
 	    if (brokenFlipper)
 		    return;
         if (InputJoystickMovement == Vector3.zero)
-        {
-            // if (rigidbody.linearVelocity != Vector2.zero)
-            // {
-            //     // Move anything on top of us?
-            //     ContactPoint2D[] contacts = new ContactPoint2D[10];
-            //     collider.GetContacts(contacts);
-            //     var list = contacts.Where(_ => _.rigidbody is not null).ToList();
-            //     foreach (var contact in list)
-            //         if (rigidbody.OverlapPoint(contact.point + Vector2.down / 5))
-            //             contact.rigidbody.linearVelocity -= rigidbody.linearVelocity;
-            // }
-            
-            rigidbody.linearVelocity = Vector2.zero;
-            lastMovement = Vector3.zero;
             return;
-        }
         
-        var DirTo1 = (point1.position - (Vector3)rigidbody.position).normalized; 
-        var DirTo2 = (point2.position - (Vector3)rigidbody.position).normalized;
-
         var left = point1.position;
         var right = point2.position;
         Vector3? bottom = point3 != null ? point3.position : null;
@@ -108,49 +86,35 @@ public class MovingFlipper : Flipper
         if (options.Count == 0)
             return;
         
-        // if (AltInputKeyboard is { } b)//
-        // {
-        //    if (Time.deltaTime * movementSpeed * 2 is { } stepp &&
-        //        stepp > Vector3.Distance(rigidbody.position, (b ? options[0] : options[1])))
-        //        rigidbody.linearVelocity = (Vector2)((b ? options[0] : options[1]) - (Vector3)rigidbody.position).normalized * stepp;
-        //        // rigidbody.position += (Vector2)((b ? options[0] : options[1]) - (Vector3)rigidbody.position).normalized * stepp;
-        //    else
-        //        rigidbody.position = b ? options[0] : options[1];
-        //    return;
-        // }
-        //
         var closest = options.OrderBy(_ => Vector3.Distance(InputJoystickMovement, (_ - (Vector3)rigidbody.position).normalized )).First();
-
 
         if (Time.deltaTime * movementSpeed * InputJoystickMovement.magnitude is { } step
             && Vector3.Distance(rigidbody.position, closest) > step)
         {
             // Move anything on top of us?
-            // Move anything on top of us?
-            ContactPoint2D[] contacts = new ContactPoint2D[10];
-            collider.GetContacts(contacts);
-            var list = contacts.Where(_ => _.rigidbody is not null).ToList();
-            foreach (var contact in list)
-                if (rigidbody.OverlapPoint(contact.point + Vector2.down / 5))
-                {
-                    var match = (Vector2)(closest - (Vector3)rigidbody.position).normalized * step / Time.deltaTime;
-                    // contact.rigidbody. = match;
-                    // contact.rigidbody.position += (Vector2)(closest - (Vector3)rigidbody.position).normalized * step;
+            if (!gameObject.name.ToLower().Contains("curved"))
+            {
+                ContactPoint2D[] contacts = new ContactPoint2D[10];
+                collider.GetContacts(contacts);
+                var list = contacts.Where(_ => _.rigidbody is not null).ToList();
+                foreach (var contact in list)
+                    if (rigidbody.OverlapPoint(contact.point + Vector2.down / 5))
+                    {
+                        var match = (Vector2)(closest - (Vector3)rigidbody.position).normalized * step / Time.deltaTime;
 
-                    contact.rigidbody.angularVelocity /= 1 + 1f * Time.deltaTime;
-                    
-                    if (Mathf.Abs(contact.rigidbody.linearVelocityX) < Mathf.Abs(match.x))
-                        contact.rigidbody.linearVelocityX = match.x;
-                    if (Mathf.Abs(contact.rigidbody.linearVelocityY) < Mathf.Abs(match.y))
-                        contact.rigidbody.linearVelocityY = match.y;
-                }//
-            
+                        contact.rigidbody.angularVelocity /= 1 + 1f * Time.deltaTime;
+
+                        if (Mathf.Abs(contact.rigidbody.linearVelocityX) < Mathf.Abs(match.x))
+                            contact.rigidbody.linearVelocityX = match.x;
+                        if (Mathf.Abs(contact.rigidbody.linearVelocityY) < Mathf.Abs(match.y))
+                            contact.rigidbody.linearVelocityY = match.y;
+                    } 
+            }
+
             // Move self
-            lastMovement = (Vector2)(closest - (Vector3)rigidbody.position).normalized * step;
             rigidbody.position += (Vector2)(closest - (Vector3)rigidbody.position).normalized * step;
         }
         else
            rigidbody.position = closest;
-      
     }
 }
