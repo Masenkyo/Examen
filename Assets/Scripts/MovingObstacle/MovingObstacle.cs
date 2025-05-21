@@ -30,6 +30,7 @@ public class MovingObstacle : MonoBehaviour
 
     void Update()
     {
+        if (path == null) return;
         var targetDirection = (path[pathIndex].position - transform.position).normalized;
         transform.up = -targetDirection;
 
