@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,9 +19,7 @@ public class Ball : MonoBehaviour
 
     [SerializeField]
     float damagableVelocity;
-    [HideInInspector]
-    public bool canSpawn;
-
+    
     [SerializeField]
     float maxDurability = 35f;
     public float getMaxDurability
@@ -36,7 +33,17 @@ public class Ball : MonoBehaviour
         set
         {
             _durability = value;
-            if (value <= 0) Disable.Invoke();
+            if (value <= 0)
+            {
+                Disable.Invoke();
+
+                StartCoroutine(respawn());
+                IEnumerator respawn()
+                {
+                    yield return new WaitForSeconds(2f);
+                    Enable.Invoke();
+                }
+            }
         }
     } float? _durability;
 
@@ -51,7 +58,6 @@ public class Ball : MonoBehaviour
         rigidBody.linearVelocity = new(0, 0);
         rigidBody.angularVelocity = 0;
         GetComponent<ParticleSystem>().Play();
-        canSpawn = true;
     }
 
     bool ready = true;
@@ -63,7 +69,6 @@ public class Ball : MonoBehaviour
         foreach(var p in Powerup.allPowerups)
             p.SetPowerup();
 
-        canSpawn = false;
         GetComponent<ParticleSystem>().Stop();
         spriteRenderer.color = Color.red;
         spriteRenderer.enabled = true;
