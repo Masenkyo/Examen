@@ -234,4 +234,9 @@ public class Powerup : MonoBehaviour
         }
         Disable();
     }
+
+    void OnDestroy()
+    {
+        allPowerups.Remove(this);
+    }
 }
