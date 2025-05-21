@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70855b8d89fbea54d9b8300ac213674d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FloatingText: {fileID: 1603540591988668204, guid: 8310bb65c58ae5e45a1b9915487cf07a, type: 3}
   currentEffect: 0
 --- !u!58 &9056566620090559079
 CircleCollider2D:
