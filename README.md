@@ -2,6 +2,8 @@
   <img src="https://github.com/user-attachments/assets/8b6602dc-4fd0-44df-b895-cb9d44e220c5"></img>
 </p>
 
+Dit is een couch co-op spel dat makkelijk te begrijpen is en gespeeld kan worden door een breed scala aan mensen. Het doel is om samen te coordineren om een bal voorzichtig naar beneden te brengen door een soort flipper kast. De spelers besturen de flippers.
+
 # [*Pipeline*](https://github.com/Masenkyo/Examen/wiki/Pipeline "Pipeline")
 
 ## [*Technical Design*](https://github.com/Masenkyo/Examen/wiki/Technical-design "Technical Design")
