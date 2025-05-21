@@ -35,13 +35,27 @@ public class Powerup : MonoBehaviour
     Image grayscale;
     public Action OnCancel;
 
+    [Serializable]
+    struct PowerupAndIcon
+    {
+        public Sprite Icon;
+        public Effects Powerup;
+    }
+
+    [SerializeField] List<PowerupAndIcon> PowerupsIcons = new();
+    
     [SerializeField]
     Effects currentEffect;
     Dictionary<Effects, Action> powerupsDict = new Dictionary<Effects, Action>();
 
+    [SerializeField] SpriteRenderer OwnSR;
+    [SerializeField] SpriteRenderer IconSR;
+    
     void Start()
     {
-        OnCancel += () => StopAllCoroutines();
+        IconSR.sprite = PowerupsIcons.Find(_ => _.Powerup == currentEffect).Icon;
+        
+        OnCancel += StopAllCoroutines;
 
         grayscale = Settings.reference.postprocessing;
 
@@ -94,7 +108,7 @@ public class Powerup : MonoBehaviour
         {
             usedColor = Color.red;
         }
-        GetComponent<SpriteRenderer>().color = usedColor;
+        OwnSR.color = new Color(usedColor.r, usedColor.g, usedColor.b, 0.3f);
     }
 
     void Heal()
@@ -204,13 +218,15 @@ public class Powerup : MonoBehaviour
 
     void Disable()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
+        OwnSR.enabled = false;
+        IconSR.enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
     }
 
     void Enable()
     {
-        GetComponent<SpriteRenderer>().enabled = true;
+        OwnSR.enabled = true;
+        IconSR.enabled = true;
         GetComponent<CircleCollider2D>().enabled = true;
     }
 
@@ -232,7 +248,8 @@ public class Powerup : MonoBehaviour
 
         var chosenEffect = chosenList?[Random.Range(0, chosenList.Length - 1)] ?? powerupsDict[currentEffect];
         InvokeOnce(chosenEffect);
-        Instantiate(FloatingText, transform.position, Quaternion.identity).GetComponent<FloatingText>().SetText(chosenEffect.Method.Name, buff.GetInvocationList().Contains(chosenEffect) ? Color.green : Color.red);
+        Sprite sprite = PowerupsIcons.Find(pai => pai.Powerup == powerupsDict.ToList().Find(_ => _.Value == (Action)chosenEffect).Key).Icon;
+        Instantiate(FloatingText, transform.position, Quaternion.identity).GetComponent<FloatingText>().SetText(chosenEffect.Method.Name, buff.GetInvocationList().Contains(chosenEffect) ? Color.green : Color.red, sprite);
         
         Disable();
     }
