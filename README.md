@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/483db5b1-4043-4baa-b9eb-fe742de7c38d"></img>
+  <img src="https://github.com/user-attachments/assets/8b6602dc-4fd0-44df-b895-cb9d44e220c5"></img>
 </p>
 
 # [*Pipeline*](https://github.com/Masenkyo/Examen/wiki/Pipeline "Pipeline")
