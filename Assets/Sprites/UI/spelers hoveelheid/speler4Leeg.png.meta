@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 49d9f9bdc8c56364da129c4937776a73
+guid: d3100b778a88ea24eb715f920f187e1a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 268522628557631212
-    second: 2spelers_UI_0
-  - first:
-      213: -1301528072946652906
-    second: 2spelers_UI_1
+      213: -6059568974485994652
+    second: speler4Leeg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2spelers_UI_0
+      name: speler4Leeg_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 261
         y: 5
-        width: 240
-        height: 490
+        width: 235
+        height: 234
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ceee45178ebf9b300800000000000000
-      internalID: 268522628557631212
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2spelers_UI_1
-      rect:
-        serializedVersion: 2
-        x: 262
-        y: 5
-        width: 238
-        height: 490
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 619e0da0d1b00fde0800000000000000
-      internalID: -1301528072946652906
+      spriteID: 463c8c76f1618eba0800000000000000
+      internalID: -6059568974485994652
       vertices: []
       indices: 
       edges: []

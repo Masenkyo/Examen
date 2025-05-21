@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ecf0b2e405157234e972ee7c4960620f
+guid: b905c7256f25c5346b905ec8f600b54e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7102441960414685991
-    second: 1spelers_UI_0
+      213: -6339840131759111603
+    second: speler2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1spelers_UI_0
+      name: speler2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 500
-        height: 500
+        x: 261
+        y: 262
+        width: 235
+        height: 234
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d457a7daae0f6d90800000000000000
-      internalID: -7102441960414685991
+      spriteID: d428bb57dfc5408a0800000000000000
+      internalID: -6339840131759111603
       vertices: []
       indices: 
       edges: []
