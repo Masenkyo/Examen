@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FloatingText : MonoBehaviour
 {
@@ -16,15 +17,19 @@ public class FloatingText : MonoBehaviour
         if (Time.time - startTime > 1)
         {
             Text.color -= new Color(0, 0, 0, 1f * Time.deltaTime);
+            Image.color -= new Color(0, 0, 0, 1f * Time.deltaTime);
             if (Text.color.a <= 0)
                 Destroy(gameObject);
         }
     }
 
-    public TMP_Text Text;
-    public void SetText(string text, Color color)
+    [SerializeField] TMP_Text Text;
+    [SerializeField] Image Image;
+    
+    public void SetText(string text, Color color, Sprite sprite)
     {
         Text.text = text;
         Text.color = color;
+        Image.sprite = sprite;
     }
 }
