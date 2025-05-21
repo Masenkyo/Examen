@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/329f056b-e408-43ed-b52c-da25652f023c"></img>
+</p>
+
 # [*Pipeline*](https://github.com/Masenkyo/Examen/wiki/Pipeline "Pipeline")
 
 ## [*Technical Design*](https://github.com/Masenkyo/Examen/wiki/Technical-design "Technical Design")
