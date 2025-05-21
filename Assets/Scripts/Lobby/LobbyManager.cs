@@ -161,6 +161,11 @@ public class LobbyManager : MonoBehaviour
             if (_ == GameStates.InMenu)
             {
                 Return.Disable();
+                PlayerManager.Players.ForEach(_ =>
+                {
+                    if (_.LP != null)
+                        Destroy(_.LP.gameObject);
+                });
                 PlayerManager.Players.Clear();
             }
             else
