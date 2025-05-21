@@ -326,7 +326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397bbb1b142b51b4585fc6f0bb9864c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenFlipper: 0
   clickGoal: 10
   chanceOfBreaking: 20
   repairDifficulty: 3
@@ -335,6 +334,7 @@ MonoBehaviour:
   doubleSpeedPressed: 0
   DesiredHorizontalMovement: 0
   rigidbody: {fileID: 0}
+  RepairPrompt: {fileID: 8917745535608530909, guid: 39cd929a855cd6a439e7d068fe5e5731, type: 3}
   point1: {fileID: 0}
   point2: {fileID: 0}
   point3: {fileID: 0}

@@ -1,25 +1,24 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Flipper : MonoBehaviour
 {
     // Broken Flipper variables
-    public bool brokenFlipper;
     [SerializeField] float clickGoal = 10;
     [SerializeField] int chanceOfBreaking = 20;
     [SerializeField] float repairDifficulty = 3;
     [SerializeField] GameObject sliderBar;
     GameObject currentSliderbar;
-    float time = 0;
+    float progress = 0;
     bool doOnce;
     
     // Movement variables
     public int rotateSpeed = 90;
-    [HideInInspector] public bool doubleSpeedPressed;
     [HideInInspector] public float DesiredHorizontalMovement;
     float rotation;
     
@@ -37,6 +36,31 @@ public class Flipper : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
         AllFlippers.Add(this);
+        
+        // setup repairing/breaking
+        OnDurabilityChanged += (oldVal, newVal) =>
+        {
+            // got repaired
+            if (oldVal < 1f && newVal == 1f)
+            {
+                progress = 0;
+                doOnce = false;
+                Destroy(currentSliderbar);
+                Destroy(createdRepairPrompt);
+                currentSliderbar = null;
+            }
+
+            // got broken
+            if (newVal < 1f && oldVal == 1f)
+            {
+                currentSliderbar = Instantiate(sliderBar, transform.position + new Vector3(0,1,0), new Quaternion(0,0,0,0), transform.parent);
+                createdRepairPrompt = Instantiate(RepairPrompt, transform.position, Quaternion.identity);
+            }
+            
+            // reflect
+            if (newVal < 1f)
+                currentSliderbar.GetComponentsInChildren<Image>().First(_ => _.sprite != null).fillAmount = newVal / 1f;
+        };
     }
     
     // Remove everything in the list becaues it's static
@@ -51,32 +75,30 @@ public class Flipper : MonoBehaviour
         ActiveFlippers();
         
         if (rigidbody.simulated && Follow.reference.enabled && !doOnce)
-            BrokenFlipper(max: chanceOfBreaking); 
+            RngBreakFlipper(max: chanceOfBreaking); 
             
-        if (brokenFlipper)
-            FixBrokenFlipper(clickGoal);
+        if (Durability < 1f)
+            RepairProgression();
     } 
 
     // The rotation system
-    void InputRotations() => rigidbody.angularVelocity = DesiredHorizontalMovement < 0 && !brokenFlipper
+    void InputRotations() => rigidbody.angularVelocity = DesiredHorizontalMovement < 0 && Durability == 1f
         ? rotateSpeed * -DesiredHorizontalMovement
-        : DesiredHorizontalMovement > 0 && !brokenFlipper
+        : DesiredHorizontalMovement > 0 && Durability == 1f
             ? -rotateSpeed * DesiredHorizontalMovement
             : 0;
     
     // Creates the chance that a flipper wil break
-    void BrokenFlipper(int min = 0, int max = 20)
+    void RngBreakFlipper(int min = 0, int max = 20)
     {
-        if (UnityEngine.Random.Range(min, max) != 0)
+        if (Random.Range(min, max) != 0)
         {
             doOnce = true;
             return;
         }
-    
-        brokenFlipper = true;
+
+        Durability = 0f;
         doOnce = true;
-        
-        currentSliderbar = Instantiate(sliderBar, transform.position + new Vector3(0,1,0), new Quaternion(0,0,0,0), transform.parent);
     }
     
     // Activate flippers that are in radius
@@ -87,37 +109,42 @@ public class Flipper : MonoBehaviour
         
         rigidbody.simulated = transform.position.y >= lowLimit && transform.position.y <= highLimit;
         
-        if (brokenFlipper && transform.position.y > highLimit || transform.position.y < lowLimit)
+        if (Durability < 1f && transform.position.y > highLimit || transform.position.y < lowLimit)
         {
-            brokenFlipper = false;
+            Durability = 1f;
             doOnce = false;
             Destroy(currentSliderbar);
             currentSliderbar = null;
         }
-        
-        if (!rigidbody.simulated || brokenFlipper)
+
+        if (!rigidbody.simulated || Durability < 1f)
             transform.rotation = Quaternion.Euler(0, 0, 0);
     }
+
+    GameObject createdRepairPrompt;
+    public GameObject RepairPrompt;
+
+    protected float Durability
+    {
+        get => _durability;
+        set
+        {
+            value = Mathf.Clamp(value, 0f, 1f);
+            OnDurabilityChanged(_durability, value);
+            _durability = value;
+        }
+    } float _durability = 1f;
+    public Action<float, float> OnDurabilityChanged = (oldVal, newVal) => { };//
     
     // Fix the flippers that have been broken
-    void FixBrokenFlipper(float clickingGoal)
+    void RepairProgression()
     {
-        if (time > 0)
-            time -= Time.deltaTime * repairDifficulty * PlayerManager.Players.Count;
+        if (progress > 0)
+            progress -= Time.deltaTime * repairDifficulty * PlayerManager.Players.Count;
         
-        if (Gamepad.all.Any(_ => _.buttonSouth.wasPressedThisFrame))
-            time += 1;
-        
-        if (currentSliderbar.GetComponentsInChildren<Image>().First(_ => _.sprite) is var image)
-            image.fillAmount = time / clickingGoal;
-        
-        if (time > clickingGoal)
-        {
-            brokenFlipper = false;
-            time = 0;
-            doOnce = false;
-            Destroy(currentSliderbar);
-            currentSliderbar = null;
-        }
+        if (Gamepad.all.Any(_ => _.buttonSouth.wasPressedThisFrame) || Input.GetKeyDown(KeyCode.B))
+            progress += 1;
+
+        Durability = progress / clickGoal;
     }
 }

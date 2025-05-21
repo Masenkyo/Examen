@@ -56,7 +56,7 @@ public class MovingFlipper : Flipper
     // The movement of the flipper, it can move between points through this function
     void MoveFlipper()
     {
-	    if (brokenFlipper)
+	    if (Durability < 1f)
 		    return;
         if (InputJoystickMovement == Vector3.zero)
             return;

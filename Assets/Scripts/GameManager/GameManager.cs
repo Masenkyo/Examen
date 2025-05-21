@@ -164,7 +164,6 @@ public class GameManager : MonoBehaviour
                 {
                     if (_.accessTypes.Any(_ => _ is ControlAccessTypes.Rotation))
                     {
-                        _.flipper.doubleSpeedPressed = gp.squareButton.isPressed;
                         _.flipper.DesiredHorizontalMovement = gp.leftStick.value.x;
                     }
                 });
@@ -173,10 +172,6 @@ public class GameManager : MonoBehaviour
                 {
                     if (_.accessTypes.Any(_ => _ is ControlAccessTypes.Rotation))
                     {
-                        _.flipper.doubleSpeedPressed =
-                            Input.GetKey(
-                                LobbyManager.map[(LobbyManager.inputs.Speed, (int)keyValuePair.Key.KeyboardID)]);
-
                         float d = 0;
                         if (Input.GetKey(
                                 LobbyManager.map[(LobbyManager.inputs.Left, (int)keyValuePair.Key.KeyboardID)]))
