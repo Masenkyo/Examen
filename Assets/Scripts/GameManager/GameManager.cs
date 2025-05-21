@@ -22,18 +22,22 @@ public class GameManager : MonoBehaviour
         LobbyManager.map[(LobbyManager.inputs.Reset, 0)].OnDown(() =>
         {
             playersHoldingReset.Add(PlayerManager.Players[0]);
+            PlayerManager.Players[0].LP.TrianglePressed = true;
         });
         LobbyManager.map[(LobbyManager.inputs.Reset, 0)].OnUp(() =>
         {
             playersHoldingReset.Remove(PlayerManager.Players[0]);
+            PlayerManager.Players[0].LP.TrianglePressed = false;
         });
         LobbyManager.map[(LobbyManager.inputs.Reset, 1)].OnDown(() =>
         {
             playersHoldingReset.Add(PlayerManager.Players[1]);
+            PlayerManager.Players[1].LP.TrianglePressed = true;
         });
         LobbyManager.map[(LobbyManager.inputs.Reset, 1)].OnUp(() =>
         {
             playersHoldingReset.Remove(PlayerManager.Players[1]);
+            PlayerManager.Players[1].LP.TrianglePressed = false;
         });
         
         StartCoroutine(resetInput());
@@ -48,14 +52,16 @@ public class GameManager : MonoBehaviour
                         continue;
                     if (!player.Gamepad.buttonNorth.wasPressedThisFrame)
                         continue;
-                    
+
                     playersHoldingReset.Add(player);
+                    player.LP.TrianglePressed = true;
                     StartCoroutine(hold());
                     IEnumerator hold()
                     {
                         while (!player.Gamepad.buttonNorth.wasReleasedThisFrame)
                             yield return new WaitForEndOfFrame();
                         playersHoldingReset.Remove(player);
+                        player.LP.TrianglePressed = false;
                     }
                 }
             }
