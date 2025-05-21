@@ -190,6 +190,7 @@ Transform:
   - {fileID: 6192055215051223865}
   - {fileID: 6512597375675915004}
   - {fileID: 4389010934530930305}
+  - {fileID: 4265903396944465524}
   - {fileID: 5505117759202737040}
   - {fileID: 8946977201638757262}
   - {fileID: 8349265195548789673}
@@ -666,6 +667,10 @@ PrefabInstance:
     - target: {fileID: 7258043014202006722, guid: e9b677120e227914fb66c1270b11be43, type: 3}
       propertyPath: isKnife
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258043014202006722, guid: e9b677120e227914fb66c1270b11be43, type: 3}
+      propertyPath: path.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7258043014202006722, guid: e9b677120e227914fb66c1270b11be43, type: 3}
       propertyPath: 'path.Array.data[0]'
@@ -1392,6 +1397,88 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 685548846565392611, guid: 64abaced3aac22949b18df98806d2406, type: 3}
   m_PrefabInstance: {fileID: 7250484067677786012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8921433855339542964
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2580635962771726347}
+    m_Modifications:
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9914449
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.13052616
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787389657734568212, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289117687879528908, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+      propertyPath: m_Name
+      value: winkel schappen_rechthoek_tileble_0 (8)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+--- !u!4 &4265903396944465524 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4682833609687168960, guid: 9c73ff8b0bbd9804c96ab1d32d9410a9, type: 3}
+  m_PrefabInstance: {fileID: 8921433855339542964}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8940809005671678273
 PrefabInstance:
