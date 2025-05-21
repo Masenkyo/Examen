@@ -24,6 +24,8 @@ enum Effects
 
 public class Powerup : MonoBehaviour
 {
+    public GameObject FloatingText;
+    
     public static List<Powerup> allPowerups = new List<Powerup>();
     UnityEvent collide = new UnityEvent();
     Ball ball = null;
@@ -217,21 +219,21 @@ public class Powerup : MonoBehaviour
         if (!collision.gameObject.TryGetComponent<Ball>(out Ball b)) return;
         ball = b;
 
-        switch (currentEffect)
+
+        Delegate[] chosenList;
+        
+        chosenList = currentEffect switch
         {
-            case Effects.Random:
-                InvokeOnce(used.GetInvocationList()[Random.Range(0, used.GetInvocationList().Length - 1)]);
-                break;
-            case Effects.Buff:
-                InvokeOnce(buff.GetInvocationList()[Random.Range(0, buff.GetInvocationList().Length - 1)]);
-                break;
-            case Effects.Debuff:
-                InvokeOnce(debuff.GetInvocationList()[Random.Range(0, debuff.GetInvocationList().Length - 1)]);
-                break;
-            default:
-                powerupsDict[currentEffect].Invoke();
-                break;
-        }
+            Effects.Random => used.GetInvocationList(),
+            Effects.Buff => buff.GetInvocationList(),
+            Effects.Debuff => debuff.GetInvocationList(),
+            _ => null
+        };
+
+        var chosenEffect = chosenList?[Random.Range(0, chosenList.Length - 1)] ?? powerupsDict[currentEffect];
+        InvokeOnce(chosenEffect);
+        Instantiate(FloatingText, transform.position, Quaternion.identity).GetComponent<FloatingText>().SetText(chosenEffect.Method.Name, buff.GetInvocationList().Contains(chosenEffect) ? Color.green : Color.red);
+        
         Disable();
     }
 
