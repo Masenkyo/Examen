@@ -57,7 +57,7 @@ public class ProgressBar : MonoBehaviour
         begin = progressBar.rectTransform.position.y + (progressBar.rectTransform.rect.height / 2);
         end = progressBar.rectTransform.position.y - (progressBar.rectTransform.rect.height / 2);
         indicator.transform.localScale = new Vector2(indicatorSize, indicatorSize);
-        indicator.rectTransform.position = new Vector2(indicator.rectTransform.position.x - progressBar.rectTransform.rect.width / 2, end);
+        indicator.rectTransform.position = new Vector2(indicator.rectTransform.position.x, end);
     }
 
     void Start() => GetEnd();
