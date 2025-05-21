@@ -134,7 +134,7 @@ public class Flipper : MonoBehaviour
             _durability = value;
         }
     } float _durability = 1f;
-    public Action<float, float> OnDurabilityChanged = (oldVal, newVal) => { };//
+    public Action<float, float> OnDurabilityChanged = (oldVal, newVal) => { };
     
     // Fix the flippers that have been broken
     void RepairProgression()
