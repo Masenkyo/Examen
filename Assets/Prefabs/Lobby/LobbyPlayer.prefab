@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: P1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cc569ea517e2eff43ab54f97cf2905c4, type: 2}
+  m_sharedMaterial: {fileID: -3531326225576201489, guid: cc569ea517e2eff43ab54f97cf2905c4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -305,6 +305,9 @@ MonoBehaviour:
   crown: {fileID: 1074521008669445140}
   id: {fileID: 3481070600853558893}
   avatar: {fileID: 9117895293398143333}
+  triangle: {fileID: 0}
+  Unpressed: {fileID: 0}
+  Pressed: {fileID: 0}
   _color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &6225003773114003847
 GameObject:

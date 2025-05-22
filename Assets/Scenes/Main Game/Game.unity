@@ -922,15 +922,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 863060782011133262, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 944245445172064308, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1413740692419850352, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704183552677100849, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: cc569ea517e2eff43ab54f97cf2905c4, type: 2}
+    - target: {fileID: 1704183552677100849, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3531326225576201489, guid: cc569ea517e2eff43ab54f97cf2905c4, type: 2}
+    - target: {fileID: 1704183552677100849, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1742983895546891020, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
@@ -1616,6 +1628,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 475
       objectReference: {fileID: 0}
+    - target: {fileID: 6555423151267545597, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6635632926958570346, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.33962262
@@ -1664,6 +1680,14 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6909495452577540696, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: cc569ea517e2eff43ab54f97cf2905c4, type: 2}
+    - target: {fileID: 6909495452577540696, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7615560095421987835, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
       propertyPath: m_FirstSelected
       value: 
@@ -1671,6 +1695,10 @@ PrefabInstance:
     - target: {fileID: 8025907465129023186, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
       propertyPath: m_Name
       value: SettingsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025907465129023186, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8123316804084920245, guid: 03ad1ed2529350747bf558a7dca4e821, type: 3}
       propertyPath: m_Material
