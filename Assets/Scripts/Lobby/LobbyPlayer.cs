@@ -6,17 +6,13 @@ using UnityEngine.UI;
 
 public class LobbyPlayer : MonoBehaviour
 {
-    [SerializeField] GameObject crown;
     public TMP_Text id;
-    public Image avatar;
     
     public bool IsKing
     {
         get => _isKing;
         set
         {
-            if (crown != null)
-                crown.SetActive(value);
             _isKing = value;
         }
     } bool _isKing;
@@ -77,8 +73,6 @@ public class LobbyPlayer : MonoBehaviour
         {
             if (id is { })
                 id.color = value;
-            if (avatar is { })
-                avatar.color = value;
             if (triangle is { })
             {
                 triangle.color = value;

@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: ecf0b2e405157234e972ee7c4960620f
+guid: 799764b71f35e884192d99febf9d6352
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7102441960414685991
-    second: 1spelers_UI_0
+      213: -8072369699951814553
+    second: 4p 3_0
+  - first:
+      213: 6441456364393841422
+    second: 4p 3_1
+  - first:
+      213: -5259451374742402105
+    second: 4p 3_2
+  - first:
+      213: 4497536975215319623
+    second: 4p 3_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1spelers_UI_0
+      name: 4p 3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 500
-        height: 500
+        x: 4
+        y: 262
+        width: 235
+        height: 234
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d457a7daae0f6d90800000000000000
-      internalID: -7102441960414685991
+      spriteID: 768deb2f68e29ff80800000000000000
+      internalID: -8072369699951814553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4p 3_1
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 262
+        width: 235
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e03cfd36f66a46950800000000000000
+      internalID: 6441456364393841422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4p 3_2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 6
+        width: 235
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cb0a0727dca207b0800000000000000
+      internalID: -5259451374742402105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4p 3_3
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 6
+        width: 235
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74ad4ebcc067a6e30800000000000000
+      internalID: 4497536975215319623
       vertices: []
       indices: 
       edges: []
@@ -125,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1spelers_UI_0: -7102441960414685991
+      4p 3_0: -8072369699951814553
+      4p 3_1: 6441456364393841422
+      4p 3_2: -5259451374742402105
+      4p 3_3: 4497536975215319623
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

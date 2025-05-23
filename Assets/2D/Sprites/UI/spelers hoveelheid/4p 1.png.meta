@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: b596bcdb7494f9946affd96edffcfdbc
+guid: d8a31fe77a8f0e443b9c37d381fce9e9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2277318951927600258
-    second: 4spelers_UI_0
+      213: -8998508698522613800
+    second: 4p 1_0
   - first:
-      213: 3771816442332931646
-    second: 4spelers_UI_1
+      213: -7546674456871085339
+    second: 4p 1_1
   - first:
-      213: 2926509582338938192
-    second: 4spelers_UI_2
+      213: 8669957295926946080
+    second: 4p 1_2
   - first:
-      213: -5132508337633706223
-    second: 4spelers_UI_3
+      213: 8669811194867215420
+    second: 4p 1_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -109,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 4spelers_UI_0
+      name: 4p 1_0
       rect:
         serializedVersion: 2
         x: 4
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e7b271e9a765560e0800000000000000
-      internalID: -2277318951927600258
+      spriteID: 8d70c4cc300ee1380800000000000000
+      internalID: -8998508698522613800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4spelers_UI_1
+      name: 4p 1_1
       rect:
         serializedVersion: 2
         x: 261
@@ -146,14 +146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e366b33021f285430800000000000000
-      internalID: 3771816442332931646
+      spriteID: 5ea5fa2c093d44790800000000000000
+      internalID: -7546674456871085339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4spelers_UI_2
+      name: 4p 1_2
       rect:
         serializedVersion: 2
         x: 4
@@ -168,14 +168,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 055d617b5fc0d9820800000000000000
-      internalID: 2926509582338938192
+      spriteID: 0292889a930e15870800000000000000
+      internalID: 8669957295926946080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4spelers_UI_3
+      name: 4p 1_3
       rect:
         serializedVersion: 2
         x: 261
@@ -190,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 11fbc903cdaa5c8b0800000000000000
-      internalID: -5132508337633706223
+      spriteID: c3ce3cbd85b515870800000000000000
+      internalID: 8669811194867215420
       vertices: []
       indices: 
       edges: []
@@ -200,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      4spelers_UI_0: -2277318951927600258
-      4spelers_UI_1: 3771816442332931646
-      4spelers_UI_2: 2926509582338938192
-      4spelers_UI_3: -5132508337633706223
+      4p 1_0: -8998508698522613800
+      4p 1_1: -7546674456871085339
+      4p 1_2: 8669957295926946080
+      4p 1_3: 8669811194867215420
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

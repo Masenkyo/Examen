@@ -74,8 +74,7 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] 
     PlayerManager.PlayerEntrySet[] lobbyPlayerParams;
     
-    [SerializeField] 
-    public LobbyPlayerList inLobbyPlayerList;
+    public GameObject invitation;
 
     [SerializeField] public GameObject inGameUI;
     [SerializeField] public GameObject inLobbyUI;
@@ -86,15 +85,17 @@ public class LobbyManager : MonoBehaviour
     LobbyPlayer CreateLP(PlayerManager.PlayerEntrySet chosen)
     {
         GameObject createdLP  = (GameStateClass.GameState == GameStates.InLobby
-                ? Instantiate(lobbyPlayerPrefab, inLobbyPlayerList.transform)
+                ? Instantiate(lobbyPlayerPrefab, null)
                 : Instantiate(inGamePlayerPrefab, inGamePlayerList.transform));
+     
+        if (GameStateClass.GameState == GameStates.InLobby)
+            createdLP.SetActive(false);
         
         if (GameStateClass.GameState == GameStates.InGame)
             inGamePlayerList.invitation.SetAsLastSibling();
         
         LobbyPlayer LPComp = createdLP.GetComponent<LobbyPlayer>();
         LPComp.Color = chosen.color;
-        LPComp.avatar.sprite = chosen.icon;
         LPComp.id.text = chosen.id;
 
         return LPComp;
@@ -147,7 +148,7 @@ public class LobbyManager : MonoBehaviour
             switch (GameStateClass.GameState)
             {
                 case GameStates.InLobby:
-                    refer?.inLobbyPlayerList.invitation.gameObject.SetActive(PlayerManager.Players.Count < 4);
+                    refer?.invitation.gameObject.SetActive(PlayerManager.Players.Count < 4);
                     break;
                 case GameStates.InGame:
                     refer?.inGamePlayerList.invitation.gameObject.SetActive(PlayerManager.Players.Count < 4);
