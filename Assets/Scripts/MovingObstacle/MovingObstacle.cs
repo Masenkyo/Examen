@@ -12,7 +12,7 @@ public class MovingObstacle : MonoBehaviour
     float speed = 1;
     int pathIndex = 0;
     float rotation = 0;
-
+    [SerializeField] bool isKnife;
     [SerializeField]
     List<Sprite> knives = new List<Sprite>();
 
@@ -21,8 +21,11 @@ public class MovingObstacle : MonoBehaviour
         if (path.Count < 1) path.Add(transform);
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = knives[Random.Range(0, knives.Count)];
+        if (isKnife)
+        {
         Vector2 spriteSize = spriteRenderer.bounds.size;
         GetComponent<BoxCollider2D>().size = spriteSize;
+        }
     }
 
     void Update()

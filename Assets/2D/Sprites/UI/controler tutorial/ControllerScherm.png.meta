@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: 44a4e1c4d1670c646994235e0e7a9e9a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6990880886630333909
+    second: ControllerScherm_0
+  - first:
+      213: 5664706173306116829
+    second: ControllerScherm_1
+  - first:
+      213: 412207371393722150
+    second: ControllerScherm_2
+  - first:
+      213: -4762499666868072877
+    second: ControllerScherm_3
+  - first:
+      213: -1835382543749839822
+    second: ControllerScherm_4
+  - first:
+      213: -5264587531979027722
+    second: ControllerScherm_5
+  - first:
+      213: 910044916478534865
+    second: ControllerScherm_6
+  - first:
+      213: 7867410425423965332
+    second: ControllerScherm_7
+  - first:
+      213: 6963211071265956072
+    second: ControllerScherm_8
+  - first:
+      213: 5084711335733383207
+    second: ControllerScherm_9
+  - first:
+      213: 6510418790756797631
+    second: ControllerScherm_10
+  - first:
+      213: 2322780627989699324
+    second: ControllerScherm_11
+  - first:
+      213: 8321306980696778510
+    second: ControllerScherm_12
+  - first:
+      213: -8867354354011833056
+    second: ControllerScherm_13
+  - first:
+      213: 175890392207471462
+    second: ControllerScherm_14
+  - first:
+      213: 9099949618232412457
+    second: ControllerScherm_15
+  - first:
+      213: -2199446882838719102
+    second: ControllerScherm_16
+  - first:
+      213: 3156754361441726841
+    second: ControllerScherm_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 144aa7abf638b3a46a33c5aa41b6e77c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ControllerScherm_0: 6990880886630333909
+      ControllerScherm_1: 5664706173306116829
+      ControllerScherm_10: 6510418790756797631
+      ControllerScherm_11: 2322780627989699324
+      ControllerScherm_12: 8321306980696778510
+      ControllerScherm_13: -8867354354011833056
+      ControllerScherm_14: 175890392207471462
+      ControllerScherm_15: 9099949618232412457
+      ControllerScherm_16: -2199446882838719102
+      ControllerScherm_17: 3156754361441726841
+      ControllerScherm_18: -412390957
+      ControllerScherm_2: 412207371393722150
+      ControllerScherm_3: -4762499666868072877
+      ControllerScherm_4: -1835382543749839822
+      ControllerScherm_5: -5264587531979027722
+      ControllerScherm_6: 910044916478534865
+      ControllerScherm_7: 7867410425423965332
+      ControllerScherm_8: 6963211071265956072
+      ControllerScherm_9: 5084711335733383207
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

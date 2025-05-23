@@ -146,7 +146,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: d29c86d30663f5c46ab7ffdd6290d292, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -176,11 +176,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   rigidBody: {fileID: 0}
-  startPosition: {x: 0, y: 5, z: 0}
+  startPosition: {x: 0, y: 7, z: 0}
   damagableVelocity: 10
   canSpawn: 0
   maxDurability: 35
-  moveTime: 0
+  moveTime: 3
 --- !u!198 &5807534193257836690
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3710651419371599361}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -317,7 +317,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 24.39
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -435,7 +435,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 1.8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -451,7 +451,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -593,7 +593,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -646,7 +646,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -699,8 +699,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 6.283185
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -752,14 +752,14 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 2000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 5
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1124,7 +1124,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -1135,21 +1135,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
+          value: 1
           inSlope: 0
-          outSlope: 1
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 0
+          value: 0
+          inSlope: -1.2620093
+          outSlope: -1.2620093
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.112612724
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -2337,7 +2337,7 @@ ParticleSystem:
         m_RotationOrder: 4
     m_Range: {x: 0, y: 1}
   ForceModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -2394,7 +2394,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 40
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2497,7 +2497,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 0
+    inWorldSpace: 1
     randomizePerFrame: 0
   ExternalForcesModule:
     serializedVersion: 2
@@ -4996,6 +4996,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: 0a4f56f654f6bb7498067e1686c3fd33, type: 2}
   - {fileID: 2100000, guid: 8cd99648de3c21e4289173f26e6b063b, type: 2}
+  shard: {fileID: 2100000, guid: 17426b28f34970247a1ea8b02e977359, type: 2}
   durability: 0
 --- !u!114 &-4941123374845357876
 MonoBehaviour:
@@ -5010,19 +5011,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSprites:
-  - phases:
+  - name: 0
+    phases:
     - {fileID: 2800000, guid: d9d81a9774ab5ff48905a59dd3292fb4, type: 3}
     - {fileID: 2800000, guid: 821383e4650907f4bb3b6286ad92e4c2, type: 3}
     - {fileID: 2800000, guid: 77e7bc0c8b1d52347ad2b7e6d6f7b410, type: 3}
-  - phases:
+  - name: 1
+    phases:
     - {fileID: 2800000, guid: b200565a1f99eca4a9feec455c313d9f, type: 3}
     - {fileID: 2800000, guid: 503f1ac6f1e106b4b8dae367492c4bd5, type: 3}
     - {fileID: 2800000, guid: 1f3b9ffb1ddb8754cb940da8a11adbbb, type: 3}
-  - phases:
+  - name: 2
+    phases:
     - {fileID: 2800000, guid: 55af305bed0cae74b87cc90552be3e0c, type: 3}
     - {fileID: 2800000, guid: a8aac5df1b68f8c4293eb2211af8a779, type: 3}
     - {fileID: 2800000, guid: 95f35f82c6a5da5448681573c7027d9f, type: 3}
-  - phases:
+  - name: 3
+    phases:
     - {fileID: 2800000, guid: 9f382fb97ad017648800f4051edaf4a0, type: 3}
     - {fileID: 2800000, guid: 9439cc7298baece47952d17ed9d8f0e3, type: 3}
     - {fileID: 2800000, guid: 4d90a0d67ed3ef549b6463cbe010daac, type: 3}
+  - name: 4
+    phases:
+    - {fileID: 2800000, guid: 07844ab17f10fb84ea023ad948df93cc, type: 3}
+    - {fileID: 2800000, guid: 78e6a2a9c676cff4784cd9eebed59597, type: 3}
+    - {fileID: 2800000, guid: c1f44017102df5b498b82c57de2c6a59, type: 3}
+  - name: 5
+    phases:
+    - {fileID: 2800000, guid: 0d613140f77626747a27700a63492faf, type: 3}
+    - {fileID: 2800000, guid: 9b0ac5ead93ce6642a4ed6155c8ac9f5, type: 3}
+    - {fileID: 2800000, guid: c131e5d60471a494a9d7d2e6fd2c5740, type: 3}
+  - name: 6
+    phases:
+    - {fileID: 2800000, guid: d3e90c24f2c07eb4ab2b7ad44b76c0d4, type: 3}
+    - {fileID: 2800000, guid: 58b134bd0c5b2fd4d9c084821fe9b8cf, type: 3}
+    - {fileID: 2800000, guid: 0eee50b73fefa894ca69e660d08feedf, type: 3}
+  - name: 7
+    phases:
+    - {fileID: 2800000, guid: 46326325418edaf4db6ea3b647e43fe5, type: 3}
+    - {fileID: 2800000, guid: 04a39399e4283e949ba621d87cff7cce, type: 3}
+    - {fileID: 2800000, guid: 2ebe081465d3c5245ae3a8ee6656c6ef, type: 3}
+  - name: 0
+    phases:
+    - {fileID: 2800000, guid: d5eac5ccdd3f8934483a6be7efa52ff9, type: 3}
+    - {fileID: 2800000, guid: b701a2b65dcf88749bf2fda4a4b9bce5, type: 3}

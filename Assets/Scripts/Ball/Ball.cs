@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,8 +8,10 @@ public class Ball : MonoBehaviour
     public UnityEvent Enable;
     public UnityEvent Disable;
 
+    public int hitEffectIndex = 2;
+
     float teleportWidth;
-    
+
     [HideInInspector]
     public Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
@@ -20,8 +21,6 @@ public class Ball : MonoBehaviour
 
     [SerializeField]
     float damagableVelocity;
-    [HideInInspector]
-    public bool canSpawn;
 
     [SerializeField]
     float maxDurability = 35f;
@@ -36,27 +35,43 @@ public class Ball : MonoBehaviour
         set
         {
             _durability = value;
-            if (value <= 0) Disable.Invoke();
+            if (value <= 0)
+            {
+                Disable.Invoke();
+
+                StartCoroutine(respawn());
+                IEnumerator respawn()
+                {
+                    yield return new WaitForSeconds(2f);
+                    Enable.Invoke();
+                }
+            }
         }
-    } float? _durability;
+    }
+    float? _durability;
 
     void DisableBall()
     {
+        foreach (var p in Powerup.allPowerups)
+        {
+            p.OnCancel.Invoke();
+        }
         spriteRenderer.enabled = false;
         rigidBody.simulated = false;
         rigidBody.linearVelocity = new(0, 0);
         rigidBody.angularVelocity = 0;
         GetComponent<ParticleSystem>().Play();
-        canSpawn = true;
     }
 
     bool ready = true;
     float time;
     [SerializeField] float moveTime;
-    
+
     void EnableBall()
     {
-        canSpawn = false;
+        foreach (var p in Powerup.allPowerups)
+            p.SetPowerup();
+
         GetComponent<ParticleSystem>().Stop();
         spriteRenderer.color = Color.red;
         spriteRenderer.enabled = true;
@@ -69,7 +84,7 @@ public class Ball : MonoBehaviour
 
     float beginTime = 5f;
     bool firstTime = true;
-    
+
     IEnumerator WaitForDrop(float waitTime = 3f)
     {
         ready = true;
@@ -80,9 +95,9 @@ public class Ball : MonoBehaviour
             yield return new WaitForSeconds(beginTime);
             firstTime = false;
         }
-        
+
         yield return new WaitForSeconds(waitTime);
-        
+
         rigidBody.simulated = true;
         ready = false;
     }
@@ -90,7 +105,7 @@ public class Ball : MonoBehaviour
     void Awake()
     {
         reference = this;
-        teleportWidth = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x  + 1;
+        teleportWidth = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x + 1;
         startPosition = transform.position;
         rigidBody = GetComponent<Rigidbody2D>();
         phases = GetComponent<Phases>();
@@ -114,7 +129,7 @@ public class Ball : MonoBehaviour
             transform.position = Vector3.Lerp(startPosition + new Vector3(startPosition.x < 0 ? -2 : 2, 0, 0), startPosition, time / moveTime);
         }
         else time = 0;
-        
+
         TeleportSideScreen(teleportWidth);
 
         if (transform.position.y < -5 + LevelSystem.instance.amountOfLevels * LevelSystem.instance.gapBetweenLevels)
@@ -123,14 +138,15 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        SFXManager.reference.Play(0);
+
         if (impactVelocity.magnitude > damagableVelocity)
         {
+            SFXManager.reference.Play(hitEffectIndex);
             Durability -= impactVelocity.magnitude;
         }
     }
 
-    Vector3 teleportLocation;
-    
     void TeleportSideScreen(float x = 2f)
     {
         var pos = transform.position;

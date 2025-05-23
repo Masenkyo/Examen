@@ -60,11 +60,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Phase1:
-        m_Texture: {fileID: 2800000, guid: 821383e4650907f4bb3b6286ad92e4c2, type: 3}
+        m_Texture: {fileID: 2800000, guid: b701a2b65dcf88749bf2fda4a4b9bce5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Phase2:
-        m_Texture: {fileID: 2800000, guid: d9d81a9774ab5ff48905a59dd3292fb4, type: 3}
+        m_Texture: {fileID: 2800000, guid: d5eac5ccdd3f8934483a6be7efa52ff9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Phase3:

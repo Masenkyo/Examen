@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: b7e6966fc21f1ee458edf68e912bd41a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3241009266659580975
+    second: BouncyBites_Logo_Donut_0
+  - first:
+      213: -7369576443964318683
+    second: BouncyBites_Logo_Donut_1
+  - first:
+      213: 8121465857783367283
+    second: BouncyBites_Logo_Donut_2
+  - first:
+      213: -3047991975229849553
+    second: BouncyBites_Logo_Donut_3
+  - first:
+      213: -1216821186968312922
+    second: BouncyBites_Logo_Donut_4
+  - first:
+      213: 42732824632564495
+    second: BouncyBites_Logo_Donut_5
+  - first:
+      213: 8051923051107963318
+    second: BouncyBites_Logo_Donut_6
+  - first:
+      213: 8885982873813713587
+    second: BouncyBites_Logo_Donut_7
+  - first:
+      213: 935687232479211126
+    second: BouncyBites_Logo_Donut_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BouncyBites_Logo_Donut_0
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 721
+        width: 287
+        height: 297
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2c5ef4a1c06afc20800000000000000
+      internalID: 3241009266659580975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BouncyBites_Logo_Donut_1
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 515
+        width: 173
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52c9b6815410ab990800000000000000
+      internalID: -7369576443964318683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BouncyBites_Logo_Donut_2
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 548
+        width: 184
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37604a41b2e35b070800000000000000
+      internalID: 8121465857783367283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BouncyBites_Logo_Donut_3
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 316
+        width: 532
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f200f2e827b53b5d0800000000000000
+      internalID: -3047991975229849553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BouncyBites_Logo_Donut_4
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 558
+        width: 114
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a3a593d39bfc1fe0800000000000000
+      internalID: -1216821186968312922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BouncyBites_Logo_Donut_5
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 562
+        width: 131
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0b19701741d79000800000000000000
+      internalID: 42732824632564495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BouncyBites_Logo_Donut_6
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 326
+        width: 167
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b1d114aa5d2ebf60800000000000000
+      internalID: 8051923051107963318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BouncyBites_Logo_Donut_7
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 333
+        width: 45
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b20fd1085a515b70800000000000000
+      internalID: 8885982873813713587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BouncyBites_Logo_Donut_8
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 328
+        width: 175
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67eaac8949a3cfc00800000000000000
+      internalID: 935687232479211126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BouncyBites_Logo_Donut_0: 3241009266659580975
+      BouncyBites_Logo_Donut_1: -7369576443964318683
+      BouncyBites_Logo_Donut_2: 8121465857783367283
+      BouncyBites_Logo_Donut_3: -3047991975229849553
+      BouncyBites_Logo_Donut_4: -1216821186968312922
+      BouncyBites_Logo_Donut_5: 42732824632564495
+      BouncyBites_Logo_Donut_6: 8051923051107963318
+      BouncyBites_Logo_Donut_7: 8885982873813713587
+      BouncyBites_Logo_Donut_8: 935687232479211126
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

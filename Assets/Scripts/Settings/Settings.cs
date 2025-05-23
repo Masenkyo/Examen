@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
+    public static Settings reference;
+    public Image postprocessing;
+    
     [SerializeField]
     Button continuteButton;
     [SerializeField]
@@ -26,6 +29,7 @@ public class Settings : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        reference = this;
         originalVolume = gameplayAudio.volume;
         volumeSlider = settingsMenu.GetComponentInChildren<Slider>();
         volumeSlider.value = gameplayAudio.volume;
@@ -57,6 +61,9 @@ public class Settings : MonoBehaviour
 
     public void Pause()
     {
+        if (Tutorial.tutorialActive)
+            return;
+        
         paused = !paused;
         Time.timeScale = paused ? 0 : 1;
         continuteButton.gameObject.SetActive(paused);
