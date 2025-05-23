@@ -7,7 +7,7 @@ public class Tutorial : MonoBehaviour
         StartCoroutine(wait());
         IEnumerator wait()
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(25);
             GameStateClass.GameState = GameStates.InGame;
         }
     }
