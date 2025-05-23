@@ -38,13 +38,13 @@ Moving Obstacle: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/S
 
 Lobby Manager: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Lobby/LobbyManager.cs "LobbyManager"), [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#lobby), [Technical]()  
   
-Game Manager: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/GameManager/GameManager.cs "Game Manager"), [Technical]()  
+Game Manager: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/GameManager/GameManager.cs "Game Manager"), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#lobby-&-gamemanager)  
 
 Moving Flipper: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Flippers/MovingFlipper.cs "Moving Flipper"), [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#flippers), [Technical]()  
   
-Repair Prompt: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/RepairPrompt.cs "Repair Prompt"), [Technical]()  
+Repair Prompt: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/RepairPrompt.cs "Repair Prompt"), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#flippers)  
   
-Game State Class: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Lobby/GameStateClass.cs), [Technical]()  
+Game State Class: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Lobby/GameStateClass.cs), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#lobby-&-gamemanager)  
 
 
 ## Flippers/Moving Flippers
