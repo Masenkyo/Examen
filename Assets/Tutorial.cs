@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Tutorial : MonoBehaviour
 {
     public static bool tutorialActive = false;
-    void Start()
+    void Awake()
     {
         tutorialActive = true;
         
