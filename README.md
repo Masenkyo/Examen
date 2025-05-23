@@ -3,18 +3,9 @@
 </p>
 
 
-Linx Interactive is een game bedrijf waarbij onderling contact en samenwerking op de 1e plek staan.
-Linx Interactive heeft ons gevraagd om een lokale co-op multiplayer game te maken, waarbij
-samenwerking en positieve connecties van belang zijn. Door samenwerking en communicatie word het
-gemeenschappelijke doel (samenwerken om te winnen) behaald.
-De opdrachtever wilt graag dat de dat de spelers positieve emoties naar elkaar ervaren tijdens het
-spelen, zoals trots, waardering, dankbaarheid.
+Linx Interactive is a game company where interpersonal contact and collaboration are the top priorities. Linx Interactive has asked us to create a local co-op multiplayer game, where teamwork and positive connections are important. Through collaboration and communication, the common goal (working together to win) is achieved. The client would like players to experience positive emotions towards each other while playing, such as pride, appreciation, and gratitude.
 
-BOUNCY BITES is een lokale coöperatieve multiplayergame voor 2 tot 4 spelers, het is makkelijk te begrijpen en kan gespeeld kan worden door een breed scala aan mensen. Spelers sluiten aan via
-een PlayStation-controller en zodra iedereen is aangesloten, laat de camera een overzicht zien van het
-level van einde naar begin. Een object wordt bovenaan het scherm ingeladen en valt naar beneden. Het stuitert van flipper naar
-flipper, waarbij elke speler zijn eigen flipper bestuurt via de joystick. Door goed samen te werken
-moeten spelers het object veilig naar het einde bereiken.
+BOUNCY BITES is a local cooperative multiplayer game for 2 to 4 players. It is easy to understand and can be played by a wide range of people. Players connect via a PlayStation controller, and once everyone is connected, the camera shows an overview of the level from end to start. An object is loaded at the top of the screen and falls down. It bounces from flipper to flipper, with each player controlling their own flipper using the joystick. By working well together, players must safely guide the object to the end.
 
 # [*Pipeline*](https://github.com/Masenkyo/Examen/wiki/Pipeline "Pipeline")
 
