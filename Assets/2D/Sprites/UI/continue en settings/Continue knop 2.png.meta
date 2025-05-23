@@ -184,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Continue knop 2_0: 2838097339445616070
+      Continue knop 2_1: -660635547853860618
+      Continue knop 2_2: -809824316773042872
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

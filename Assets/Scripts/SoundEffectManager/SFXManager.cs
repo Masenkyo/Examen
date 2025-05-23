@@ -8,7 +8,7 @@ public class SFXManager : MonoBehaviour
     [SerializeField] //order is the same as in the sound effect folder (excluding (dis)connection, lose and win sfx)
     List<AudioClip> soundEffects = new List<AudioClip>();
 
-    void Awake()
+    void Start()
     {
         reference = this;
         source = GetComponent<AudioSource>();

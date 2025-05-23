@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 public static class PlayerManager
@@ -248,6 +249,7 @@ public class LobbyManager : MonoBehaviour
                 return;
             GameStateClass.GameState = GameStates.InGame;
         };
+        
 
         map[(inputs.Stop, 0)].OnDown(() => StopGame(0));
         map[(inputs.Stop, 1)].OnDown(() => StopGame(1));

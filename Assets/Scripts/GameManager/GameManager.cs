@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -60,6 +61,8 @@ public class GameManager : MonoBehaviour
                     {
                         while (!player.Gamepad.buttonNorth.wasReleasedThisFrame)
                             yield return new WaitForEndOfFrame();
+                        if (player.LP == null)
+                            yield break;
                         playersHoldingReset.Remove(player);
                         player.LP.TrianglePressed = false;
                     }
@@ -74,6 +77,9 @@ public class GameManager : MonoBehaviour
 
         void init()
         {
+            Tutorial.tutorialActive = true;
+            SceneManager.LoadScene("Tutorial", LoadSceneMode.Additive);
+            
             Time.timeScale = 1;
             
             PlayerManager.PlayerRemovedAfter += WaitAndDistribute;
