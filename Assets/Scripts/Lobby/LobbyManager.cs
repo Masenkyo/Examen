@@ -247,8 +247,7 @@ public class LobbyManager : MonoBehaviour
         {
             if (PlayerManager.Players.FirstOrDefault(_ => _.Gamepad == context.control.device) is not { IsKing: true })
                 return;
-
-            SceneManager.LoadScene("Tutorial");
+            GameStateClass.GameState = GameStates.InGame;
         };
         
 

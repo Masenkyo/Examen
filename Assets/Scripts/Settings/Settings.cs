@@ -61,6 +61,9 @@ public class Settings : MonoBehaviour
 
     public void Pause()
     {
+        if (Tutorial.tutorialActive)
+            return;
+        
         paused = !paused;
         Time.timeScale = paused ? 0 : 1;
         continuteButton.gameObject.SetActive(paused);

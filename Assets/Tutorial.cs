@@ -1,20 +1,34 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class Tutorial : MonoBehaviour
 {
+    public static bool tutorialActive = false;
     void Start()
     {
+        tutorialActive = true;
+        
+        Time.timeScale = 0;
         StartCoroutine(wait());
         IEnumerator wait()
         {
             yield return new WaitForSeconds(25);
-            GameStateClass.GameState = GameStates.InGame;
+            Time.timeScale = 1;
+            SceneManager.UnloadSceneAsync("Tutorial");
         }
     }
-    
+
+    void OnDestroy()
+    {
+        tutorialActive = false;
+    }
+
     public void SkipButton()
     {
         StopAllCoroutines();
-        GameStateClass.GameState = GameStates.InGame;
+        Time.timeScale = 1;
+        SceneManager.UnloadSceneAsync("Tutorial");
     }
 }
