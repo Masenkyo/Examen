@@ -42,13 +42,13 @@ Camera Follow: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scri
   
 Damage Phases: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#phases "Technical Design")  
   
-Progress Bar: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#progress-bar "Technical Design")  
+Progress Bar: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#progress-bar "Technical Design")  
   
-Moving Obstacle: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#moving-obstacle "Technical Design")  
+Moving Obstacle: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#moving-obstacle "Technical Design")  
 
-Power Ups: [Code]() [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#power-ups) [Technical](https://github.com/Masenkyo/Examen/wiki/Functional-Design#power-ups)
+Power Ups: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Powerup/Powerup.cs) [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#power-ups) [Technical](https://github.com/Masenkyo/Examen/wiki/Functional-Design#power-ups)
 
-Checkpoints: [Code]() [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#checkpoints) [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#checkpoint)
+Checkpoint: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/checkpoint/checkpoint.cs) [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#checkpoints) [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#checkpoint)
 
 ### Teo zijn scripts:
 
@@ -94,6 +94,8 @@ https://github.com/user-attachments/assets/42bc75c5-20d2-46ac-9c36-9cf6f76bb674
 
 ## Camera
 
+Camera Follow: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#camera "Technical Design")
+
 The camera follows the ball around smoothly for a good game experience.  
 
 https://github.com/user-attachments/assets/b85fb452-f093-47fd-a561-15c51b0422f1
@@ -109,6 +111,8 @@ https://github.com/user-attachments/assets/2b80acd7-b7b1-4984-9aa7-2960a7470995
 
 ## Players/Lobby
 
+Lobby Manager: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Lobby/LobbyManager.cs "LobbyManager"), [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#lobby), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#lobby-&-gamemanager) 
+
 You can join while in the lobby, but also while you're ingame, the flippers will get evenly distributed across all players even when they join/leave halfway through.  
 
 ![vlcsnap-2025-05-21-13h17m51s451](https://github.com/user-attachments/assets/579a8929-618a-4fc5-b59c-bc29b5a3e9f3)
@@ -116,17 +120,23 @@ filmpje van players die flippers hebben?
 
 ## PowerUps
 
+Power Ups: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Powerup/Powerup.cs) [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#power-ups) [Technical](https://github.com/Masenkyo/Examen/wiki/Functional-Design#power-ups)
+
 You can get multiple effects from getting powerups, but make sure not to take the bad ones.  
 
 https://github.com/user-attachments/assets/f52e66af-d3bd-45f4-96b6-4c932afeaf7e
 
 ## Checkpoint
 
+Checkpoint: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/checkpoint/checkpoint.cs) [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#checkpoints) [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#checkpoint)
+
 If you touch the checkpoint, the next time the ball respawns it will spawn at that checkpoint so you don't have to do the whole level over, but it's not always easy to get a checkpoint.  
 
 https://github.com/user-attachments/assets/7ae124ee-fa06-47b1-8832-d5d4404c9330
 
 ## Knives
+
+Moving Obstacle: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#moving-obstacle "Technical Design")  
 
 The knives will destroy the ball if the ball touches the knives, the knives can also move towards any point you want them to go to.  
 
