@@ -96,17 +96,8 @@ public class GameManager : MonoBehaviour
             void WaitAndDistributeButWithUnusedParameter(PlayerManager.Player p) => WaitAndDistribute();
             void WaitAndDistribute()
             {
-                var go = new GameObject("");
-                go.AddComponent<empty>().StartCoroutine(wait());
-                Destroy(go, 5);
-                
-                IEnumerator wait()
-                {
-                    DistributeFlippers();
-                    Time.timeScale = 0;
-                    yield return new WaitForSecondsRealtime(3);
-                    Time.timeScale = 1;
-                }
+                DistributeFlippers();
+                Settings.reference.Pause();
             }
             
             DistributeFlippers();
