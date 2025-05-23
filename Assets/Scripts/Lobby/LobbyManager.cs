@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 public static class PlayerManager
@@ -246,8 +247,10 @@ public class LobbyManager : MonoBehaviour
         {
             if (PlayerManager.Players.FirstOrDefault(_ => _.Gamepad == context.control.device) is not { IsKing: true })
                 return;
-            GameStateClass.GameState = GameStates.InGame;
+
+            SceneManager.LoadScene("Tutorial");
         };
+        
 
         map[(inputs.Stop, 0)].OnDown(() => StopGame(0));
         map[(inputs.Stop, 1)].OnDown(() => StopGame(1));
