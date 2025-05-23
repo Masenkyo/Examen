@@ -138,7 +138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 871, y: 0}
+  m_AnchoredPosition: {x: 890, y: 0}
   m_SizeDelta: {x: 60, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3311995476492578432
@@ -194,9 +194,36 @@ MonoBehaviour:
   indicator: {fileID: 3178531747121570395}
   levelBegin: {fileID: 0}
   ball: {fileID: 0}
-  levelEnd: {fileID: 0}
   position: 0.844
   indicatorScale: 1
+  allBarSprites:
+  - name: 0
+    indicator: {fileID: 0}
+    bar: {fileID: 0}
+  - name: 0
+    indicator: {fileID: 0}
+    bar: {fileID: 0}
+  - name: 0
+    indicator: {fileID: 0}
+    bar: {fileID: 0}
+  - name: 0
+    indicator: {fileID: 0}
+    bar: {fileID: 0}
+  - name: 0
+    indicator: {fileID: 0}
+    bar: {fileID: 0}
+  - name: 0
+    indicator: {fileID: 0}
+    bar: {fileID: 0}
+  - name: 0
+    indicator: {fileID: 0}
+    bar: {fileID: 0}
+  - name: 0
+    indicator: {fileID: 0}
+    bar: {fileID: 0}
+  - name: 0
+    indicator: {fileID: 0}
+    bar: {fileID: 0}
 --- !u!1 &4362013057620637343
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 871, y: 0}
+  m_AnchoredPosition: {x: 890, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1726122344474068047
