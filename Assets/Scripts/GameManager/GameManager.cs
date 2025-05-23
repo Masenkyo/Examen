@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
 
         void init()
         {
+            Tutorial.tutorialActive = true;
             SceneManager.LoadScene("Tutorial", LoadSceneMode.Additive);
             
             Time.timeScale = 1;

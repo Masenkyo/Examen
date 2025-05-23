@@ -9,8 +9,6 @@ public class Tutorial : MonoBehaviour
     public static bool tutorialActive = false;
     void Awake()
     {
-        tutorialActive = true;
-        
         Time.timeScale = 0;
         StartCoroutine(wait());
         IEnumerator wait()
