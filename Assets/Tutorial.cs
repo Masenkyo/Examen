@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
@@ -14,7 +15,7 @@ public class Tutorial : MonoBehaviour
         StartCoroutine(wait());
         IEnumerator wait()
         {
-            yield return new WaitForSeconds(25);
+            yield return new WaitForSecondsRealtime(25);
             Time.timeScale = 1;
             SceneManager.UnloadSceneAsync("Tutorial");
         }
@@ -25,8 +26,12 @@ public class Tutorial : MonoBehaviour
         tutorialActive = false;
     }
 
-    public void SkipButton()
+    void Update()
     {
+        if (!Gamepad.current.buttonSouth.wasPressedThisFrame)
+            return;
+
+        enabled = false;
         StopAllCoroutines();
         Time.timeScale = 1;
         SceneManager.UnloadSceneAsync("Tutorial");

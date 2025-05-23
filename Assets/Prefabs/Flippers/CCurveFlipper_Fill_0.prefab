@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -5002220543116416378, guid: 4371c5e0f8803a446916321e98416963, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2773314864066186647, guid: 23560a1c0ed9fe24b9743383fc55c0dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -330,7 +330,6 @@ MonoBehaviour:
   repairDifficulty: 3
   sliderBar: {fileID: 3906684569977692178, guid: d31063d764ad1484c972105dbf2c0437, type: 3}
   rotateSpeed: 90
-  doubleSpeedPressed: 0
   DesiredHorizontalMovement: 0
   rigidbody: {fileID: 0}
   RepairPrompt: {fileID: 8917745535608530909, guid: 39cd929a855cd6a439e7d068fe5e5731, type: 3}
