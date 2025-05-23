@@ -26,7 +26,7 @@ public class Tutorial : MonoBehaviour
 
     void Update()
     {
-        if (!Gamepad.current.buttonSouth.wasPressedThisFrame)
+        if ((!Gamepad.current?.buttonSouth.wasPressedThisFrame ?? true) && !Input.GetKeyDown(KeyCode.B))
             return;
 
         enabled = false;
