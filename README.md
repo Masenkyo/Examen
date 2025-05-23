@@ -36,11 +36,11 @@ Moving Obstacle: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/S
 
 ### Teo zijn scripts:
 
-Lobby Manager: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Lobby/LobbyManager.cs "LobbyManager"), [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#lobby), [Technical]()  
+Lobby Manager: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Lobby/LobbyManager.cs "LobbyManager"), [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#lobby), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#lobby-&-gamemanager)  
   
 Game Manager: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/GameManager/GameManager.cs "Game Manager"), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#lobby-&-gamemanager)  
 
-Moving Flipper: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Flippers/MovingFlipper.cs "Moving Flipper"), [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#flippers), [Technical]()  
+Moving Flipper: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/Flippers/MovingFlipper.cs "Moving Flipper"), [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#flippers), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#flippers)  
   
 Repair Prompt: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/RepairPrompt.cs "Repair Prompt"), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#flippers)  
   
