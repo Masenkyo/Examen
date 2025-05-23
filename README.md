@@ -2,7 +2,21 @@
   <img src="https://github.com/user-attachments/assets/8b6602dc-4fd0-44df-b895-cb9d44e220c5"></img>
 </p>
 
-Dit is een couch co-op spel dat makkelijk te begrijpen is en gespeeld kan worden door een breed scala aan mensen. Het doel is om samen te coordineren om een bal voorzichtig naar beneden te brengen door een soort flipper kast. De spelers besturen de flippers.
+
+Linx Interactive is een game bedrijf waarbij onderling contact en samenwerking op de 1e plek staan.
+Linx Interactive heeft ons gevraagd om een lokale co-op multiplayer game te maken, waarbij
+samenwerking en positieve connecties van belang zijn. Door samenwerking en communicatie word het
+gemeenschappelijke doel (samenwerken om te winnen) behaald.
+De opdrachtever wilt graag dat de dat de spelers positieve emoties naar elkaar ervaren tijdens het
+spelen, zoals trots, waardering, dankbaarheid.
+
+BOUNCY BITES is een lokale coöperatieve multiplayergame voor 2 tot 4 spelers, het is makkelijk te begrijpen en kan gespeeld kan worden door een breed scala aan mensen. Spelers sluiten aan via
+een PlayStation-controller en zodra iedereen is aangesloten, laat de camera een overzicht zien van het
+level van einde naar begin.
+Gameplay:
+Een object wordt bovenaan het scherm ingeladen en valt naar beneden. Het stuitert van flipper naar
+flipper, waarbij elke speler zijn eigen flipper bestuurt via de joystick. Door goed samen te werken
+moeten spelers het object veilig naar het einde bereiken.
 
 # [*Pipeline*](https://github.com/Masenkyo/Examen/wiki/Pipeline "Pipeline")
 
