@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
                     {
                         while (!player.Gamepad.buttonNorth.wasReleasedThisFrame)
                             yield return new WaitForEndOfFrame();
+                        if (player.LP == null)
+                            yield break;
                         playersHoldingReset.Remove(player);
                         player.LP.TrianglePressed = false;
                     }
