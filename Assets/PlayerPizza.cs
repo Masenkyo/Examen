@@ -53,11 +53,13 @@ public class PlayerPizza : MonoBehaviour
             {
                 variants[0].slices[0].image.color = PlayerManager.Players[0].ChosenPlayerEntrySet.color;
                 variants[0].slices[0].number.text = "1";
+                variants[0].slices[0].number.color = PlayerManager.Players[0].IsKing ? new Color32(210, 206, 80, 255) : Color.white;
             }
             else
             {
                 variants[0].slices[0].image.color = Color.grey;
                 variants[0].slices[0].number.text = "0";
+                variants[0].slices[0].number.color = Color.white;
             }
         }
         else if (PlayerManager.Players.Count == 2)
@@ -68,6 +70,7 @@ public class PlayerPizza : MonoBehaviour
             {
                 variants[1].slices[i].image.color = PlayerManager.Players[i].ChosenPlayerEntrySet.color;
                 variants[1].slices[i].number.text = (i + 1).ToString();
+                variants[1].slices[i].number.color = PlayerManager.Players[i].IsKing ? new Color32(210, 206, 80, 255) : Color.white;
             }
         }
         else if (PlayerManager.Players.Count == 3)
@@ -78,6 +81,7 @@ public class PlayerPizza : MonoBehaviour
             {
                 variants[2].slices[i].image.color = PlayerManager.Players[i].ChosenPlayerEntrySet.color;
                 variants[2].slices[i].number.text = (i + 1).ToString();
+                variants[2].slices[i].number.color = PlayerManager.Players[i].IsKing ? new Color32(210, 206, 80, 255) : Color.white;
             }
         }
         else if (PlayerManager.Players.Count == 4)
@@ -88,6 +92,7 @@ public class PlayerPizza : MonoBehaviour
             {
                 variants[3].slices[i].image.color = PlayerManager.Players[i].ChosenPlayerEntrySet.color;
                 variants[3].slices[i].number.text = (i + 1).ToString();
+                variants[3].slices[i].number.color = PlayerManager.Players[i].IsKing ? new Color32(210, 206, 80, 255) : Color.white;
             }
         }
     }
