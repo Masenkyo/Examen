@@ -12,9 +12,7 @@ spelen, zoals trots, waardering, dankbaarheid.
 
 BOUNCY BITES is een lokale coöperatieve multiplayergame voor 2 tot 4 spelers, het is makkelijk te begrijpen en kan gespeeld kan worden door een breed scala aan mensen. Spelers sluiten aan via
 een PlayStation-controller en zodra iedereen is aangesloten, laat de camera een overzicht zien van het
-level van einde naar begin.
-Gameplay:
-Een object wordt bovenaan het scherm ingeladen en valt naar beneden. Het stuitert van flipper naar
+level van einde naar begin. Een object wordt bovenaan het scherm ingeladen en valt naar beneden. Het stuitert van flipper naar
 flipper, waarbij elke speler zijn eigen flipper bestuurt via de joystick. Door goed samen te werken
 moeten spelers het object veilig naar het einde bereiken.
 
