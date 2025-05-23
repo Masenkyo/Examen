@@ -36,15 +36,19 @@ Ball: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/
 
 ### Boi zijn scripts:
   
-Ball: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#ball "Technical Design")  
+Ball: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Ball.cs "Ball"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#ball "Technical Design")  
 
-Camera Follow: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#camera "Technical Design")  
+Camera Follow: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Camera/Follow.cs "Camera Follow"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#camera "Technical Design")  
   
-Damage Phases: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#phases "Technical Design")  
+Damage Phases: [Code](https://github.com/Masenkyo/Examen/blob/master/Assets/Scripts/Ball/Phases.cs "Damage Phases"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#phases "Technical Design")  
   
-Progress Bar: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#progress-bar "Technical Design")  
+Progress Bar: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/progressbar/ProgressBar.cs "Progress Bar"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#progress-bar "Technical Design")  
   
-Moving Obstacle: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#moving-obstacle "Technical Design")  
+Moving Obstacle: [Code](https://github.com/Masenkyo/Examen/blob/develop/Assets/Scripts/MovingObstacle/MovingObstacle.cs "Moving Obstacle"), [Functional](https://github.com/user-attachments/assets/5378ecdf-92f0-4e7a-913c-eb875fe4fa7f), [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#moving-obstacle "Technical Design")  
+
+Power Ups: [Code]() [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#power-ups) [Technical](https://github.com/Masenkyo/Examen/wiki/Functional-Design#power-ups)
+
+Checkpoints: [Code]() [Functional](https://github.com/Masenkyo/Examen/wiki/Functional-Design#checkpoints) [Technical](https://github.com/Masenkyo/Examen/wiki/Technical-design#checkpoint)
 
 ### Teo zijn scripts:
 
